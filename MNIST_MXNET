@@ -1,0 +1,271 @@
+{
+  "paragraphs": [
+    {
+      "text": "import mxnet as mx\nmnist \u003d mx.test_utils.get_mnist()",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 1:55:39 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519302664987_1339749084",
+      "id": "20180222-123104_686293267_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/h5py/__init__.py:34: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\n/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/mxnet/test_utils.py:1430: DeprecationWarning: The binary mode of fromstring is deprecated, as it behaves surprisingly on unicode inputs. Use frombuffer instead\n  label \u003d np.fromstring(flbl.read(), dtype\u003dnp.int8)\n/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/mxnet/test_utils.py:1433: DeprecationWarning: The binary mode of fromstring is deprecated, as it behaves surprisingly on unicode inputs. Use frombuffer instead\n  image \u003d np.fromstring(fimg.read(), dtype\u003dnp.uint8).reshape(len(label), rows, cols)\n"
+      },
+      "dateCreated": "Feb 22, 2018 12:31:04 PM",
+      "dateStarted": "Feb 22, 2018 1:55:39 PM",
+      "dateFinished": "Feb 22, 2018 1:58:03 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "batch_size \u003d 100\ntrain_iter \u003d mx.io.NDArrayIter(mnist[\u0027train_data\u0027], mnist[\u0027train_label\u0027], batch_size, shuffle\u003dTrue)\nval_iter \u003d mx.io.NDArrayIter(mnist[\u0027test_data\u0027], mnist[\u0027test_label\u0027], batch_size)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 1:58:50 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519302679107_-684214021",
+      "id": "20180222-123119_1205150006_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Feb 22, 2018 12:31:19 PM",
+      "dateStarted": "Feb 22, 2018 1:58:50 PM",
+      "dateFinished": "Feb 22, 2018 1:58:51 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "data \u003d mx.sym.Variable(\u0027data\u0027)\n# Flatten the data from 4-D shape (batch_size, num_channel, width, height) \n# into 2-D (batch_size, num_channel*width*height)\ndata \u003d mx.sym.Flatten(data\u003ddata)\n\n# The first fully-connected layer\nfc1  \u003d mx.sym.FullyConnected(data\u003ddata, name\u003d\u0027fc1\u0027, num_hidden\u003d128)\n# Apply relu to the output of the first fully-connnected layer\nact1 \u003d mx.sym.Activation(data\u003dfc1, name\u003d\u0027relu1\u0027, act_type\u003d\"relu\")\n\n# The second fully-connected layer and the according activation function\nfc2  \u003d mx.sym.FullyConnected(data\u003dact1, name\u003d\u0027fc2\u0027, num_hidden \u003d 64)\nact2 \u003d mx.sym.Activation(data\u003dfc2, name\u003d\u0027relu2\u0027, act_type\u003d\"relu\")\n\n# The thrid fully-connected layer, note that the hidden size should be 10, which is the number of unique digits\nfc3  \u003d mx.sym.FullyConnected(data\u003dact2, name\u003d\u0027fc3\u0027, num_hidden\u003d10)\n# The softmax and loss layer\nmlp  \u003d mx.sym.SoftmaxOutput(data\u003dfc3, name\u003d\u0027softmax\u0027)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 1:58:54 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519302911896_1504946448",
+      "id": "20180222-123511_1576511491_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Feb 22, 2018 12:35:11 PM",
+      "dateStarted": "Feb 22, 2018 1:58:54 PM",
+      "dateFinished": "Feb 22, 2018 1:58:54 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "mx.gpu()\n",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 1:58:57 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519304620678_-1244283658",
+      "id": "20180222-130340_1541684899_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "gpu(0)\n"
+      },
+      "dateCreated": "Feb 22, 2018 1:03:40 PM",
+      "dateStarted": "Feb 22, 2018 1:58:57 PM",
+      "dateFinished": "Feb 22, 2018 1:58:57 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "model \u003d mx.model.FeedForward(\n    ctx \u003d mx.gpu(0),\n    symbol \u003d mlp,       # network structure\n    num_epoch \u003d 10,     # number of data passes for training \n    learning_rate \u003d 0.1 # learning rate of SGD \n)\nmodel.fit(\n    X\u003dtrain_iter,       # training data\n    eval_data\u003dval_iter, # validation data\n    batch_end_callback \u003d mx.callback.Speedometer(batch_size, 200) # output progress for each 200 data batches\n) ",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 1:59:00 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519304197070_369203276",
+      "id": "20180222-125637_1400304658_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/tmp/zeppelin_pyspark-118500131039468283.py:5: DeprecationWarning: \u001b[91mmxnet.model.FeedForward has been deprecated. Please use mxnet.mod.Module instead.\u001b[0m\n  # The ASF licenses this file to You under the Apache License, Version 2.0\n/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/mxnet/model.py:573: DeprecationWarning: \u001b[91mCalling initializer with init(str, NDArray) has been deprecated.please use init(mx.init.InitDesc(...), NDArray) instead.\u001b[0m\n  self.initializer(k, v)\n"
+      },
+      "dateCreated": "Feb 22, 2018 12:56:37 PM",
+      "dateStarted": "Feb 22, 2018 1:59:00 PM",
+      "dateFinished": "Feb 22, 2018 2:00:20 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "valid_acc \u003d model.score(val_iter)\nprint(\u0027Validation accuracy: %f%%\u0027 % (valid_acc *100))\nassert valid_acc \u003e 0.95, \"Low validation accuracy.\"\n",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Feb 22, 2018 2:01:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519302943390_967314317",
+      "id": "20180222-123543_1494760001_q_1J695NURA21519302664",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Validation accuracy: 96.950000%\n"
+      },
+      "dateCreated": "Feb 22, 2018 12:35:43 PM",
+      "dateStarted": "Feb 22, 2018 2:01:35 PM",
+      "dateFinished": "Feb 22, 2018 2:01:35 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1519304975136_2133767881",
+      "id": "20180222-130935_1788745811_q_1J695NURA21519302664",
+      "dateCreated": "Feb 22, 2018 1:09:35 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "mxnet-example-mnist",
+  "id": "1J695NURA21519302664",
+  "angularObjects": {
+    "2D657NJSQ241519116622529:shared_process": [],
+    "2D6G9SQWE241519116980959:shared_process": [],
+    "2D93YKS5E241519116622539:shared_process": [],
+    "2D81XKGNR241519116622525:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
