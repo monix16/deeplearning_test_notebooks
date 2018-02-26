@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "title": "Changing the backend to Theano",
-      "text": "#By default Keras uses Tensorflow Backend\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda-8.0/lib64,dnn.include_path\u003d/usr/local/cuda-8.0/include/\u0027",
+      "text": "#By default Keras uses Tensorflow Backend\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027",
       "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 31, 2018 8:48:27 AM",
       "config": {
