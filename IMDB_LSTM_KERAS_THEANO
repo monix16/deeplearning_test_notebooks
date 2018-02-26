@@ -40,7 +40,7 @@
     },
     {
       "title": "Confirming backend is changed to Theano",
-      "text": "#If it doesn\u0027t change, restart the default interpreter.\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
+      "text": "#If it doesn\u0027t change, restart the default interpreter.\nfrom __future__ import print_function\nprint(os.environ["HOME"])\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
       "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 30, 2018 12:03:29 PM",
       "config": {
