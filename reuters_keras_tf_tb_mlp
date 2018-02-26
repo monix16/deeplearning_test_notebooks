@@ -1,0 +1,87 @@
+{
+  "paragraphs": [
+    {
+      "text": "from __future__ import print_function\n\nimport numpy as np\nimport keras\nfrom keras.datasets import reuters\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Dropout, Activation\nfrom keras.preprocessing.text import Tokenizer\nfrom keras.callbacks import TensorBoard\nfrom qdlpy import DLD\nfrom time import time\nimport os\ntb_log_dir \u003d DLD.register([\u0027tensorboard\u0027], \"cnn_tb_graph\")[\u0027tensorboard_hdfs_path\u0027]\ntensorboard \u003d TensorBoard(log_dir\u003dtb_log_dir.format(time()))\n\n\nmax_words \u003d 1000\nbatch_size \u003d 32\nepochs \u003d 2\n\nprint(\u0027Loading data...\u0027)\n(x_train, y_train), (x_test, y_test) \u003d reuters.load_data(num_words\u003dmax_words,\n                                                         test_split\u003d0.2)\nprint(len(x_train), \u0027train sequences\u0027)\nprint(len(x_test), \u0027test sequences\u0027)\n\nnum_classes \u003d np.max(y_train) + 1\nprint(num_classes, \u0027classes\u0027)\n\nprint(\u0027Vectorizing sequence data...\u0027)\ntokenizer \u003d Tokenizer(num_words\u003dmax_words)\nx_train \u003d tokenizer.sequences_to_matrix(x_train, mode\u003d\u0027binary\u0027)\nx_test \u003d tokenizer.sequences_to_matrix(x_test, mode\u003d\u0027binary\u0027)\nprint(\u0027x_train shape:\u0027, x_train.shape)\nprint(\u0027x_test shape:\u0027, x_test.shape)\nprint(y_train[0].shape)\n\nprint(\u0027Convert class vector to binary class matrix \u0027\n      \u0027(for use with categorical_crossentropy)\u0027)\ny_train \u003d keras.utils.to_categorical(y_train, num_classes)\ny_test \u003d keras.utils.to_categorical(y_test, num_classes)\nprint(\u0027y_train shape:\u0027, y_train.shape)\nprint(\u0027y_test shape:\u0027, y_test.shape)\n\nprint(\u0027Building model...\u0027)\nmodel \u003d Sequential()\nmodel.add(Dense(512, input_shape\u003d(max_words,)))\nmodel.add(Activation(\u0027relu\u0027))\nmodel.add(Dropout(0.5))\nmodel.add(Dense(num_classes))\nmodel.add(Activation(\u0027softmax\u0027))\n\nmodel.compile(loss\u003d\u0027categorical_crossentropy\u0027,\n              optimizer\u003d\u0027adam\u0027,\n              metrics\u003d[\u0027accuracy\u0027])\n\nhistory \u003d model.fit(x_train, y_train,\n                    batch_size\u003dbatch_size,\n                    epochs\u003depochs,\n                    verbose\u003d1,\n                    callbacks\u003d[tensorboard],\n                    validation_split\u003d0.1)\nscore \u003d model.evaluate(x_test, y_test,\n                       batch_size\u003dbatch_size, verbose\u003d1)\nprint(\u0027Test score:\u0027, score[0])\nprint(\u0027Test accuracy:\u0027, score[1])",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 24, 2018 10:05:02 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516098395862_-1569349768",
+      "id": "20180116-102635_1982586611_q_AQT9MNPBSQ1516786353",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Loading data...\n8982 train sequences\n2246 test sequences\n46 classes\nVectorizing sequence data...\nx_train shape: (8982, 1000)\nx_test shape: (2246, 1000)\n()\nConvert class vector to binary class matrix (for use with categorical_crossentropy)\ny_train shape: (8982, 46)\ny_test shape: (2246, 46)\nBuilding model...\nTrain on 8083 samples, validate on 899 samples\nEpoch 1/2\n\n  32/8083 [..............................] - ETA: 43s - loss: 4.0334 - acc: 0.0000e+00\n\n 320/8083 [\u003e.............................] - ETA: 5s - loss: 3.3920 - acc: 0.2781     \n\n 608/8083 [\u003d\u003e............................] - ETA: 3s - loss: 2.9026 - acc: 0.3668\n\n 832/8083 [\u003d\u003d\u003e...........................] - ETA: 2s - loss: 2.6395 - acc: 0.4195\n\n1120/8083 [\u003d\u003d\u003d\u003e..........................] - ETA: 2s - loss: 2.4336 - acc: 0.4589\n\n1408/8083 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 2s - loss: 2.2856 - acc: 0.4872\n\n1664/8083 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 1s - loss: 2.1874 - acc: 0.5102\n\n1952/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 1s - loss: 2.0520 - acc: 0.5394\n\n2208/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 1s - loss: 2.0101 - acc: 0.5466\n\n2432/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 1s - loss: 1.9790 - acc: 0.5518\n\n2656/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 1s - loss: 1.9295 - acc: 0.5610\n\n2912/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 1s - loss: 1.8758 - acc: 0.5728\n\n3168/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 1s - loss: 1.8410 - acc: 0.5821\n\n3456/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 1s - loss: 1.7963 - acc: 0.5911\n\n3712/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 1s - loss: 1.7653 - acc: 0.5970\n\n4000/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 1.7394 - acc: 0.6050\n\n4288/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 0s - loss: 1.7045 - acc: 0.6138\n\n4576/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 0s - loss: 1.6829 - acc: 0.6193\n\n4832/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 1.6522 - acc: 0.6269\n\n5120/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 0s - loss: 1.6242 - acc: 0.6326\n\n5344/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 0s - loss: 1.6096 - acc: 0.6360\n\n5600/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 0s - loss: 1.5888 - acc: 0.6400\n\n5888/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 1.5625 - acc: 0.6461\n\n6208/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 0s - loss: 1.5387 - acc: 0.6517\n\n6528/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 0s - loss: 1.5104 - acc: 0.6590\n\n6816/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s - loss: 1.4939 - acc: 0.6630\n\n7136/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 0s - loss: 1.4817 - acc: 0.6663\n\n7424/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 0s - loss: 1.4639 - acc: 0.6696\n\n7744/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 1.4530 - acc: 0.6721\n\n8032/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 0s - loss: 1.4378 - acc: 0.6747\n\n8083/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 2s 221us/step - loss: 1.4336 - acc: 0.6759 - val_loss: 1.0902 - val_acc: 0.7686\n\nEpoch 2/2\n\n  32/8083 [..............................] - ETA: 1s - loss: 0.7167 - acc: 0.8750\n\n 352/8083 [\u003e.............................] - ETA: 1s - loss: 0.8499 - acc: 0.8125\n\n 640/8083 [\u003d\u003e............................] - ETA: 1s - loss: 0.7603 - acc: 0.8266\n\n 960/8083 [\u003d\u003d\u003e...........................] - ETA: 1s - loss: 0.8289 - acc: 0.8135\n\n1280/8083 [\u003d\u003d\u003d\u003e..........................] - ETA: 1s - loss: 0.8441 - acc: 0.8094\n\n1600/8083 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 1s - loss: 0.8458 - acc: 0.8063\n\n1920/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 1s - loss: 0.8430 - acc: 0.8104\n\n2240/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 1s - loss: 0.8437 - acc: 0.8098\n\n2560/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 0s - loss: 0.8383 - acc: 0.8094\n\n2848/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 0s - loss: 0.8338 - acc: 0.8114\n\n3168/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 0s - loss: 0.8229 - acc: 0.8119\n\n3488/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 0s - loss: 0.8141 - acc: 0.8136\n\n3808/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 0.8249 - acc: 0.8114\n\n4128/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 0s - loss: 0.8202 - acc: 0.8103\n\n4448/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 0s - loss: 0.8064 - acc: 0.8138\n\n4768/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 0.8021 - acc: 0.8140\n\n5088/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 0s - loss: 0.7986 - acc: 0.8149\n\n5408/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 0s - loss: 0.7979 - acc: 0.8149\n\n5728/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 0.8009 - acc: 0.8142\n\n6048/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 0s - loss: 0.7896 - acc: 0.8175\n\n6368/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 0s - loss: 0.7943 - acc: 0.8150\n\n6688/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 0s - loss: 0.7953 - acc: 0.8159\n\n7008/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 0s - loss: 0.7894 - acc: 0.8178\n\n7328/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 0s - loss: 0.7862 - acc: 0.8180\n\n7616/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 0.7895 - acc: 0.8162\n\n7936/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 0s - loss: 0.7888 - acc: 0.8168\n\n8083/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 1s 177us/step - loss: 0.7882 - acc: 0.8174 - val_loss: 0.9403 - val_acc: 0.7864\n\n\n  32/2246 [..............................] - ETA: 0s\n\n1056/2246 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s\n\n2080/2246 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 0s\n\n2246/2246 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 0s 51us/step\n\nTest score: 0.894591093063\nTest accuracy: 0.78851291187\n"
+      },
+      "dateCreated": "Jan 16, 2018 10:26:35 AM",
+      "dateStarted": "Jan 19, 2018 8:34:58 AM",
+      "dateFinished": "Jan 19, 2018 8:35:04 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "Model : Multilayer Perceptrons.\n\nInput : Dataset of 11,228 newswires from Reuters, labeled over 46 topics. As with the IMDB dataset, each wire is encoded as a sequence of word indexes (same conventions).\n        the Dataset has two batches training and test.\n        training batch data (x) has 8982 rows each has 1000 columns containing one word in each. Label (y) has 8982 rows.\n        Testing batch data (x) has 2246 rows each has 1000 columns containing one word in each. Label (y) has 2246 rows.\n\nOutput : Accuracy of the classification prediction made by the trained Multi Layer Perceptron. Real Number in the range 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 19, 2018 8:36:48 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516169527729_-1650738983",
+      "id": "20180117-061207_87179555_q_AQT9MNPBSQ1516786353",
+      "dateCreated": "Jan 17, 2018 6:12:07 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "reuters_keras_tf_tb_mlp",
+  "id": "AQT9MNPBSQ1516786353",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
