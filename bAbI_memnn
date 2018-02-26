@@ -1,0 +1,193 @@
+{
+  "paragraphs": [
+    {
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda-8.0/lib64,dnn.include_path\u003d/usr/local/cuda-8.0/include/\u0027",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 9:52:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516357364645_-1435513102",
+      "id": "20180119-102244_1777797441_q_N86EW4HNU41516357338",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 19, 2018 10:22:44 AM",
+      "dateStarted": "Jan 22, 2018 5:24:52 AM",
+      "dateFinished": "Jan 22, 2018 5:24:52 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 9:52:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516357372928_-622908101",
+      "id": "20180119-102252_1679995180_q_N86EW4HNU41516357338",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 19, 2018 10:22:52 AM",
+      "dateStarted": "Jan 22, 2018 5:24:52 AM",
+      "dateFinished": "Jan 22, 2018 5:24:52 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from __future__ import print_function\n\nfrom keras.models import Sequential, Model\nfrom keras.layers.embeddings import Embedding\nfrom keras.layers import Input, Activation, Dense, Permute, Dropout, add, dot, concatenate\nfrom keras.layers import LSTM\nfrom keras.utils.data_utils import get_file\nfrom keras.preprocessing.sequence import pad_sequences\nfrom functools import reduce\nimport tarfile\nimport numpy as np\nimport re\n\n\ndef tokenize(sent):\n    \u0027\u0027\u0027Return the tokens of a sentence including punctuation.\n    \u003e\u003e\u003e tokenize(\u0027Bob dropped the apple. Where is the apple?\u0027)\n    [\u0027Bob\u0027, \u0027dropped\u0027, \u0027the\u0027, \u0027apple\u0027, \u0027.\u0027, \u0027Where\u0027, \u0027is\u0027, \u0027the\u0027, \u0027apple\u0027, \u0027?\u0027]\n    \u0027\u0027\u0027\n    return [x.strip() for x in re.split(\u0027(\\W+)?\u0027, sent) if x.strip()]\n\n\ndef parse_stories(lines, only_supporting\u003dFalse):\n    \u0027\u0027\u0027Parse stories provided in the bAbi tasks format\n    If only_supporting is true, only the sentences\n    that support the answer are kept.\n    \u0027\u0027\u0027\n    data \u003d []\n    story \u003d []\n    for line in lines:\n        line \u003d line.decode(\u0027utf-8\u0027).strip()\n        nid, line \u003d line.split(\u0027 \u0027, 1)\n        nid \u003d int(nid)\n        if nid \u003d\u003d 1:\n            story \u003d []\n        if \u0027\\t\u0027 in line:\n            q, a, supporting \u003d line.split(\u0027\\t\u0027)\n            q \u003d tokenize(q)\n            substory \u003d None\n            if only_supporting:\n                # Only select the related substory\n                supporting \u003d map(int, supporting.split())\n                substory \u003d [story[i - 1] for i in supporting]\n            else:\n                # Provide all the substories\n                substory \u003d [x for x in story if x]\n            data.append((substory, q, a))\n            story.append(\u0027\u0027)\n        else:\n            sent \u003d tokenize(line)\n            story.append(sent)\n    return data\n\n\ndef get_stories(f, only_supporting\u003dFalse, max_length\u003dNone):\n    \u0027\u0027\u0027Given a file name, read the file,\n    retrieve the stories,\n    and then convert the sentences into a single story.\n    If max_length is supplied,\n    any stories longer than max_length tokens will be discarded.\n    \u0027\u0027\u0027\n    data \u003d parse_stories(f.readlines(), only_supporting\u003donly_supporting)\n    flatten \u003d lambda data: reduce(lambda x, y: x + y, data)\n    data \u003d [(flatten(story), q, answer) for story, q, answer in data if not max_length or len(flatten(story)) \u003c max_length]\n    return data\n\n\ndef vectorize_stories(data):\n    inputs, queries, answers \u003d [], [], []\n    for story, query, answer in data:\n        inputs.append([word_idx[w] for w in story])\n        queries.append([word_idx[w] for w in query])\n        answers.append(word_idx[answer])\n    return (pad_sequences(inputs, maxlen\u003dstory_maxlen),\n            pad_sequences(queries, maxlen\u003dquery_maxlen),\n            np.array(answers))\n\ntry:\n    path \u003d get_file(\u0027babi-tasks-v1-2.tar.gz\u0027, origin\u003d\u0027https://s3.amazonaws.com/text-datasets/babi_tasks_1-20_v1-2.tar.gz\u0027)\nexcept:\n    print(\u0027Error downloading dataset, please download it manually:\\n\u0027\n          \u0027$ wget http://www.thespermwhale.com/jaseweston/babi/tasks_1-20_v1-2.tar.gz\\n\u0027\n          \u0027$ mv tasks_1-20_v1-2.tar.gz ~/.keras/datasets/babi-tasks-v1-2.tar.gz\u0027)\n    raise\ntar \u003d tarfile.open(path)\n\nchallenges \u003d {\n    # QA1 with 10,000 samples\n    \u0027single_supporting_fact_10k\u0027: \u0027tasks_1-20_v1-2/en-10k/qa1_single-supporting-fact_{}.txt\u0027,\n    # QA2 with 10,000 samples\n    \u0027two_supporting_facts_10k\u0027: \u0027tasks_1-20_v1-2/en-10k/qa2_two-supporting-facts_{}.txt\u0027,\n}\nchallenge_type \u003d \u0027single_supporting_fact_10k\u0027\nchallenge \u003d challenges[challenge_type]\n\nprint(\u0027Extracting stories for the challenge:\u0027, challenge_type)\ntrain_stories \u003d get_stories(tar.extractfile(challenge.format(\u0027train\u0027)))\ntest_stories \u003d get_stories(tar.extractfile(challenge.format(\u0027test\u0027)))\n\nvocab \u003d set()\nfor story, q, answer in train_stories + test_stories:\n    vocab |\u003d set(story + q + [answer])\nvocab \u003d sorted(vocab)\n\n# Reserve 0 for masking via pad_sequences\nvocab_size \u003d len(vocab) + 1\nstory_maxlen \u003d max(map(len, (x for x, _, _ in train_stories + test_stories)))\nquery_maxlen \u003d max(map(len, (x for _, x, _ in train_stories + test_stories)))\n\nprint(\u0027-\u0027)\nprint(\u0027Vocab size:\u0027, vocab_size, \u0027unique words\u0027)\nprint(\u0027Story max length:\u0027, story_maxlen, \u0027words\u0027)\nprint(\u0027Query max length:\u0027, query_maxlen, \u0027words\u0027)\nprint(\u0027Number of training stories:\u0027, len(train_stories))\nprint(\u0027Number of test stories:\u0027, len(test_stories))\nprint(\u0027-\u0027)\nprint(\u0027Here\\\u0027s what a \"story\" tuple looks like (input, query, answer):\u0027)\nprint(train_stories[0])\nprint(\u0027-\u0027)\nprint(\u0027Vectorizing the word sequences...\u0027)\n\nword_idx \u003d dict((c, i + 1) for i, c in enumerate(vocab))\ninputs_train, queries_train, answers_train \u003d vectorize_stories(train_stories)\ninputs_test, queries_test, answers_test \u003d vectorize_stories(test_stories)\n\nprint(\u0027-\u0027)\nprint(\u0027inputs: integer tensor of shape (samples, max_length)\u0027)\nprint(\u0027inputs_train shape:\u0027, inputs_train.shape)\nprint(\u0027inputs_test shape:\u0027, inputs_test.shape)\nprint(\u0027-\u0027)\nprint(\u0027queries: integer tensor of shape (samples, max_length)\u0027)\nprint(\u0027queries_train shape:\u0027, queries_train.shape)\nprint(\u0027queries_test shape:\u0027, queries_test.shape)\nprint(\u0027-\u0027)\nprint(\u0027answers: binary (1 or 0) tensor of shape (samples, vocab_size)\u0027)\nprint(\u0027answers_train shape:\u0027, answers_train.shape)\nprint(\u0027answers_test shape:\u0027, answers_test.shape)\nprint(\u0027-\u0027)\nprint(\u0027Compiling...\u0027)\n\n# placeholders\ninput_sequence \u003d Input((story_maxlen,))\nquestion \u003d Input((query_maxlen,))\n\n# encoders\n# embed the input sequence into a sequence of vectors\ninput_encoder_m \u003d Sequential()\ninput_encoder_m.add(Embedding(input_dim\u003dvocab_size,\n                              output_dim\u003d64))\ninput_encoder_m.add(Dropout(0.3))\n# output: (samples, story_maxlen, embedding_dim)\n\n# embed the input into a sequence of vectors of size query_maxlen\ninput_encoder_c \u003d Sequential()\ninput_encoder_c.add(Embedding(input_dim\u003dvocab_size,\n                              output_dim\u003dquery_maxlen))\ninput_encoder_c.add(Dropout(0.3))\n# output: (samples, story_maxlen, query_maxlen)\n\n# embed the question into a sequence of vectors\nquestion_encoder \u003d Sequential()\nquestion_encoder.add(Embedding(input_dim\u003dvocab_size,\n                               output_dim\u003d64,\n                               input_length\u003dquery_maxlen))\nquestion_encoder.add(Dropout(0.3))\n# output: (samples, query_maxlen, embedding_dim)\n\n# encode input sequence and questions (which are indices)\n# to sequences of dense vectors\ninput_encoded_m \u003d input_encoder_m(input_sequence)\ninput_encoded_c \u003d input_encoder_c(input_sequence)\nquestion_encoded \u003d question_encoder(question)\n\n# compute a \u0027match\u0027 between the first input vector sequence\n# and the question vector sequence\n# shape: `(samples, story_maxlen, query_maxlen)`\nmatch \u003d dot([input_encoded_m, question_encoded], axes\u003d(2, 2))\nmatch \u003d Activation(\u0027softmax\u0027)(match)\n\n# add the match matrix with the second input vector sequence\nresponse \u003d add([match, input_encoded_c])  # (samples, story_maxlen, query_maxlen)\nresponse \u003d Permute((2, 1))(response)  # (samples, query_maxlen, story_maxlen)\n\n# concatenate the match matrix with the question vector sequence\nanswer \u003d concatenate([response, question_encoded])\n\n# the original paper uses a matrix multiplication for this reduction step.\n# we choose to use a RNN instead.\nanswer \u003d LSTM(32)(answer)  # (samples, 32)\n\n# one regularization layer -- more would probably be needed.\nanswer \u003d Dropout(0.3)(answer)\nanswer \u003d Dense(vocab_size)(answer)  # (samples, vocab_size)\n# we output a probability distribution over the vocabulary\nanswer \u003d Activation(\u0027softmax\u0027)(answer)\n\n# build the final model\nmodel \u003d Model([input_sequence, question], answer)\nmodel.compile(optimizer\u003d\u0027rmsprop\u0027, loss\u003d\u0027sparse_categorical_crossentropy\u0027,\n              metrics\u003d[\u0027accuracy\u0027])\n\n# train\nmodel.fit([inputs_train, queries_train], answers_train,\n          batch_size\u003d32,\n          epochs\u003d10,\n          validation_data\u003d([inputs_test, queries_test], answers_test))",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 9:52:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516017307804_1515749142",
+      "id": "20180115-115507_574529810_q_N86EW4HNU41516357338",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 15, 2018 11:55:07 AM",
+      "dateStarted": "Jan 22, 2018 5:24:52 AM",
+      "dateFinished": "Jan 22, 2018 5:28:00 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "Model :- Memory Network\nInput :- Facebook bAbI dataset. Contains stories etc. Contains 10000 training stories.\nThe file format for each task is as follows:\nID text\nID text\nID text\nID question[tab]answer[tab]supporting fact IDS.\n...\n\nThe IDs for a given \"story\" start at 1 and increase.\nWhen the IDs in a file reset back to 1 you can consider the following sentences as a new \"story\".\n\nOutput :- Accuracy which is calculated as : questions are asked based on the stories and its accuracy is measured. Real number in the range 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 9:52:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516017326239_295340955",
+      "id": "20180115-115526_1212195103_q_N86EW4HNU41516357338",
+      "dateCreated": "Jan 15, 2018 11:55:26 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 9:52:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516360930244_1667872802",
+      "id": "20180119-112210_1902375210_q_N86EW4HNU41516357338",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 19, 2018 11:22:10 AM",
+      "dateStarted": "Jan 22, 2018 5:24:53 AM",
+      "dateFinished": "Jan 22, 2018 5:28:00 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "bAbI_memnn",
+  "id": "N86EW4HNU41516357338",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
