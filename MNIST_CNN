@@ -1,0 +1,164 @@
+{
+  "paragraphs": [
+    {
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda-8.0/lib64,dnn.include_path\u003d/usr/local/cuda-8.0/include/\u0027",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 10:00:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516356999103_1714525190",
+      "id": "20180119-101639_1990355459_q_XA4H6RGFB71516356962",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 19, 2018 10:16:39 AM",
+      "dateStarted": "Jan 19, 2018 11:03:45 AM",
+      "dateFinished": "Jan 19, 2018 11:03:45 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 10:00:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516357006222_-1036814195",
+      "id": "20180119-101646_272881371_q_XA4H6RGFB71516356962",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 19, 2018 10:16:46 AM",
+      "dateStarted": "Jan 19, 2018 11:03:45 AM",
+      "dateFinished": "Jan 19, 2018 11:03:45 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\"\"\"\n    The MNIST dataset contains 60000 training images of 28x28 size and 10000 testing greyscale images of 28x28 size.\n    \n    The dataset is divided into one training batch with 60000 images and one test batch with 10000 images.\n    \n    Each batch contains a dictionary with the following elements:-\n    \n    data -- a 60000x28x28 numpy array of uint8s in case of training sample and 10000x28x28 numpy array of uint8s in case of testing sample. The first dimension of the array \n    marks the image number and the other dimensions is for the image matrix.\n    labels -- a list of 60000 numbers which are either 0 or 1 for training sample and 10000 numbers  for testing sample. The number at index i indicates the label of the ith     image in the array data.\n    \n\"\"\"\n# importing necessary libraries for the neural network such as keras and its layer types\n\nfrom __future__ import print_function\nimport keras\nfrom keras.datasets import mnist\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Dropout, Flatten\nfrom keras.layers import Conv2D, MaxPooling2D\nfrom keras import backend as K\n\n# batch size in which the neural network will be trained\nbatch_size \u003d 128\n\n# MNIST has total 10 classes which are the 10 digits to be recognized\nnum_classes \u003d 10\n\n# number of epochs or iteration to be used for training.\nepochs \u003d 2\n\n# input image dimensions\nimg_rows, img_cols \u003d 28, 28\n\n# loading the data, shuffled and split between train and test sets.\n(x_train, y_train), (x_test, y_test) \u003d mnist.load_data()\n\n# depending on the backend we use i.e. whether tensorflow or theano we can change the format of input data. Tensorflow has channels before individual image size. Since MNIST contains grayscale images therefore channel will be 1.\n\nif K.image_data_format() \u003d\u003d \u0027channels_first\u0027:\n    x_train \u003d x_train.reshape(x_train.shape[0], 1, img_rows, img_cols)\n    x_test \u003d x_test.reshape(x_test.shape[0], 1, img_rows, img_cols)\n    input_shape \u003d (1, img_rows, img_cols)\nelse:\n    x_train \u003d x_train.reshape(x_train.shape[0], img_rows, img_cols, 1)\n    x_test \u003d x_test.reshape(x_test.shape[0], img_rows, img_cols, 1)\n    input_shape \u003d (img_rows, img_cols, 1)\n\n# converting the dataset availabe in uint8 to float32\nx_train \u003d x_train.astype(\u0027float32\u0027)\nx_test \u003d x_test.astype(\u0027float32\u0027)\n\nx_train /\u003d 255\nx_test /\u003d 255\n\nprint(\u0027x_train shape:\u0027, x_train.shape)\nprint(x_train.shape[0], \u0027train samples\u0027)\nprint(x_test.shape[0], \u0027test samples\u0027)\n\n# converting class vectors to binary class matrices\ny_train \u003d keras.utils.to_categorical(y_train, num_classes)\ny_test \u003d keras.utils.to_categorical(y_test, num_classes)\n\n# building the CNN squential model \nmodel \u003d Sequential()\n\n# adding a convolution layer with 32 filters of size 3*3 with \u0027relu\u0027 activation function\nmodel.add(Conv2D(32, kernel_size\u003d(3, 3),\n                 activation\u003d\u0027relu\u0027,\n                 input_shape\u003dinput_shape))\n\n# adding a convolutional layer with 64 filters of size 3*3 with \u0027relu\u0027 activation function\nmodel.add(Conv2D(64, (3, 3), activation\u003d\u0027relu\u0027))\n\n# adding a maxpooling layer with 2*2 as the size of the max pooling window\nmodel.add(MaxPooling2D(pool_size\u003d(2, 2)))\n\n# adding a dropout of 0.25 for avoiding overfitting\nmodel.add(Dropout(0.25))\n\n# making the output from the previous layer 1D\nmodel.add(Flatten())\n\n# adding fully connected layer with 128 nodes having \u0027relu\u0027 activation function\nmodel.add(Dense(128, activation\u003d\u0027relu\u0027))\n\n# adding further dropout of 0.5\nmodel.add(Dropout(0.5))\n\n# final fully connected output layer having number of nodes as same as the number of classes with \u0027softmax\u0027 activation function\nmodel.add(Dense(num_classes, activation\u003d\u0027softmax\u0027))\n\n# compiling the network model\nmodel.compile(loss\u003dkeras.losses.categorical_crossentropy,\n              optimizer\u003dkeras.optimizers.Adadelta(),\n              metrics\u003d[\u0027accuracy\u0027])\n\n# training the model on the training data\nmodel.fit(x_train, y_train,\n          batch_size\u003dbatch_size,\n          epochs\u003depochs,\n          verbose\u003d1,\n          validation_data\u003d(x_test, y_test))\n\n# finally evaluting the accuracy of the trained model\nscore \u003d model.evaluate(x_test, y_test, verbose\u003d0)\nprint(\u0027Test loss:\u0027, score[0])\nprint(\u0027Test accuracy:\u0027, score[1])\n\n#Output is a real number which is accuracy in the range 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 10:00:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1515647394416_91910246",
+      "id": "20180111-050954_2065235253_q_XA4H6RGFB71516356962",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 11, 2018 5:09:54 AM",
+      "dateStarted": "Jan 19, 2018 11:03:45 AM",
+      "dateFinished": "Jan 19, 2018 10:22:54 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 10:00:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1515663568279_-47801140",
+      "id": "20180111-093928_1878482328_q_XA4H6RGFB71516356962",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Scheduler already terminated"
+      },
+      "dateCreated": "Jan 11, 2018 9:39:28 AM",
+      "dateStarted": "Jan 19, 2018 10:21:27 AM",
+      "dateFinished": "Jan 19, 2018 10:22:54 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "MNIST_CNN",
+  "id": "XA4H6RGFB71516356962",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
