@@ -1,0 +1,173 @@
+{
+  "paragraphs": [
+    {
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda-8.0/lib64,dnn.include_path\u003d/usr/local/cuda-8.0/include/\u0027",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 1:49:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516359112079_1126726502",
+      "id": "20180119-105152_1326101370_q_HD9SH99XD51516359104",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Jan 19, 2018 10:51:52 AM",
+      "dateStarted": "Jan 22, 2018 1:49:19 PM",
+      "dateFinished": "Jan 22, 2018 1:49:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 1:49:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516359116228_671968626",
+      "id": "20180119-105156_1404684658_q_HD9SH99XD51516359104",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "theano\n"
+      },
+      "dateCreated": "Jan 19, 2018 10:51:56 AM",
+      "dateStarted": "Jan 22, 2018 1:49:19 PM",
+      "dateFinished": "Jan 22, 2018 1:49:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from __future__ import print_function\n\nimport numpy as np\nimport keras\nfrom keras.datasets import reuters\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Dropout, Activation\nfrom keras.preprocessing.text import Tokenizer\n\nmax_words \u003d 1000\nbatch_size \u003d 32\nepochs \u003d 2\n\nprint(\u0027Loading data...\u0027)\n(x_train, y_train), (x_test, y_test) \u003d reuters.load_data(num_words\u003dmax_words,\n                                                         test_split\u003d0.2)\nprint(len(x_train), \u0027train sequences\u0027)\nprint(len(x_test), \u0027test sequences\u0027)\n\nnum_classes \u003d np.max(y_train) + 1\nprint(num_classes, \u0027classes\u0027)\n\nprint(\u0027Vectorizing sequence data...\u0027)\ntokenizer \u003d Tokenizer(num_words\u003dmax_words)\nx_train \u003d tokenizer.sequences_to_matrix(x_train, mode\u003d\u0027binary\u0027)\nx_test \u003d tokenizer.sequences_to_matrix(x_test, mode\u003d\u0027binary\u0027)\nprint(\u0027x_train shape:\u0027, x_train.shape)\nprint(\u0027x_test shape:\u0027, x_test.shape)\nprint(y_train[0].shape)\n\nprint(\u0027Convert class vector to binary class matrix \u0027\n      \u0027(for use with categorical_crossentropy)\u0027)\ny_train \u003d keras.utils.to_categorical(y_train, num_classes)\ny_test \u003d keras.utils.to_categorical(y_test, num_classes)\nprint(\u0027y_train shape:\u0027, y_train.shape)\nprint(\u0027y_test shape:\u0027, y_test.shape)\n\nprint(\u0027Building model...\u0027)\nmodel \u003d Sequential()\nmodel.add(Dense(512, input_shape\u003d(max_words,)))\nmodel.add(Activation(\u0027relu\u0027))\nmodel.add(Dropout(0.5))\nmodel.add(Dense(num_classes))\nmodel.add(Activation(\u0027softmax\u0027))\n\nmodel.compile(loss\u003d\u0027categorical_crossentropy\u0027,\n              optimizer\u003d\u0027adam\u0027,\n              metrics\u003d[\u0027accuracy\u0027])\n\nhistory \u003d model.fit(x_train, y_train,\n                    batch_size\u003dbatch_size,\n                    epochs\u003depochs,\n                    verbose\u003d1,\n                    validation_split\u003d0.1)\nscore \u003d model.evaluate(x_test, y_test,\n                       batch_size\u003dbatch_size, verbose\u003d1)\nprint(\u0027Test score:\u0027, score[0])\nprint(\u0027Test accuracy:\u0027, score[1])",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 1:49:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516098395862_-1569349768",
+      "id": "20180116-102635_1982586611_q_HD9SH99XD51516359104",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Loading data...\nDownloading data from https://s3.amazonaws.com/text-datasets/reuters.npz\n\n   8192/2110848 [..............................] - ETA: 0s\n\n2113536/2110848 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 0s 0us/step\n\n8982 train sequences\n2246 test sequences\n46 classes\nVectorizing sequence data...\nx_train shape: (8982, 1000)\nx_test shape: (2246, 1000)\n()\nConvert class vector to binary class matrix (for use with categorical_crossentropy)\ny_train shape: (8982, 46)\ny_test shape: (2246, 46)\nBuilding model...\nTrain on 8083 samples, validate on 899 samples\nEpoch 1/2\n\n  32/8083 [..............................] - ETA: 0s - loss: 3.9422 - acc: 0.0000e+00\n\n 992/8083 [\u003d\u003d\u003e...........................] - ETA: 0s - loss: 2.4277 - acc: 0.4748    \n\n1952/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 0s - loss: 1.9931 - acc: 0.5553\n\n2912/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 0s - loss: 1.8342 - acc: 0.5876\n\n3872/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 1.7151 - acc: 0.6152\n\n4832/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 1.6249 - acc: 0.6395\n\n5792/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 1.5435 - acc: 0.6557\n\n6752/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s - loss: 1.4769 - acc: 0.6706\n\n7712/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 1.4288 - acc: 0.6801\n\n8083/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 0s 57us/step - loss: 1.4113 - acc: 0.6842 - val_loss: 1.0861 - val_acc: 0.7597\n\nEpoch 2/2\n\n  32/8083 [..............................] - ETA: 0s - loss: 0.6778 - acc: 0.8750\n\n 992/8083 [\u003d\u003d\u003e...........................] - ETA: 0s - loss: 0.7992 - acc: 0.8115\n\n1952/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 0s - loss: 0.8360 - acc: 0.8023\n\n2912/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 0s - loss: 0.8134 - acc: 0.8039\n\n3872/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 0.8145 - acc: 0.8063\n\n4832/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 0.7935 - acc: 0.8106\n\n5792/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 0.7883 - acc: 0.8128\n\n6752/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s - loss: 0.7854 - acc: 0.8137\n\n7712/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 0.7792 - acc: 0.8148\n\n8083/8083 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 0s 57us/step - loss: 0.7824 - acc: 0.8141 - val_loss: 0.9397 - val_acc: 0.7953\n\n\n  32/2246 [..............................] - ETA: 0s\n\n1888/2246 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s\n\n2246/2246 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 0s 28us/step\n\nTest score: 0.892961867452\nTest accuracy: 0.781389136269\n"
+      },
+      "dateCreated": "Jan 16, 2018 10:26:35 AM",
+      "dateStarted": "Jan 22, 2018 1:49:19 PM",
+      "dateFinished": "Jan 22, 2018 1:49:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "Model : Multilayer Perceptrons.\n\nInput : Dataset of 11,228 newswires from Reuters, labeled over 46 topics. As with the IMDB dataset, each wire is encoded as a sequence of word indexes (same conventions).\n        the Dataset has two batches training and test.\n        training batch data (x) has 8982 rows each has 1000 columns containing one word in each. Label (y) has 8982 rows.\n        Testing batch data (x) has 2246 rows each has 1000 columns containing one word in each. Label (y) has 2246 rows.\n\nOutput : Accuracy of the classification prediction made by the trained Multi Layer Perceptron. Real Number in the range 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 22, 2018 1:49:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516169527729_-1650738983",
+      "id": "20180117-061207_87179555_q_HD9SH99XD51516359104",
+      "dateCreated": "Jan 17, 2018 6:12:07 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516628959188_-495873792",
+      "id": "20180122-134919_1389851478_q_HD9SH99XD51516359104",
+      "dateCreated": "Jan 22, 2018 1:49:19 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "reuters_mlp",
+  "id": "HD9SH99XD51516359104",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
