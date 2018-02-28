@@ -1,0 +1,87 @@
+{
+  "paragraphs": [
+    {
+      "text": "import numpy as np\n\nimport tensorflow as tf\nimport keras\nfrom keras import backend as K\nfrom keras import layers\n\nfrom tensorflow.contrib.learn.python.learn.datasets import mnist\n\nif K.backend() !\u003d \u0027tensorflow\u0027:\n    raise RuntimeError(\u0027This example can only run with the \u0027\n                       \u0027TensorFlow backend, \u0027\n                       \u0027because it requires TFRecords, which \u0027\n                       \u0027are not supported on other platforms.\u0027)\n\n\ndef cnn_layers(x_train_input):\n    x \u003d layers.Conv2D(32, (3, 3),\n                      activation\u003d\u0027relu\u0027, padding\u003d\u0027valid\u0027)(x_train_input)\n    x \u003d layers.MaxPooling2D(pool_size\u003d(2, 2))(x)\n    x \u003d layers.Conv2D(64, (3, 3), activation\u003d\u0027relu\u0027)(x)\n    x \u003d layers.MaxPooling2D(pool_size\u003d(2, 2))(x)\n    x \u003d layers.Flatten()(x)\n    x \u003d layers.Dense(512, activation\u003d\u0027relu\u0027)(x)\n    x \u003d layers.Dropout(0.5)(x)\n    x_train_out \u003d layers.Dense(num_classes,\n                               activation\u003d\u0027softmax\u0027,\n                               name\u003d\u0027x_train_out\u0027)(x)\n    return x_train_out\n\nsess \u003d K.get_session()\n\nbatch_size \u003d 128\nbatch_shape \u003d (batch_size, 28, 28, 1)\nsteps_per_epoch \u003d 469\nepochs \u003d 2\nnum_classes \u003d 10\n\n# The capacity variable controls the maximum queue size\n# allowed when prefetching data for training.\ncapacity \u003d 10000\n\n# min_after_dequeue is the minimum number elements in the queue\n# after a dequeue, which ensures sufficient mixing of elements.\nmin_after_dequeue \u003d 3000\n\n# If `enqueue_many` is `False`, `tensors` is assumed to represent a\n# single example.  An input tensor with shape `[x, y, z]` will be output\n# as a tensor with shape `[batch_size, x, y, z]`.\n#\n# If `enqueue_many` is `True`, `tensors` is assumed to represent a\n# batch of examples, where the first dimension is indexed by example,\n# and all members of `tensors` should have the same size in the\n# first dimension.  If an input tensor has shape `[*, x, y, z]`, the\n# output will have shape `[batch_size, x, y, z]`.\nenqueue_many \u003d True\n\ndata \u003d mnist.load_mnist()\nx_train_batch, y_train_batch \u003d tf.train.shuffle_batch(\n    tensors\u003d[data.train.images, data.train.labels.astype(np.int32)],\n    batch_size\u003dbatch_size,\n    capacity\u003dcapacity,\n    min_after_dequeue\u003dmin_after_dequeue,\n    enqueue_many\u003denqueue_many,\n    num_threads\u003d8)\n\nx_train_batch \u003d tf.cast(x_train_batch, tf.float32)\nx_train_batch \u003d tf.reshape(x_train_batch, shape\u003dbatch_shape)\n\ny_train_batch \u003d tf.cast(y_train_batch, tf.int32)\ny_train_batch \u003d tf.one_hot(y_train_batch, num_classes)\n\nx_batch_shape \u003d x_train_batch.get_shape().as_list()\ny_batch_shape \u003d y_train_batch.get_shape().as_list()\n\nmodel_input \u003d layers.Input(tensor\u003dx_train_batch)\nmodel_output \u003d cnn_layers(model_input)\ntrain_model \u003d keras.models.Model(inputs\u003dmodel_input, outputs\u003dmodel_output)\n\n# Pass the target tensor `y_train_batch` to `compile`\n# via the `target_tensors` keyword argument:\ntrain_model.compile(optimizer\u003dkeras.optimizers.RMSprop(lr\u003d2e-3, decay\u003d1e-5),\n                    loss\u003d\u0027categorical_crossentropy\u0027,\n                    metrics\u003d[\u0027accuracy\u0027],\n                    target_tensors\u003d[y_train_batch])\ntrain_model.summary()\n\n# Fit the model using data from the TFRecord data tensors.\ncoord \u003d tf.train.Coordinator()\nthreads \u003d tf.train.start_queue_runners(sess, coord)\n\ntrain_model.fit(epochs\u003depochs,\n                steps_per_epoch\u003dsteps_per_epoch)\n\n# Save the model weights.\ntrain_model.save_weights(\u0027saved_wt.h5\u0027)\n\n# Clean up the TF session.\ncoord.request_stop()\ncoord.join(threads)\nK.clear_session()\n\n# Second Session to test loading trained model without tensors\nx_test \u003d np.reshape(data.validation.images, (data.validation.images.shape[0], 28, 28, 1))\ny_test \u003d data.validation.labels\nx_test_inp \u003d layers.Input(shape\u003d(x_test.shape[1:]))\ntest_out \u003d cnn_layers(x_test_inp)\ntest_model \u003d keras.models.Model(inputs\u003dx_test_inp, outputs\u003dtest_out)\n\ntest_model.load_weights(\u0027saved_wt.h5\u0027)\ntest_model.compile(optimizer\u003d\u0027rmsprop\u0027,\n                   loss\u003d\u0027categorical_crossentropy\u0027,\n                   metrics\u003d[\u0027accuracy\u0027])\ntest_model.summary()\n\nloss, acc \u003d test_model.evaluate(x_test,\n                                keras.utils.to_categorical(y_test),\n                                batch_size\u003dbatch_size)\nprint(\u0027\\nTest accuracy: {0}\u0027.format(acc))",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 17, 2018 10:14:50 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516098006827_515312839",
+      "id": "20180116-102006_1039494396_q_QNRDPU1FMD1516098005",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\n2018-01-17 10:15:06.726682: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX\n\n2018-01-17 10:15:12.899152: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero\n\n\n\n\n2018-01-17 10:15:12.899406: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: \nname: GRID K520 major: 3 minor: 0 memoryClockRate(GHz): 0.797\npciBusID: 0000:00:03.0\ntotalMemory: 3.94GiB freeMemory: 3.90GiB\n\n2018-01-17 10:15:12.899439: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -\u003e (device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0)\nSuccessfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.\nExtracting MNIST-data/train-images-idx3-ubyte.gz\nSuccessfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.\nExtracting MNIST-data/train-labels-idx1-ubyte.gz\nSuccessfully downloaded t10k-images-idx3-ubyte.gz 1648877 bytes.\nExtracting MNIST-data/t10k-images-idx3-ubyte.gz\nSuccessfully downloaded t10k-labels-idx1-ubyte.gz 4542 bytes.\nExtracting MNIST-data/t10k-labels-idx1-ubyte.gz\n_________________________________________________________________\nLayer (type)                 Output Shape              Param #   \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\ninput_1 (InputLayer)         (128, 28, 28, 1)          0         \n_________________________________________________________________\nconv2d_1 (Conv2D)            (128, 26, 26, 32)         320       \n_________________________________________________________________\nmax_pooling2d_1 (MaxPooling2 (128, 13, 13, 32)         0         \n_________________________________________________________________\nconv2d_2 (Conv2D)            (128, 11, 11, 64)         18496     \n_________________________________________________________________\nmax_pooling2d_2 (MaxPooling2 (128, 5, 5, 64)           0         \n_________________________________________________________________\nflatten_1 (Flatten)          (128, 1600)               0         \n_________________________________________________________________\ndense_1 (Dense)              (128, 512)                819712    \n_________________________________________________________________\ndropout_1 (Dropout)          (128, 512)                0         \n_________________________________________________________________\nx_train_out (Dense)          (128, 10)                 5130      \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTotal params: 843,658\nTrainable params: 843,658\nNon-trainable params: 0\n_________________________________________________________________\nEpoch 1/2\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3587192205228445082.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 59, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1669, in fit\n    validation_steps\u003dvalidation_steps)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1159, in _fit_loop\n    outs \u003d f(ins)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py\", line 2473, in __call__\n    session \u003d get_session()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py\", line 196, in get_session\n    session.run(tf.variables_initializer(uninitialized_vars))\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 889, in run\n    run_metadata_ptr)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1120, in _run\n    feed_dict_tensor, options, run_metadata)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1317, in _do_run\n    options, run_metadata)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1323, in _do_call\n    return fn(*args)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1302, in _run_fn\n    status, run_metadata)\n  File \"/usr/lib/spark/python/pyspark/context.py\", line 239, in signal_handler\n    raise KeyboardInterrupt()\nKeyboardInterrupt\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3587192205228445082.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3587192205228445082.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 59, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1669, in fit\n    validation_steps\u003dvalidation_steps)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1159, in _fit_loop\n    outs \u003d f(ins)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py\", line 2473, in __call__\n    session \u003d get_session()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/tensorflow_backend.py\", line 196, in get_session\n    session.run(tf.variables_initializer(uninitialized_vars))\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 889, in run\n    run_metadata_ptr)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1120, in _run\n    feed_dict_tensor, options, run_metadata)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1317, in _do_run\n    options, run_metadata)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1323, in _do_call\n    return fn(*args)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/tensorflow/python/client/session.py\", line 1302, in _run_fn\n    status, run_metadata)\n  File \"/usr/lib/spark/python/pyspark/context.py\", line 239, in signal_handler\n    raise KeyboardInterrupt()\nKeyboardInterrupt\n\n"
+      },
+      "dateCreated": "Jan 16, 2018 10:20:06 AM",
+      "dateStarted": "Jan 17, 2018 10:14:50 AM",
+      "dateFinished": "Jan 17, 2018 10:16:12 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "Using tfrecord files instead of regular data tensors.\n\nInput : The MNIST dataset contains 60000 training images of 28x28 size and 10000 testing greyscale images of 28x28 size.\n    \n    The dataset is divided into one training batch with 60000 images and one test batch with 10000 images.\n    \n    Each batch contains a dictionary with the following elements:-\n    \n    data -- a 60000x28x28 numpy array of uint8s in case of training sample and 10000x28x28 numpy array of uint8s in case of testing sample. The first dimension of the array \n    marks the image number and the other dimensions is for the image matrix.\n    labels -- a list of 60000 numbers which are either 0 or 1 for training sample and 10000 numbers  for testing sample. The number at index i indicates the label of the ith            image in the array data.\n\nOutput : Accuracy of the classification done by the trained model. Real No. Between 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 19, 2018 6:21:44 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516167735950_-1810380773",
+      "id": "20180117-054215_1743561334_q_QNRDPU1FMD1516098005",
+      "dateCreated": "Jan 17, 2018 5:42:15 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "mnist_tfrecord_KERAS_TENSORFLOW",
+  "id": "QNRDPU1FMD1516098005",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}

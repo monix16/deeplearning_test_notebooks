@@ -1,0 +1,160 @@
+{
+  "paragraphs": [
+    {
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"cntk\"\nos.environ[\u0027CNTK_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 29, 2018 12:13:49 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516357671445_-643670862",
+      "id": "20180119-102751_1748586113_q_JE5A1GMZZN1516598554",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Jan 19, 2018 10:27:51 AM",
+      "dateStarted": "Jan 29, 2018 12:13:49 PM",
+      "dateFinished": "Jan 29, 2018 12:13:49 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "# Confirming backend is changed to CNTK\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 29, 2018 12:13:52 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516357673106_-1615531259",
+      "id": "20180119-102753_1080501862_q_JE5A1GMZZN1516598554",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "cntk\n"
+      },
+      "dateCreated": "Jan 19, 2018 10:27:53 AM",
+      "dateStarted": "Jan 29, 2018 12:13:52 PM",
+      "dateFinished": "Jan 29, 2018 12:13:52 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from __future__ import print_function\n\nfrom keras.preprocessing.image import load_img, img_to_array\nimport numpy as np\nimport scipy\nimport argparse\n\nfrom keras.applications import inception_v3\nfrom keras import backend as K\n\nbase_image_path \u003d \u0027/media/pexels.png\u0027\nresult_prefix \u003d \u0027saved_image_deep_dream1\u0027\n\n# These are the names of the layers\n# for which we try to maximize activation,\n# as well as their weight in the final loss\n# we try to maximize.\n# You can tweak these setting to obtain new visual effects.\nsettings \u003d {\n    \u0027features\u0027: {\n        \u0027mixed2\u0027: 0.2,\n        \u0027mixed3\u0027: 0.5,\n        \u0027mixed4\u0027: 2.,\n        \u0027mixed5\u0027: 1.5,\n    },\n}\n\n\ndef preprocess_image(image_path):\n    # Util function to open, resize and format pictures\n    # into appropriate tensors.\n    img \u003d load_img(image_path)\n    print(img)\n    img \u003d img_to_array(img)\n    img \u003d np.expand_dims(img, axis\u003d0)\n    img \u003d inception_v3.preprocess_input(img)\n    return img\n\n\ndef deprocess_image(x):\n    # Util function to convert a tensor into a valid image.\n    if K.image_data_format() \u003d\u003d \u0027channels_first\u0027:\n        x \u003d x.reshape((3, x.shape[2], x.shape[3]))\n        x \u003d x.transpose((1, 2, 0))\n    else:\n        x \u003d x.reshape((x.shape[1], x.shape[2], 3))\n    x /\u003d 2.\n    x +\u003d 0.5\n    x *\u003d 255.\n    x \u003d np.clip(x, 0, 255).astype(\u0027uint8\u0027)\n    return x\n\nK.set_learning_phase(0)\n\n# Build the InceptionV3 network with our placeholder.\n# The model will be loaded with pre-trained ImageNet weights.\nmodel \u003d inception_v3.InceptionV3(weights\u003d\u0027imagenet\u0027,\n                                 include_top\u003dFalse)\ndream \u003d model.input\nprint(\u0027Model loaded.\u0027)\n\n# Get the symbolic outputs of each \"key\" layer (we gave them unique names).\nlayer_dict \u003d dict([(layer.name, layer) for layer in model.layers])\n\n# Define the loss.\nloss \u003d K.variable(0.)\nfor layer_name in settings[\u0027features\u0027]:\n    # Add the L2 norm of the features of a layer to the loss.\n    assert layer_name in layer_dict.keys(), \u0027Layer \u0027 + layer_name + \u0027 not found in model.\u0027\n    coeff \u003d settings[\u0027features\u0027][layer_name]\n    x \u003d layer_dict[layer_name].output\n    # We avoid border artifacts by only involving non-border pixels in the loss.\n    scaling \u003d K.prod(K.cast(K.shape(x), \u0027float32\u0027))\n    if K.image_data_format() \u003d\u003d \u0027channels_first\u0027:\n        loss +\u003d coeff * K.sum(K.square(x[:, :, 2: -2, 2: -2])) / scaling\n    else:\n        loss +\u003d coeff * K.sum(K.square(x[:, 2: -2, 2: -2, :])) / scaling\n\n# Compute the gradients of the dream wrt the loss.\ngrads \u003d K.gradients(loss, dream)[0]\n# Normalize gradients.\ngrads /\u003d K.maximum(K.mean(K.abs(grads)), K.epsilon())\n\n# Set up function to retrieve the value\n# of the loss and gradients given an input image.\noutputs \u003d [loss, grads]\nfetch_loss_and_grads \u003d K.function([dream], outputs)\n\n\ndef eval_loss_and_grads(x):\n    outs \u003d fetch_loss_and_grads([x])\n    loss_value \u003d outs[0]\n    grad_values \u003d outs[1]\n    return loss_value, grad_values\n\n\ndef resize_img(img, size):\n    img \u003d np.copy(img)\n    if K.image_data_format() \u003d\u003d \u0027channels_first\u0027:\n        factors \u003d (1, 1,\n                   float(size[0]) / img.shape[2],\n                   float(size[1]) / img.shape[3])\n    else:\n        factors \u003d (1,\n                   float(size[0]) / img.shape[1],\n                   float(size[1]) / img.shape[2],\n                   1)\n    return scipy.ndimage.zoom(img, factors, order\u003d1)\n\n\ndef gradient_ascent(x, iterations, step, max_loss\u003dNone):\n    for i in range(iterations):\n        loss_value, grad_values \u003d eval_loss_and_grads(x)\n        if max_loss is not None and loss_value \u003e max_loss:\n            break\n        print(\u0027..Loss value at\u0027, i, \u0027:\u0027, loss_value)\n        x +\u003d step * grad_values\n    return x\n\n\ndef save_img(img, fname):\n    pil_img \u003d deprocess_image(np.copy(img))\n    scipy.misc.imsave(fname, pil_img)\n\n\n\"\"\"Process:\n- Load the original image.\n- Define a number of processing scales (i.e. image shapes),\n    from smallest to largest.\n- Resize the original image to the smallest scale.\n- For every scale, starting with the smallest (i.e. current one):\n    - Run gradient ascent\n    - Upscale image to the next scale\n    - Reinject the detail that was lost at upscaling time\n- Stop when we are back to the original size.\nTo obtain the detail lost during upscaling, we simply\ntake the original image, shrink it down, upscale it,\nand compare the result to the (resized) original image.\n\"\"\"\n\n\n# Playing with these hyperparameters will also allow you to achieve new effects\nstep \u003d 0.01  # Gradient ascent step size\nnum_octave \u003d 3  # Number of scales at which to run gradient ascent\noctave_scale \u003d 1.4  # Size ratio between scales\niterations \u003d 20  # Number of ascent steps per scale\nmax_loss \u003d 10.\n\nimg \u003d preprocess_image(base_image_path)\nif K.image_data_format() \u003d\u003d \u0027channels_first\u0027:\n    original_shape \u003d img.shape[2:]\nelse:\n    original_shape \u003d img.shape[1:3]\nsuccessive_shapes \u003d [original_shape]\nfor i in range(1, num_octave):\n    shape \u003d tuple([int(dim / (octave_scale ** i)) for dim in original_shape])\n    successive_shapes.append(shape)\nsuccessive_shapes \u003d successive_shapes[::-1]\noriginal_img \u003d np.copy(img)\nshrunk_original_img \u003d resize_img(img, successive_shapes[0])\n\nfor shape in successive_shapes:\n    print(\u0027Processing image shape\u0027, shape)\n    img \u003d resize_img(img, shape)\n    img \u003d gradient_ascent(img,\n                          iterations\u003diterations,\n                          step\u003dstep,\n                          max_loss\u003dmax_loss)\n    upscaled_shrunk_original_img \u003d resize_img(shrunk_original_img, shape)\n    same_size_original \u003d resize_img(original_img, shape)\n    lost_detail \u003d same_size_original - upscaled_shrunk_original_img\n\n    img +\u003d lost_detail\n    shrunk_original_img \u003d resize_img(original_img, shape)\n\nsave_img(img, fname\u003dresult_prefix + \u0027.png\u0027)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 29, 2018 12:19:31 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516024280304_1052963722",
+      "id": "20180115-135120_832158464_q_JE5A1GMZZN1516598554",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Model loaded.\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1925430793074333135.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 47, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 620, in prod\n    axis \u003d _normalize_axis(axis, x)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 705, in _normalize_axis\n    shape \u003d int_shape(x)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 316, in int_shape\n    shape \u003d x.shape\nAttributeError: \u0027list\u0027 object has no attribute \u0027shape\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1925430793074333135.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1925430793074333135.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 47, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 620, in prod\n    axis \u003d _normalize_axis(axis, x)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 705, in _normalize_axis\n    shape \u003d int_shape(x)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/cntk_backend.py\", line 316, in int_shape\n    shape \u003d x.shape\nAttributeError: \u0027list\u0027 object has no attribute \u0027shape\u0027\n\n"
+      },
+      "dateCreated": "Jan 15, 2018 1:51:20 PM",
+      "dateStarted": "Jan 29, 2018 12:19:31 PM",
+      "dateFinished": "Jan 29, 2018 12:19:39 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "Needs an image file to be present already before execution. ",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 29, 2018 5:35:29 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": false,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516097158152_969662419",
+      "id": "20180116-100558_1701227353_q_JE5A1GMZZN1516598554",
+      "dateCreated": "Jan 16, 2018 10:05:58 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "deep_dream_KERAS_CNTK",
+  "id": "JE5A1GMZZN1516598554",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}

@@ -1,0 +1,137 @@
+{
+  "paragraphs": [
+    {
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"tensorflow\"\nos.environ[\u0027TENSORFLOW_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 31, 2018 5:05:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516772089128_1343477132",
+      "id": "20180124-053449_2117163385_q_8PR9UP82QP1516772082",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Jan 24, 2018 5:34:49 AM",
+      "dateStarted": "Jan 31, 2018 5:05:37 AM",
+      "dateFinished": "Jan 31, 2018 5:06:11 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\"\"\"\n    The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. \n\n    The dataset is divided into one training batch with 50000 images and one test batch with 10000 images.\n    \n    Each batch contains a dictionary with the following elements:-\n    \n    data -- a 50000x3072 numpy array of uint8s in case of training sample and 10000x3072 numpy array of uint8s in case of testing sample. Each row of the array stores a         32x32 colour image. The first 1024 entries contain the red channel values, the next 1024 the green, and the final 1024 the blue. The image is stored in row-major order,     so that the first 32 entries of the array are the red channel values of the first row of the image.\n    labels -- a list of 50000 numbers in the range 0-9 for training sample and 10000 numbers in the range 0-9 for testing sample. The number at index i indicates the label      of the ith image in the array data.\n\"\"\"\n\n\n\n# importing necessary libraries for the neural network such as keras and its layer types\n\nfrom __future__ import print_function\nfrom time import time\nimport keras\nfrom keras.datasets import cifar10\nfrom keras.preprocessing.image import ImageDataGenerator\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Dropout, Activation, Flatten\nfrom keras.layers import Conv2D, MaxPooling2D\nfrom keras.callbacks import TensorBoard\nfrom qdlpy import DLD\nimport os\ntb_log_dir \u003d DLD.register([\u0027tensorboard\u0027], \"cifar_cnn_tb_graph_full\")[\u0027tensorboard_hdfs_path\u0027]\n\n# setting the parameters used in the model such as batch_size, number of classes, epoch(iterations) etc.\nbatch_size \u003d 32\nnum_classes \u003d 10\nepochs \u003d 10\ndata_augmentation \u003d True\nnum_predictions \u003d 20\nsave_dir \u003d os.path.join(os.getcwd(), \u0027saved_models\u0027)\nmodel_name \u003d \u0027keras_cifar10_trained_model.h5\u0027\n\n# loading the data, shuffled and split between train and test sets.\n(x_train, y_train), (x_test, y_test) \u003d cifar10.load_data()\nprint(\u0027x_train shape:\u0027, x_train.shape)\nprint(x_train.shape[0], \u0027train samples\u0027)\nprint(x_test.shape[0], \u0027test samples\u0027)\n\n# Converting class vectors to binary class matrices.\ny_train \u003d keras.utils.to_categorical(y_train, num_classes)\ny_test \u003d keras.utils.to_categorical(y_test, num_classes)\n\n\n\n# building the sequential CNN model.\nmodel \u003d Sequential()\n\n# adding a convolution2D layer with 32 filters of size 3*3.\nmodel.add(Conv2D(32, (3, 3), padding\u003d\u0027same\u0027,\n                 input_shape\u003dx_train.shape[1:]))\n\n# using \u0027relu\u0027 activation for the convolution2D layer.\nmodel.add(Activation(\u0027relu\u0027))\n\n# adding a convolution2D layer with 32 filters of size 3*3.\nmodel.add(Conv2D(32, (3, 3)))\n\n# using \u0027relu\u0027 activation for the convolution2D layer.\nmodel.add(Activation(\u0027relu\u0027))\n\n# adding maxpooling layer with 2*2 as size of the max pool windows.\nmodel.add(MaxPooling2D(pool_size\u003d(2, 2)))\n\n# adding dropout of 0.25 to the maxpooling layer to avoid overfitting.\nmodel.add(Dropout(0.25))\n\n\n\n# adding a convolution2D layer with 64 filters of size 3*3.\nmodel.add(Conv2D(64, (3, 3), padding\u003d\u0027same\u0027))\n\n# using \u0027relu\u0027 activation for the convolution2D layer.\nmodel.add(Activation(\u0027relu\u0027))\n\n# adding a convolution2D layer with 64 filters of size 3*3.\nmodel.add(Conv2D(64, (3, 3)))\n\n# using \u0027relu\u0027 activation for the convolution2D layer.\nmodel.add(Activation(\u0027relu\u0027))\n\n# adding maxpooling layer with 2*2 as size of the max pool windows.\nmodel.add(MaxPooling2D(pool_size\u003d(2, 2)))\n\n# adding dropout of 0.25 to the maxpooling layer to avoid overfitting.\nmodel.add(Dropout(0.25))\n\n\n\n# making the output from the previous layer flat(1D) to make it adapt for using as input in Dense layers (fully connected).\nmodel.add(Flatten())\n\n# adding dense layer (fully connected) with 512 nodes.\nmodel.add(Dense(512))\n\n# using \u0027relu\u0027 activation for the dense layer.\nmodel.add(Activation(\u0027relu\u0027))\n\n# adding dropout of 0.5 to the dense layer to avoid overfitting.\nmodel.add(Dropout(0.5))\n\n#adding dense layer (fully connected) with 10 nodes.\nmodel.add(Dense(num_classes))\n\n# using \u0027softmax\u0027 activation for the dense layer.\nmodel.add(Activation(\u0027softmax\u0027))\n\n\n# initiating RMSprop optimizer with decay and learning rate.\nopt \u003d keras.optimizers.rmsprop(lr\u003d0.0001, decay\u003d1e-6)\n\n# Compiling the model using categorical_crossentropy as loss function and \u0027RMSprop\u0027 optimizer.\nmodel.compile(loss\u003d\u0027categorical_crossentropy\u0027,\n              optimizer\u003dopt,\n              metrics\u003d[\u0027accuracy\u0027])\n\n# Converting the data from uint8 to float32\nx_train \u003d x_train.astype(\u0027float32\u0027)\nx_test \u003d x_test.astype(\u0027float32\u0027)\nx_train /\u003d 255\nx_test /\u003d 255\n\ntensorboard \u003d TensorBoard(log_dir\u003dtb_log_dir.format(time()))\n\n# this if-else block is used to facilitate data augmentation. Data augmentation is simply increasing the data samples by distorting the image data.\n\nif not data_augmentation:\n    print(\u0027Not using data augmentation.\u0027)\n    # training the model on training data.\n    model.fit(x_train, y_train,\n              batch_size\u003dbatch_size,\n              epochs\u003depochs,\n              verbose\u003d2,\n              validation_data\u003d(x_test, y_test),\n              callbacks\u003d[tensorboard],\n              shuffle\u003dTrue)\nelse:\n    print(\u0027Using real-time data augmentation.\u0027)\n    # This will do preprocessing and realtime data augmentation:\n    datagen \u003d ImageDataGenerator(\n        featurewise_center\u003dFalse,  # set input mean to 0 over the dataset\n        samplewise_center\u003dFalse,  # set each sample mean to 0\n        featurewise_std_normalization\u003dFalse,  # divide inputs by std of the dataset\n        samplewise_std_normalization\u003dFalse,  # divide each input by its std\n        zca_whitening\u003dFalse,  # apply ZCA whitening\n        rotation_range\u003d0,  # randomly rotate images in the range (degrees, 0 to 180)\n        width_shift_range\u003d0.1,  # randomly shift images horizontally (fraction of total width)\n        height_shift_range\u003d0.1,  # randomly shift images vertically (fraction of total height)\n        horizontal_flip\u003dTrue,  # randomly flip images\n        vertical_flip\u003dFalse)  # randomly flip images\n\n    # Compute quantities required for feature-wise normalization\n    # (std, mean, and principal components if ZCA whitening is applied).\n    datagen.fit(x_train)\n\n    # training the model on the batches generated by datagen.flow().\n    model.fit_generator(datagen.flow(x_train, y_train,\n                                     batch_size\u003dbatch_size),\n                        epochs\u003depochs,\n                        verbose\u003d2,\n                        validation_data\u003d(x_test, y_test),\n                        callbacks\u003d[tensorboard],\n                        workers\u003d4)\n\n# Saving model and weights\nif not os.path.isdir(save_dir):\n    os.makedirs(save_dir)\nmodel_path \u003d os.path.join(save_dir, model_name)\nmodel.save(model_path)\nprint(\u0027Saved trained model at %s \u0027 % model_path)\n\n# finally evaluating and printing the accuracy of the trained model.\nscores \u003d model.evaluate(x_test, y_test, verbose\u003d1)\nprint(\u0027Test loss:\u0027, scores[0])\nprint(\u0027Test accuracy:\u0027, scores[1])\n\n#Output is a real number which is accuracy in the range 0-1.",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 31, 2018 5:06:14 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1515674365369_1559814615",
+      "id": "20180111-123925_787397868_q_8PR9UP82QP1516772082",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "org.apache.thrift.transport.TTransportException\n\tat org.apache.thrift.transport.TIOStreamTransport.read(TIOStreamTransport.java:132)\n\tat org.apache.thrift.transport.TTransport.readAll(TTransport.java:86)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readAll(TBinaryProtocol.java:429)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readI32(TBinaryProtocol.java:318)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readMessageBegin(TBinaryProtocol.java:219)\n\tat org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:69)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.recv_interpret(RemoteInterpreterService.java:257)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.interpret(RemoteInterpreterService.java:241)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.interpret(RemoteInterpreter.java:358)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:116)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:376)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:200)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:339)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\n"
+      },
+      "dateCreated": "Jan 11, 2018 12:39:25 PM",
+      "dateStarted": "Jan 31, 2018 4:58:08 AM",
+      "dateFinished": "Jan 31, 2018 5:05:21 AM",
+      "status": "ERROR",
+      "errorMessage": "org.apache.thrift.transport.TTransportException\n\tat org.apache.thrift.transport.TIOStreamTransport.read(TIOStreamTransport.java:132)\n\tat org.apache.thrift.transport.TTransport.readAll(TTransport.java:86)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readAll(TBinaryProtocol.java:429)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readI32(TBinaryProtocol.java:318)\n\tat org.apache.thrift.protocol.TBinaryProtocol.readMessageBegin(TBinaryProtocol.java:219)\n\tat org.apache.thrift.TServiceClient.receiveBase(TServiceClient.java:69)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.recv_interpret(RemoteInterpreterService.java:257)\n\tat org.apache.zeppelin.interpreter.thrift.RemoteInterpreterService$Client.interpret(RemoteInterpreterService.java:241)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreter.interpret(RemoteInterpreter.java:358)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:116)\n\tat org.apache.zeppelin.notebook.Paragraph.jobRun(Paragraph.java:376)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:200)\n\tat org.apache.zeppelin.scheduler.RemoteScheduler$JobRunner.run(RemoteScheduler.java:339)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\n",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Jan 25, 2018 7:05:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1516268499197_-177717003",
+      "id": "20180118-094139_1683649349_q_8PR9UP82QP1516772082",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Jan 18, 2018 9:41:39 AM",
+      "dateStarted": "Jan 25, 2018 7:10:54 AM",
+      "dateFinished": "Jan 25, 2018 7:10:54 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "CIFAR10_KERAS_TF_TB_CNN",
+  "id": "8PR9UP82QP1516772082",
+  "angularObjects": {
+    "2D7M1HZP5932661518613479637:shared_process": [],
+    "2D6B43M8G932661515762929145:shared_process": [],
+    "2D35KXZZK932661515762929137:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
