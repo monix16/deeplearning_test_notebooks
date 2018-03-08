@@ -1,0 +1,631 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\ncd  /usr/lib/deep-learning/examples/tfos/mnist\nunzip /usr/lib/deep-learning/examples/tfos/mnist/mnist.zip",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 6:07:44 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514230583238_-1219183836",
+      "id": "20171225-193623_1286573074_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "replace t10k-images-idx3-ubyte.gz? [y]es, [n]o, [A]ll, [N]one, [r]ename:  NULL\n(EOF or read error, treating as \"[N]one\" ...)\nArchive:  /usr/lib/deep-learning/examples/tfos/mnist/mnist.zip\nExitValue: 1"
+      },
+      "dateCreated": "Dec 25, 2017 7:36:23 PM",
+      "dateStarted": "Dec 28, 2017 6:07:44 AM",
+      "dateFinished": "Dec 28, 2017 6:07:44 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n/usr/lib/spark/bin/spark-submit \\\n--master yarn \\\n--num-executors 2 \\\n--archives /usr/lib/deep-learning/examples/tfos/mnist/mnist.zip#mnist \\\n--jars /usr/lib/deep-learning/tensorflow-hadoop-plugin/tensorflow-hadoop-1.0-SNAPSHOT.jar \\\n/usr/lib/deep-learning/examples/tfos/mnist/mnist_data_setup.py \\\n--output /deep-learning/examples/tfos/mnist_data/tfr \\\n--format tfr",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 6:07:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514218555123_-791596092",
+      "id": "20171225-161555_635354518_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Warning: Skipping download of JAR file:/usr/lib/deep-learning/tensorflow-hadoop-plugin/tensorflow-hadoop-1.0-SNAPSHOT.jar. Scheme file not supported\nDefault value for autoscalingv2 : false\nmaxExecutors have been set to default : 2\nWarning: Setting spark.rdd.parallelListingThreshold\u003d10000000 since spark.sql.qubole.split.computation is true\n17/12/28 06:07:57 main INFO Utils: Registered signal handlers for exception exit hook [TERM, HUP, INT]\nargs: Namespace(format\u003d\u0027tfr\u0027, num_partitions\u003d10, output\u003d\u0027/deep-learning/examples/tfos/mnist_data/tfr\u0027, read\u003dFalse, verify\u003dFalse)\n17/12/28 06:09:22 Thread-4 INFO SparkContext: Running Spark version 2.2.0\n17/12/28 06:09:23 Thread-4 INFO SparkContext: Submitted application: mnist_parallelize\n17/12/28 06:09:23 Thread-4 INFO SparkContext: Spark configuration:\nspark.R.cmd\u003d/usr/lib/a-4.2.0-r-3.3.2/bin/R\nspark.app.name\u003dmnist_parallelize\nspark.authenticate\u003dfalse\nspark.authenticate.enableSaslEncryption\u003dfalse\nspark.driver.extraClassPath\u003d/usr/lib/spark/conf\nspark.driver.extraJavaOptions\u003d-Djava.net.preferIPv4Stack\u003dtrue -XX:ReservedCodeCacheSize\u003d100m -XX:+UseCodeCacheFlushing\nspark.driver.extraLibraryPath\u003d/usr/lib/hadoop2/lib/native\nspark.driver.memory\u003d8g\nspark.dynamicAllocation.enabled\u003dtrue\nspark.dynamicAllocation.initialExecutors\u003d2\nspark.dynamicAllocation.maxExecutors\u003d2\nspark.dynamicAllocation.minExecutors\u003d2\nspark.eventLog.compress\u003dtrue\nspark.eventLog.dir\u003dhdfs://ec2-54-156-146-188.compute-1.amazonaws.com:9000/spark-history\nspark.eventLog.enabled\u003dtrue\nspark.executor.cores\u003d1\nspark.executor.extraJavaOptions\u003d-Djava.net.preferIPv4Stack\u003dtrue -XX:ReservedCodeCacheSize\u003d100m -XX:+UseCodeCacheFlushing\nspark.executor.instances\u003d2\nspark.executor.memory\u003d8g\nspark.hadoop.hive.qubole.consistent.loadpartition\u003dfalse\nspark.hadoop.mapred.output.committer.class\u003dorg.apache.hadoop.mapred.DirectFileOutputCommitter\nspark.hadoop.mapreduce.use.directfileoutputcommitter\u003dtrue\nspark.hadoop.mapreduce.use.parallelmergepaths\u003dtrue\nspark.hadoop.spark.sql.parquet.output.committer.class\u003dorg.apache.spark.sql.parquet.DirectParquetOutputCommitter\nspark.hadoop.yarn.timeline-service.enabled\u003dfalse\nspark.history.fs.update.interval\u003d10\nspark.history.retainedApplications\u003d5\nspark.logConf\u003dtrue\nspark.master\u003dyarn\nspark.network.sasl.serverAlwaysEncrypt\u003dfalse\nspark.network.timeout\u003d1200s\nspark.pyspark.python\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/python\nspark.qubole.eventLog.hdfs.async\u003dfalse\nspark.qubole.fast.startup\u003dtrue\nspark.qubole.sendsql\u003dfalse\nspark.qubole.spotloss.handle\u003dfalse\nspark.qubole.sql.hive.useDirectWrites\u003dfalse\nspark.rdd.compress\u003dTrue\nspark.rdd.parallelListingThreshold\u003d10000000\nspark.scheduler.listenerbus.eventqueue.size\u003d20000\nspark.scheduler.maxRegisteredResourcesWaitingTime\u003d0s\nspark.serializer.objectStreamReset\u003d100\nspark.shuffle.service.enabled\u003dtrue\nspark.speculation\u003dfalse\nspark.sql.hive.metastore.jars\u003d/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/etc/hadoop:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/common/lib/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/common/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/hdfs:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/hdfs/lib/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/hdfs/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/yarn/lib/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/yarn/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/mapreduce/*:/share/hadoop/tools:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/tools/lib/*:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/tools/*:/share/hadoop/qubole:/usr/lib/qubole/packages/hadoop2-2.6.0/hadoop2/share/hadoop/qubole/*:/contrib/capacity-scheduler/*.jar:/usr/lib/spark/lib/hive2/*\nspark.sql.hive.metastore.version\u003d0.13.1\nspark.sql.qubole.catalyst.normalizePredicates\u003dfalse\nspark.sql.qubole.handleCommentsWithSemicolon\u003dfalse\nspark.sql.qubole.metrics.enable\u003dtrue\nspark.sql.qubole.partitionDiscoverer\u003dtrue\nspark.sql.qubole.recover.partitions\u003dtrue\nspark.sql.qubole.split.computation\u003dtrue\nspark.sql.streaming.showStreamingTab\u003dtrue\nspark.submit.deployMode\u003dclient\nspark.ui.retainedJobs\u003d33\nspark.ui.retainedStages\u003d100\nspark.yarn.dist.archives\u003dfile:/usr/lib/deep-learning/examples/tfos/mnist/mnist.zip#mnist\nspark.yarn.dist.jars\u003dfile:/usr/lib/deep-learning/tensorflow-hadoop-plugin/tensorflow-hadoop-1.0-SNAPSHOT.jar\nspark.yarn.driver.memoryOverhead\u003d3g\nspark.yarn.executor.memoryOverhead\u003d3g\nspark.yarn.historyServer.address\u003dec2-54-156-146-188.compute-1.amazonaws.com:18080\nspark.yarn.isPython\u003dtrue\nspark.yarn.jars\u003dlocal://usr/lib/spark/assembly/target/scala-2.11/jars/*\nspark.yarn.maxAppAttempts\u003d1\n17/12/28 06:09:23 Thread-4 INFO SecurityManager: Changing view acls to: root\n17/12/28 06:09:23 Thread-4 INFO SecurityManager: Changing modify acls to: root\n17/12/28 06:09:23 Thread-4 INFO SecurityManager: Changing view acls groups to: \n17/12/28 06:09:23 Thread-4 INFO SecurityManager: Changing modify acls groups to: \n17/12/28 06:09:23 Thread-4 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()\n17/12/28 06:09:23 Thread-4 INFO Utils: Successfully started service \u0027sparkDriver\u0027 on port 35887.\n17/12/28 06:09:23 Thread-4 INFO SparkEnv: Registering MapOutputTracker\n17/12/28 06:09:24 Thread-4 INFO SparkEnv: Registering BlockManagerMaster\n17/12/28 06:09:24 Thread-4 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information\n17/12/28 06:09:24 Thread-4 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up\n17/12/28 06:09:24 Thread-4 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-13399b98-6c44-415f-b84c-a08f569e7c92\n17/12/28 06:09:24 Thread-4 INFO MemoryStore: MemoryStore started with capacity 4.1 GB\n17/12/28 06:09:24 Thread-4 INFO SparkEnv: Registering OutputCommitCoordinator\n17/12/28 06:09:24 Thread-4 INFO log: Logging initialized @87993ms\n17/12/28 06:09:24 Thread-4 INFO Server: jetty-9.3.z-SNAPSHOT\n17/12/28 06:09:24 Thread-4 INFO Server: Started @88080ms\n17/12/28 06:09:24 Thread-4 INFO AbstractConnector: Started ServerConnector@1bb54c56{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}\n17/12/28 06:09:24 Thread-4 INFO Utils: Successfully started service \u0027SparkUI\u0027 on port 4040.\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@185a9c7{/jobs,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@161289f2{/jobs/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@5e08a601{/jobs/job,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@42cc58f9{/jobs/job/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@1656132f{/stages,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@11389d5{/stages/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@248df{/stages/stage,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@1729e098{/stages/stage/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@9719ddd{/stages/pool,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@2c24864d{/stages/pool/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@7bfa0beb{/storage,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@b66eb5a{/storage/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@598510c6{/storage/rdd,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@26a248f6{/storage/rdd/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@7a37b483{/environment,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@462a3803{/environment/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@262c88b5{/executors,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@1adb4d1e{/executors/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@7cf126bd{/executors/threadDump,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@529f3fc{/executors/threadDump/json,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@1de80932{/static,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@3b963407{/,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@d22b6dc{/api,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@44b26cd7{/jobs/job/kill,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@3a63b042{/stages/stage/kill,null,AVAILABLE,@Spark}\n17/12/28 06:09:24 Thread-4 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://10.184.236.203:4040\n17/12/28 06:09:24 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:09:26 Thread-4 INFO RMProxy: Connecting to ResourceManager at 10.184.236.203/10.184.236.203:8032\n17/12/28 06:09:26 Thread-4 INFO Client: Requesting a new application from cluster with 2 NodeManagers\n17/12/28 06:09:26 Thread-4 INFO Client: Verifying our application has not requested more than the maximum memory capability of the cluster (12288 MB per container)\n17/12/28 06:09:26 Thread-4 INFO Client: Will allocate AM container, with 896 MB memory including 384 MB overhead\n17/12/28 06:09:26 Thread-4 INFO Client: Setting up container launch context for our AM\n17/12/28 06:09:26 Thread-4 INFO Client: Setting up the launch environment for our AM container\n17/12/28 06:09:26 Thread-4 INFO Client: Preparing resources for our AM container\n17/12/28 06:09:28 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:09:28 Thread-4 INFO Client: Uploading resource file:/usr/lib/deep-learning/tensorflow-hadoop-plugin/tensorflow-hadoop-1.0-SNAPSHOT.jar -\u003e hdfs://10.184.236.203:9000/user/root/.sparkStaging/application_1514440521907_0003/tensorflow-hadoop-1.0-SNAPSHOT.jar\n17/12/28 06:09:29 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:09:29 Thread-4 INFO Client: Uploading resource file:/usr/lib/deep-learning/examples/tfos/mnist/mnist.zip#mnist -\u003e hdfs://10.184.236.203:9000/user/root/.sparkStaging/application_1514440521907_0003/mnist.zip\n17/12/28 06:09:29 Thread-4 INFO Client: Uploading resource file:/usr/lib/spark/python/lib/pyspark.zip -\u003e hdfs://10.184.236.203:9000/user/root/.sparkStaging/application_1514440521907_0003/pyspark.zip\n17/12/28 06:09:29 Thread-4 INFO Client: Uploading resource file:/usr/lib/spark/python/lib/py4j-0.10.4-src.zip -\u003e hdfs://10.184.236.203:9000/user/root/.sparkStaging/application_1514440521907_0003/py4j-0.10.4-src.zip\n17/12/28 06:09:29 Thread-4 INFO Client: Uploading resource file:/tmp/spark-5ea5b63f-ad93-4e82-aff8-a94d52fdfb90/__spark_conf__8370706488238229283.zip -\u003e hdfs://10.184.236.203:9000/user/root/.sparkStaging/application_1514440521907_0003/__spark_conf__.zip\n17/12/28 06:09:29 Thread-4 INFO SecurityManager: Changing view acls to: root\n17/12/28 06:09:29 Thread-4 INFO SecurityManager: Changing modify acls to: root\n17/12/28 06:09:29 Thread-4 INFO SecurityManager: Changing view acls groups to: \n17/12/28 06:09:29 Thread-4 INFO SecurityManager: Changing modify acls groups to: \n17/12/28 06:09:29 Thread-4 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(root); groups with view permissions: Set(); users  with modify permissions: Set(root); groups with modify permissions: Set()\n17/12/28 06:09:29 Thread-4 INFO Client: Submitting application application_1514440521907_0003 to ResourceManager\n17/12/28 06:09:29 Thread-4 INFO YarnClientImpl: Submitted application application_1514440521907_0003\n17/12/28 06:09:29 Thread-4 INFO SchedulerExtensionServices: Starting Yarn extension services with app application_1514440521907_0003 and attemptId None\n17/12/28 06:09:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:30 Thread-4 INFO Client: \n\t client token: N/A\n\t diagnostics: N/A\n\t ApplicationMaster host: N/A\n\t ApplicationMaster RPC port: -1\n\t queue: root.root\n\t start time: 1514441369380\n\t final status: UNDEFINED\n\t tracking URL: http://10.184.236.203:8088/proxy/application_1514440521907_0003/?spark\u003dtrue\n\t user: root\n17/12/28 06:09:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:32 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:33 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:34 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:35 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:36 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:37 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:38 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:39 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:40 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:41 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:42 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:43 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:44 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:45 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:46 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:47 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:48 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:49 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:50 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:51 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:52 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:53 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:54 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:55 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:56 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:57 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:58 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:09:59 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:00 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:01 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:02 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:03 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:04 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:05 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:06 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:07 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:08 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:09 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:10 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:11 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:12 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:13 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:14 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:15 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:16 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:17 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:18 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:19 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:20 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:21 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:22 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:23 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:24 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:25 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:26 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:27 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:28 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:29 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:32 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:33 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:34 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:35 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:36 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:37 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:38 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:39 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:40 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:41 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:42 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:43 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:44 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:45 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:46 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:47 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:48 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:49 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:50 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:51 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:52 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:53 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:54 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:55 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:56 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:57 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:58 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:10:59 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:00 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:01 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:02 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:03 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:04 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:05 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:06 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:07 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:08 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:09 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:10 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:11 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:12 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:13 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:14 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:15 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:16 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:17 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:18 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:19 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:20 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:21 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:22 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:23 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:24 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:25 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:26 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:27 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:28 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:29 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:32 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:33 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:34 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:35 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:36 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:37 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:38 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:39 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:40 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:41 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:42 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:43 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:44 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:45 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:46 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:47 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:48 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:49 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:50 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:51 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:52 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:53 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:54 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:55 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:56 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:57 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:58 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:11:59 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:00 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:01 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:02 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:03 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:04 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:05 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:06 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:07 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:08 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:09 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:10 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:11 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:12 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:13 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:14 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:15 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:16 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:17 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:18 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:19 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:20 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:21 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:22 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:23 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:24 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:25 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:26 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:27 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:28 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:29 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:32 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:33 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:34 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:35 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:36 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:37 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:38 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:39 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:40 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:41 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:42 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:43 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:44 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:45 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:46 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:47 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:48 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:49 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:50 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:51 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:52 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:53 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:54 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:55 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:56 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:57 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:58 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:12:59 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:00 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:01 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:02 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:03 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:04 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:05 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:06 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:07 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:08 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:09 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:10 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:11 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:12 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:13 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:14 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:15 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:16 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:17 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:18 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:19 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:20 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:21 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:22 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:23 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:24 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:25 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:26 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:27 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:28 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:29 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:32 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:33 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:34 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:35 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:36 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:37 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:38 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:39 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:40 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:41 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:42 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:43 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:44 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:45 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:46 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:47 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:48 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:49 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:50 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:51 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:52 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:53 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:54 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:55 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:56 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:57 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:58 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:13:59 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:00 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:01 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:02 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:03 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:04 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:05 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:06 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:07 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:08 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:09 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:10 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:11 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:12 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:13 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:14 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:15 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:16 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:17 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:18 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:19 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:20 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:21 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:22 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:23 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:24 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:25 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:26 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:27 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:28 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:29 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:30 dispatcher-event-loop-6 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark-client://YarnAM)\n17/12/28 06:14:30 dispatcher-event-loop-5 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: Received AMStart(container_1514440521907_0003_01_000001, ip-10-140-182-54.ec2.internal)\n17/12/28 06:14:30 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: ACCEPTED)\n17/12/28 06:14:31 dispatcher-event-loop-3 INFO YarnClientSchedulerBackend: addWebUIFilter: Setting spark.ui.proxyBase to /proxy/application_1514440521907_0003\n17/12/28 06:14:31 dispatcher-event-loop-3 INFO YarnClientSchedulerBackend: Add WebUI Filter. org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter, Map(PROXY_HOSTS -\u003e 10.184.236.203, PROXY_URI_BASES -\u003e http://10.184.236.203:8088/proxy/application_1514440521907_0003), /proxy/application_1514440521907_0003\n17/12/28 06:14:31 dispatcher-event-loop-3 INFO JettyUtils: Adding filter: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter\n17/12/28 06:14:31 Thread-4 INFO Client: Application report for application_1514440521907_0003 (state: RUNNING)\n17/12/28 06:14:31 Thread-4 INFO Client: \n\t client token: N/A\n\t diagnostics: N/A\n\t ApplicationMaster host: 10.140.182.54\n\t ApplicationMaster RPC port: 0\n\t queue: root.root\n\t start time: 1514441369380\n\t final status: UNDEFINED\n\t tracking URL: http://10.184.236.203:8088/proxy/application_1514440521907_0003/?spark\u003dtrue\n\t user: root\n17/12/28 06:14:31 Thread-4 INFO YarnClientSchedulerBackend: Application application_1514440521907_0003 has started running.\n17/12/28 06:14:31 Thread-4 INFO Utils: Successfully started service \u0027org.apache.spark.network.netty.NettyBlockTransferService\u0027 on port 37757.\n17/12/28 06:14:31 Thread-4 INFO NettyBlockTransferService: Server created on 10.184.236.203:37757\n17/12/28 06:14:31 Thread-4 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy\n17/12/28 06:14:31 Thread-4 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.184.236.203, 37757, None)\n17/12/28 06:14:31 dispatcher-event-loop-0 INFO BlockManagerMasterEndpoint: Registering block manager 10.184.236.203:37757 with 4.1 GB RAM, BlockManagerId(driver, 10.184.236.203, 37757, None)\n17/12/28 06:14:31 Thread-4 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.184.236.203, 37757, None)\n17/12/28 06:14:31 Thread-4 INFO BlockManager: external shuffle service port \u003d 7337\n17/12/28 06:14:31 Thread-4 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.184.236.203, 37757, None)\n17/12/28 06:14:32 Thread-4 INFO ContextHandler: Started o.s.j.s.ServletContextHandler@4a786686{/metrics/json,null,AVAILABLE,@Spark}\n17/12/28 06:14:32 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:14:32 Thread-4 INFO EventLoggingListener: Logging events to hdfs://ec2-54-156-146-188.compute-1.amazonaws.com:9000/spark-history/application_1514440521907_0003.lz4\n17/12/28 06:14:32 Thread-4 INFO QuboleAllocationStrategy: Starting Qubole dynamic allocation with min executors : 2 and max executors : 2\n17/12/28 06:14:32 Thread-4 INFO ExecutorAllocationManager: QuboleAllocationStrategy is used for Executor dynamic allocation\n17/12/28 06:14:32 Thread-4 INFO ExecutorAllocationManager: Request for initial executors(2) acknowledged - true\n17/12/28 06:14:32 Thread-4 INFO YarnScheduler$$anon$1: Adding shutdown hook for context org.apache.spark.SparkContext@150bbd90.\n17/12/28 06:14:32 Thread-4 INFO YarnClientSchedulerBackend: SchedulerBackend is ready for scheduling beginning after waiting maxRegisteredResourcesWaitingTime: 0(ms)\n17/12/28 06:14:32 Thread-4 INFO YarnScheduler: YarnClientClusterScheduler.postStartHook done.\n17/12/28 06:14:32 SparkListenerBus INFO ExecutorsListener: onAMStart(Some(container_1514440521907_0003_01_000001), Some(ip-10-140-182-54.ec2.internal))\nExtracting /usr/lib/deep-learning/examples/tfos/mnist/train-images-idx3-ubyte.gz\nExtracting /usr/lib/deep-learning/examples/tfos/mnist/train-labels-idx1-ubyte.gz\nimages.shape: (60000, 28, 28, 1)\nlabels.shape: (60000, 10)\n17/12/28 06:14:34 Thread-4 INFO SparkContext: Starting job: take at SerDeUtil.scala:233\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Got job 0 (take at SerDeUtil.scala:233) with 1 output partitions\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Final stage: ResultStage 0 (take at SerDeUtil.scala:233)\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Parents of final stage: List()\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Missing parents: List()\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[4] at mapPartitions at SerDeUtil.scala:148), which has no missing parents\n17/12/28 06:14:34 spark-dynamic-executor-allocation INFO QuboleAllocationStrategy: Jobs running : [SQL \u003d 0 Other \u003d 1] Executors need : [Job \u003d 0 Mem \u003d 0] Stages : [Active \u003d 1 Pending \u003d 0 Completed \u003d 0] Tasks : [Active \u003d 0 Pending \u003d 1 Completed \u003d 0] \n17/12/28 06:14:34 spark-dynamic-executor-allocation INFO QuboleAllocationStrategy: Requesting 2 more executor(s) to be added and desired total is 2\n17/12/28 06:14:34 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 5.7 KB, free 4.1 GB)\n17/12/28 06:14:34 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 3.7 KB, free 4.1 GB)\n17/12/28 06:14:34 dispatcher-event-loop-7 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.184.236.203:37757 (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:14:34 dag-scheduler-event-loop INFO SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1032\n17/12/28 06:14:34 dag-scheduler-event-loop INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[4] at mapPartitions at SerDeUtil.scala:148) (first 15 tasks are for partitions Vector(0))\n17/12/28 06:14:34 dag-scheduler-event-loop INFO YarnScheduler: Adding task set 0.0 with 1 tasks\n17/12/28 06:14:34 dispatcher-event-loop-6 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.138.195.160:49956) with ID 1 and container_1514440521907_0003_01_000002 with size 11811160064\n17/12/28 06:14:34 SparkListenerBus INFO ExecutorAllocationManager: New executor 1 has registered (new total is 1)\n17/12/28 06:14:34 dispatcher-event-loop-6 WARN TaskSetManager: Stage 0 contains a task of very large size (4879 KB). The maximum recommended task size is 100 KB.\n17/12/28 06:14:34 dispatcher-event-loop-6 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, 10.138.195.160, executor 1, partition 0, PROCESS_LOCAL, 4996481 bytes)\n17/12/28 06:14:34 dispatcher-event-loop-7 INFO BlockManagerMasterEndpoint: Registering block manager 10.138.195.160:34569 with 4.1 GB RAM, BlockManagerId(1, 10.138.195.160, 34569, None)\n17/12/28 06:14:34 dispatcher-event-loop-5 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.138.195.160:34569 (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:14:35 dispatcher-event-loop-6 INFO YarnSchedulerBackend$YarnDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.140.182.54:42826) with ID 2 and container_1514440521907_0003_01_000003 with size 11811160064\n17/12/28 06:14:35 SparkListenerBus INFO ExecutorAllocationManager: New executor 2 has registered (new total is 2)\n17/12/28 06:14:35 dispatcher-event-loop-2 INFO BlockManagerMasterEndpoint: Registering block manager 10.140.182.54:38207 with 4.1 GB RAM, BlockManagerId(2, 10.140.182.54, 38207, None)\n17/12/28 06:15:35 spark-dynamic-executor-allocation INFO QuboleAllocationStrategy: Request to remove executorIds: 2\n17/12/28 06:15:41 task-result-getter-0 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 66303 ms on 10.138.195.160 (executor 1) (1/1)\n17/12/28 06:15:41 task-result-getter-0 INFO YarnScheduler: Removed TaskSet 0.0, whose tasks have all completed, from pool \n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: ResultStage 0 (take at SerDeUtil.scala:233) finished in 66.425 s\n17/12/28 06:15:41 Thread-4 INFO DAGScheduler: Job 0 finished: take at SerDeUtil.scala:233, took 66.746083 s\n17/12/28 06:15:41 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:15:41 Thread-4 INFO FileOutputCommitter: File Output Committer Algorithm version is 1\n17/12/28 06:15:41 dispatcher-event-loop-6 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 10.184.236.203:37757 in memory (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:15:41 dispatcher-event-loop-2 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 10.138.195.160:34569 in memory (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:15:41 Thread-4 INFO SparkContext: Starting job: runJob at SparkHadoopMapReduceWriter.scala:89\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Got job 1 (runJob at SparkHadoopMapReduceWriter.scala:89) with 10 output partitions\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Final stage: ResultStage 1 (runJob at SparkHadoopMapReduceWriter.scala:89)\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Parents of final stage: List()\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Missing parents: List()\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[6] at map at PythonHadoopUtil.scala:181), which has no missing parents\n17/12/28 06:15:41 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 78.2 KB, free 4.1 GB)\n17/12/28 06:15:41 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 27.6 KB, free 4.1 GB)\n17/12/28 06:15:41 dispatcher-event-loop-3 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.184.236.203:37757 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:15:41 dag-scheduler-event-loop INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1032\n17/12/28 06:15:41 dag-scheduler-event-loop INFO DAGScheduler: Submitting 10 missing tasks from ResultStage 1 (MapPartitionsRDD[6] at map at PythonHadoopUtil.scala:181) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))\n17/12/28 06:15:41 dag-scheduler-event-loop INFO YarnScheduler: Adding task set 1.0 with 10 tasks\n17/12/28 06:15:41 dispatcher-event-loop-5 WARN TaskSetManager: Stage 1 contains a task of very large size (4879 KB). The maximum recommended task size is 100 KB.\n17/12/28 06:15:41 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1, 10.140.182.54, executor 2, partition 0, PROCESS_LOCAL, 4996481 bytes)\n17/12/28 06:15:41 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 2, 10.138.195.160, executor 1, partition 1, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:41 dispatcher-event-loop-1 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.138.195.160:34569 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:15:41 dispatcher-event-loop-3 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.140.182.54:38207 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:15:45 dispatcher-event-loop-0 INFO TaskSetManager: Starting task 2.0 in stage 1.0 (TID 3, 10.138.195.160, executor 1, partition 2, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:45 task-result-getter-1 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 2) in 4759 ms on 10.138.195.160 (executor 1) (1/10)\n17/12/28 06:15:49 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 3.0 in stage 1.0 (TID 4, 10.138.195.160, executor 1, partition 3, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:49 task-result-getter-2 INFO TaskSetManager: Finished task 2.0 in stage 1.0 (TID 3) in 3800 ms on 10.138.195.160 (executor 1) (2/10)\n17/12/28 06:15:52 dispatcher-event-loop-3 INFO TaskSetManager: Starting task 4.0 in stage 1.0 (TID 5, 10.138.195.160, executor 1, partition 4, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:52 task-result-getter-3 INFO TaskSetManager: Finished task 3.0 in stage 1.0 (TID 4) in 2646 ms on 10.138.195.160 (executor 1) (3/10)\n17/12/28 06:15:55 dispatcher-event-loop-3 INFO TaskSetManager: Starting task 5.0 in stage 1.0 (TID 6, 10.138.195.160, executor 1, partition 5, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:55 task-result-getter-0 INFO TaskSetManager: Finished task 4.0 in stage 1.0 (TID 5) in 2757 ms on 10.138.195.160 (executor 1) (4/10)\n17/12/28 06:15:57 dispatcher-event-loop-6 INFO TaskSetManager: Starting task 6.0 in stage 1.0 (TID 7, 10.138.195.160, executor 1, partition 6, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:15:57 task-result-getter-1 INFO TaskSetManager: Finished task 5.0 in stage 1.0 (TID 6) in 2754 ms on 10.138.195.160 (executor 1) (5/10)\n17/12/28 06:16:00 dispatcher-event-loop-4 INFO TaskSetManager: Starting task 7.0 in stage 1.0 (TID 8, 10.138.195.160, executor 1, partition 7, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:16:00 task-result-getter-2 INFO TaskSetManager: Finished task 6.0 in stage 1.0 (TID 7) in 2606 ms on 10.138.195.160 (executor 1) (6/10)\n17/12/28 06:16:03 dispatcher-event-loop-7 INFO TaskSetManager: Starting task 8.0 in stage 1.0 (TID 9, 10.138.195.160, executor 1, partition 8, PROCESS_LOCAL, 5994701 bytes)\n17/12/28 06:16:03 task-result-getter-3 INFO TaskSetManager: Finished task 7.0 in stage 1.0 (TID 8) in 2630 ms on 10.138.195.160 (executor 1) (7/10)\n17/12/28 06:16:05 dispatcher-event-loop-4 INFO TaskSetManager: Starting task 9.0 in stage 1.0 (TID 10, 10.138.195.160, executor 1, partition 9, PROCESS_LOCAL, 5588681 bytes)\n17/12/28 06:16:05 task-result-getter-0 INFO TaskSetManager: Finished task 8.0 in stage 1.0 (TID 9) in 2633 ms on 10.138.195.160 (executor 1) (8/10)\n17/12/28 06:16:08 task-result-getter-1 INFO TaskSetManager: Finished task 9.0 in stage 1.0 (TID 10) in 2435 ms on 10.138.195.160 (executor 1) (9/10)\n17/12/28 06:17:08 spark-dynamic-executor-allocation INFO QuboleAllocationStrategy: Request to remove executorIds: 1\n17/12/28 06:17:19 task-result-getter-2 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 98137 ms on 10.140.182.54 (executor 2) (10/10)\n17/12/28 06:17:19 task-result-getter-2 INFO YarnScheduler: Removed TaskSet 1.0, whose tasks have all completed, from pool \n17/12/28 06:17:19 dag-scheduler-event-loop INFO DAGScheduler: ResultStage 1 (runJob at SparkHadoopMapReduceWriter.scala:89) finished in 98.139 s\n17/12/28 06:17:19 Thread-4 INFO DAGScheduler: Job 1 finished: runJob at SparkHadoopMapReduceWriter.scala:89, took 98.171788 s\n17/12/28 06:17:19 Thread-4 INFO BlobStoreMergePathsHelper: makeToDeleteAndToRenameLists: completed with status success in 23 ms\n17/12/28 06:17:19 Thread-4 INFO BlobStoreMergePathsHelper: renameFiles: completed in 16 ms\n17/12/28 06:17:19 Thread-4 INFO BlobStoreMergePathsHelper: parallelMergePaths: completed in 40 ms\n17/12/28 06:17:19 Thread-4 INFO BlobStoreMergePathsHelper: deleteWithRetries:  Took  7 ms and 2 iterations\n17/12/28 06:17:19 Thread-4 INFO SparkHadoopMapReduceWriter: Job job_20171228061541_0006 committed.\nExtracting /usr/lib/deep-learning/examples/tfos/mnist/t10k-images-idx3-ubyte.gz\nExtracting /usr/lib/deep-learning/examples/tfos/mnist/t10k-labels-idx1-ubyte.gz\nimages.shape: (10000, 28, 28, 1)\nlabels.shape: (10000, 10)\n17/12/28 06:17:20 Thread-4 INFO SparkContext: Starting job: take at SerDeUtil.scala:233\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Got job 2 (take at SerDeUtil.scala:233) with 1 output partitions\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Final stage: ResultStage 2 (take at SerDeUtil.scala:233)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Parents of final stage: List()\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Missing parents: List()\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[11] at mapPartitions at SerDeUtil.scala:148), which has no missing parents\n17/12/28 06:17:20 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 5.7 KB, free 4.1 GB)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 3.7 KB, free 4.1 GB)\n17/12/28 06:17:20 dispatcher-event-loop-1 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.184.236.203:37757 (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO SparkContext: Created broadcast 2 from broadcast at DAGScheduler.scala:1032\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[11] at mapPartitions at SerDeUtil.scala:148) (first 15 tasks are for partitions Vector(0))\n17/12/28 06:17:20 dag-scheduler-event-loop INFO YarnScheduler: Adding task set 2.0 with 1 tasks\n17/12/28 06:17:20 dispatcher-event-loop-7 WARN TaskSetManager: Stage 2 contains a task of very large size (957 KB). The maximum recommended task size is 100 KB.\n17/12/28 06:17:20 dispatcher-event-loop-7 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 11, 10.140.182.54, executor 2, partition 0, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:20 dispatcher-event-loop-3 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.140.182.54:38207 (size: 3.7 KB, free: 4.1 GB)\n17/12/28 06:17:20 task-result-getter-3 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 11) in 166 ms on 10.140.182.54 (executor 2) (1/1)\n17/12/28 06:17:20 task-result-getter-3 INFO YarnScheduler: Removed TaskSet 2.0, whose tasks have all completed, from pool \n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: ResultStage 2 (take at SerDeUtil.scala:233) finished in 0.167 s\n17/12/28 06:17:20 Thread-4 INFO DAGScheduler: Job 2 finished: take at SerDeUtil.scala:233, took 0.178695 s\n17/12/28 06:17:20 Thread-4 INFO deprecation: fs.default.name is deprecated. Instead, use fs.defaultFS\n17/12/28 06:17:20 Thread-4 INFO FileOutputCommitter: File Output Committer Algorithm version is 1\n17/12/28 06:17:20 Thread-4 INFO SparkContext: Starting job: runJob at SparkHadoopMapReduceWriter.scala:89\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Got job 3 (runJob at SparkHadoopMapReduceWriter.scala:89) with 10 output partitions\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Final stage: ResultStage 3 (runJob at SparkHadoopMapReduceWriter.scala:89)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Parents of final stage: List()\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Missing parents: List()\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at map at PythonHadoopUtil.scala:181), which has no missing parents\n17/12/28 06:17:20 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 78.2 KB, free 4.1 GB)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 27.6 KB, free 4.1 GB)\n17/12/28 06:17:20 dispatcher-event-loop-1 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.184.236.203:37757 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:17:20 dag-scheduler-event-loop INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1032\n17/12/28 06:17:20 dag-scheduler-event-loop INFO DAGScheduler: Submitting 10 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at map at PythonHadoopUtil.scala:181) (first 15 tasks are for partitions Vector(0, 1, 2, 3, 4, 5, 6, 7, 8, 9))\n17/12/28 06:17:20 dag-scheduler-event-loop INFO YarnScheduler: Adding task set 3.0 with 10 tasks\n17/12/28 06:17:20 dispatcher-event-loop-7 WARN TaskSetManager: Stage 3 contains a task of very large size (957 KB). The maximum recommended task size is 100 KB.\n17/12/28 06:17:20 dispatcher-event-loop-7 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 12, 10.138.195.160, executor 1, partition 0, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:20 dispatcher-event-loop-7 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 13, 10.140.182.54, executor 2, partition 1, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:20 dispatcher-event-loop-5 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.138.195.160:34569 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:17:20 dispatcher-event-loop-4 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.140.182.54:38207 (size: 27.6 KB, free: 4.1 GB)\n17/12/28 06:17:22 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 2.0 in stage 3.0 (TID 14, 10.138.195.160, executor 1, partition 2, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:22 task-result-getter-0 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 12) in 2052 ms on 10.138.195.160 (executor 1) (1/10)\n17/12/28 06:17:22 dispatcher-event-loop-6 INFO TaskSetManager: Starting task 3.0 in stage 3.0 (TID 15, 10.140.182.54, executor 2, partition 3, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:22 task-result-getter-1 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 13) in 2496 ms on 10.140.182.54 (executor 2) (2/10)\n17/12/28 06:17:22 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 4.0 in stage 3.0 (TID 16, 10.138.195.160, executor 1, partition 4, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:22 task-result-getter-2 INFO TaskSetManager: Finished task 2.0 in stage 3.0 (TID 14) in 469 ms on 10.138.195.160 (executor 1) (3/10)\n17/12/28 06:17:23 dispatcher-event-loop-6 INFO TaskSetManager: Starting task 5.0 in stage 3.0 (TID 17, 10.138.195.160, executor 1, partition 5, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:23 task-result-getter-3 INFO TaskSetManager: Finished task 4.0 in stage 3.0 (TID 16) in 465 ms on 10.138.195.160 (executor 1) (4/10)\n17/12/28 06:17:23 dispatcher-event-loop-3 INFO TaskSetManager: Starting task 6.0 in stage 3.0 (TID 18, 10.140.182.54, executor 2, partition 6, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:23 task-result-getter-0 INFO TaskSetManager: Finished task 3.0 in stage 3.0 (TID 15) in 499 ms on 10.140.182.54 (executor 2) (5/10)\n17/12/28 06:17:23 dispatcher-event-loop-1 INFO TaskSetManager: Starting task 7.0 in stage 3.0 (TID 19, 10.138.195.160, executor 1, partition 7, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:23 task-result-getter-1 INFO TaskSetManager: Finished task 5.0 in stage 3.0 (TID 17) in 475 ms on 10.138.195.160 (executor 1) (6/10)\n17/12/28 06:17:23 dispatcher-event-loop-6 INFO TaskSetManager: Starting task 8.0 in stage 3.0 (TID 20, 10.140.182.54, executor 2, partition 8, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:23 task-result-getter-2 INFO TaskSetManager: Finished task 6.0 in stage 3.0 (TID 18) in 479 ms on 10.140.182.54 (executor 2) (7/10)\n17/12/28 06:17:24 dispatcher-event-loop-5 INFO TaskSetManager: Starting task 9.0 in stage 3.0 (TID 21, 10.138.195.160, executor 1, partition 9, PROCESS_LOCAL, 980173 bytes)\n17/12/28 06:17:24 task-result-getter-3 INFO TaskSetManager: Finished task 7.0 in stage 3.0 (TID 19) in 454 ms on 10.138.195.160 (executor 1) (8/10)\n17/12/28 06:17:24 task-result-getter-0 INFO TaskSetManager: Finished task 8.0 in stage 3.0 (TID 20) in 506 ms on 10.140.182.54 (executor 2) (9/10)\n17/12/28 06:17:24 task-result-getter-1 INFO TaskSetManager: Finished task 9.0 in stage 3.0 (TID 21) in 467 ms on 10.138.195.160 (executor 1) (10/10)\n17/12/28 06:17:24 task-result-getter-1 INFO YarnScheduler: Removed TaskSet 3.0, whose tasks have all completed, from pool \n17/12/28 06:17:24 dag-scheduler-event-loop INFO DAGScheduler: ResultStage 3 (runJob at SparkHadoopMapReduceWriter.scala:89) finished in 4.376 s\n17/12/28 06:17:24 Thread-4 INFO DAGScheduler: Job 3 finished: runJob at SparkHadoopMapReduceWriter.scala:89, took 4.398041 s\n17/12/28 06:17:24 Thread-4 INFO BlobStoreMergePathsHelper: makeToDeleteAndToRenameLists: completed with status success in 14 ms\n17/12/28 06:17:24 Thread-4 INFO BlobStoreMergePathsHelper: renameFiles: completed in 7 ms\n17/12/28 06:17:24 Thread-4 INFO BlobStoreMergePathsHelper: parallelMergePaths: completed in 22 ms\n17/12/28 06:17:24 Thread-4 INFO BlobStoreMergePathsHelper: deleteWithRetries:  Took  2 ms and 2 iterations\n17/12/28 06:17:24 Thread-4 INFO SparkHadoopMapReduceWriter: Job job_20171228061720_0013 committed.\n17/12/28 06:17:29 main INFO SparkContext: sc.stop called from [SparkSubmit.successfulExitHook[success]]\n17/12/28 06:17:29 main INFO AbstractConnector: Stopped Spark@1bb54c56{HTTP/1.1,[http/1.1]}{0.0.0.0:4040}\n17/12/28 06:17:29 main INFO SparkUI: Stopped Spark web UI at http://10.184.236.203:4040\n17/12/28 06:17:29 SparkListenerBus INFO ExecutorAllocationManager: Existing executor 2 has been removed (new total is 1)\n17/12/28 06:17:29 SparkListenerBus INFO ExecutorAllocationManager: Existing executor 1 has been removed (new total is 0)\n17/12/28 06:17:29 Yarn application state monitor INFO YarnClientSchedulerBackend: Interrupting monitor thread\n17/12/28 06:17:29 main INFO YarnClientSchedulerBackend: Shutting down all executors\n17/12/28 06:17:29 dispatcher-event-loop-7 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: Sending StopAM(true) to AppMaster\n17/12/28 06:17:29 dispatcher-event-loop-6 INFO YarnSchedulerBackend$YarnDriverEndpoint: Asking each executor to shut down\n17/12/28 06:17:29 main INFO SchedulerExtensionServices: Stopping SchedulerExtensionServices\n(serviceOption\u003dNone,\n services\u003dList(),\n started\u003dfalse)\n17/12/28 06:17:29 main INFO YarnClientSchedulerBackend: Stopped\n17/12/28 06:17:29 main INFO JobProgressListener: Counters\u003dFileSystemCounters.S3N_BYTES_READ:0,FileSystemCounters.S3N_BYTES_WRITTEN:0,FileSystemCounters.S3N_RECORDS_READ:0,FileSystemCounters.S3N_RECORDS_WRITTEN:0,Job Counters.SQL_EXECUTION_COUNT:0\n17/12/28 06:17:29 dispatcher-event-loop-0 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!\n17/12/28 06:17:29 main INFO MemoryStore: MemoryStore cleared\n17/12/28 06:17:29 main INFO BlockManager: BlockManager stopped\n17/12/28 06:17:29 main INFO BlockManagerMaster: BlockManagerMaster stopped\n17/12/28 06:17:29 dispatcher-event-loop-6 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!\n17/12/28 06:17:29 main INFO SparkContext: Successfully stopped SparkContext\n17/12/28 06:17:29 Thread-1 INFO ShutdownHookManager: Shutdown hook called\n17/12/28 06:17:29 Thread-1 INFO ShutdownHookManager: Deleting directory /tmp/spark-5ea5b63f-ad93-4e82-aff8-a94d52fdfb90/pyspark-ce8542df-ff4b-4dec-8b9a-50e36356281d\n17/12/28 06:17:29 Thread-1 INFO ShutdownHookManager: Deleting directory /tmp/spark-5ea5b63f-ad93-4e82-aff8-a94d52fdfb90\n17/12/28 06:17:29 Thread-1 INFO ShutdownHookManager: Deleting directory /tmp/spark-bcd75de1-d88b-407d-9ddf-9f20e9c64f27\n17/12/28 06:17:29 Thread-1 INFO YarnScheduler$$anon$1: Invoing sc.stop from shutdown hook.\n17/12/28 06:17:29 Thread-1 INFO SparkContext: sc.stop called from [YarnClientClusterScheduler shutdown hook]\n17/12/28 06:17:29 Thread-1 INFO SparkContext: SparkContext already stopped.\n17/12/28 06:17:29 Asks YARN to kill this spark job INFO YarnClientImpl: Killed application application_1514440521907_0003\n"
+      },
+      "dateCreated": "Dec 25, 2017 4:15:55 PM",
+      "dateStarted": "Dec 28, 2017 6:07:55 AM",
+      "dateFinished": "Dec 28, 2017 6:17:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\nexport LD_LIBRARY_PATH\u003d/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64/jre/lib/amd64/server:$LD_LIBRARY_PATH",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 6:10:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514441361561_-1137784858",
+      "id": "20171228-060921_201869850_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 28, 2017 6:09:21 AM",
+      "dateStarted": "Dec 28, 2017 6:10:30 AM",
+      "dateFinished": "Dec 28, 2017 6:10:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\necho $LD_LIBRARY_PATH",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 6:10:49 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514441435373_-594211283",
+      "id": "20171228-061035_1905143372_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/java/jdk1.8.0_121/jre/lib/amd64:/usr/java/jdk1.8.0_121/jre/../lib/amd64:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/:/usr/java/jdk1.8.0_121//jre/lib/amd64/server:\n"
+      },
+      "dateCreated": "Dec 28, 2017 6:10:35 AM",
+      "dateStarted": "Dec 28, 2017 6:10:49 AM",
+      "dateFinished": "Dec 28, 2017 6:10:50 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\n\nfrom pyspark.context import SparkContext\nfrom pyspark.conf import SparkConf\n\nimport sys\nprint(sys.executable)\n\nimport argparse\nimport os\nimport numpy\nimport sys\nimport tensorflow as tf\nimport threading\nfrom datetime import datetime\n\nfrom tensorflowonspark import TFCluster",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:23:13 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514228606679_475062617",
+      "id": "20171225-190326_1095226201_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/python\n"
+      },
+      "dateCreated": "Dec 25, 2017 7:03:26 PM",
+      "dateStarted": "Dec 28, 2017 9:23:13 AM",
+      "dateFinished": "Dec 28, 2017 9:23:15 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514446450135_-149404172",
+      "id": "20171228-073410_1049259817_q_5TBT385ZWP1514218553",
+      "dateCreated": "Dec 28, 2017 7:34:10 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\necho $LD_LIBRARY_PATH",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 7:34:09 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514446440509_-1037804707",
+      "id": "20171228-073400_1850734434_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/java/jdk1.8.0_121/jre/lib/amd64:/usr/java/jdk1.8.0_121/jre/../lib/amd64:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/:/usr/java/jdk1.8.0_121//jre/lib/amd64/server:\n"
+      },
+      "dateCreated": "Dec 28, 2017 7:34:00 AM",
+      "dateStarted": "Dec 28, 2017 7:34:09 AM",
+      "dateFinished": "Dec 28, 2017 7:34:09 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def print_log(worker_num, arg):\n    print(\"{}: \".format(worker_num))\n    print(arg)\n\n\ndef map_fun(args, ctx):\n    from tensorflowonspark import TFNode\n    from datetime import datetime\n    import getpass\n    import math\n    import numpy\n    import os\n    import signal\n    import tensorflow as tf\n    import time\n\n    IMAGE_PIXELS \u003d 28\n    worker_num \u003d ctx.worker_num\n    job_name \u003d ctx.job_name\n    task_index \u003d ctx.task_index\n    cluster_spec \u003d ctx.cluster_spec\n    num_workers \u003d len(cluster_spec[\u0027worker\u0027])\n\n    # Delay PS nodes a bit, since workers seem to reserve GPUs more quickly/reliably (w/o conflict)\n    if job_name \u003d\u003d \"ps\":\n        time.sleep((worker_num + 1) * 5)\n\n    # Parameters\n    hidden_units \u003d 128\n    batch_size \u003d 100\n\n    # Get TF cluster and server instances\n    cluster, server \u003d TFNode.start_cluster_server(ctx, 1, args[\"rdma\"])\n\n    def read_csv_examples(image_dir, label_dir, batch_size\u003d100, num_epochs\u003dNone, task_index\u003dNone, num_workers\u003dNone):\n        print_log(worker_num, \"num_epochs: {0}\".format(num_epochs))\n        # Setup queue of csv image filenames\n        tf_record_pattern \u003d os.path.join(image_dir, \u0027part-*\u0027)\n        images \u003d tf.gfile.Glob(tf_record_pattern)\n        print_log(worker_num, \"images: {0}\".format(images))\n        image_queue \u003d tf.train.string_input_producer(\n            images, shuffle\u003dFalse, capacity\u003d1000, num_epochs\u003dnum_epochs, name\u003d\"image_queue\")\n\n        # Setup queue of csv label filenames\n        tf_record_pattern \u003d os.path.join(label_dir, \u0027part-*\u0027)\n        labels \u003d tf.gfile.Glob(tf_record_pattern)\n        print_log(worker_num, \"labels: {0}\".format(labels))\n        label_queue \u003d tf.train.string_input_producer(\n            labels, shuffle\u003dFalse, capacity\u003d1000, num_epochs\u003dnum_epochs, name\u003d\"label_queue\")\n\n        # Setup reader for image queue\n        img_reader \u003d tf.TextLineReader(name\u003d\"img_reader\")\n        _, img_csv \u003d img_reader.read(image_queue)\n        image_defaults \u003d [[1.0] for col in range(784)]\n        img \u003d tf.pack(tf.decode_csv(img_csv, image_defaults))\n        # Normalize values to [0,1]\n        norm \u003d tf.constant(255, dtype\u003dtf.float32, shape\u003d(784,))\n        image \u003d tf.div(img, norm)\n        print_log(worker_num, \"image: {0}\".format(image))\n\n        # Setup reader for label queue\n        label_reader \u003d tf.TextLineReader(name\u003d\"label_reader\")\n        _, label_csv \u003d label_reader.read(label_queue)\n        label_defaults \u003d [[1.0] for col in range(10)]\n        label \u003d tf.pack(tf.decode_csv(label_csv, label_defaults))\n        print_log(worker_num, \"label: {0}\".format(label))\n\n        # Return a batch of examples\n        return tf.train.batch([image, label], batch_size, num_threads\u003dargs[\"readers\"], name\u003d\"batch_csv\")\n\n    def read_tfr_examples(path, batch_size\u003d100, num_epochs\u003dNone, task_index\u003dNone, num_workers\u003dNone):\n        print_log(worker_num, \"num_epochs: {0}\".format(num_epochs))\n\n        # Setup queue of TFRecord filenames\n        tf_record_pattern \u003d os.path.join(path, \u0027part-*\u0027)\n        files \u003d tf.gfile.Glob(tf_record_pattern)\n        queue_name \u003d \"file_queue\"\n\n        # split input files across workers, if specified\n        if task_index is not None and num_workers is not None:\n            num_files \u003d len(files)\n            files \u003d files[task_index:num_files:num_workers]\n            queue_name \u003d \"file_queue_{0}\".format(task_index)\n\n        print_log(worker_num, \"files: {0}\".format(files))\n        file_queue \u003d tf.train.string_input_producer(\n            files, shuffle\u003dFalse, capacity\u003d1000, num_epochs\u003dnum_epochs, name\u003dqueue_name)\n\n        # Setup reader for examples\n        reader \u003d tf.TFRecordReader(name\u003d\"reader\")\n        _, serialized \u003d reader.read(file_queue)\n        feature_def \u003d {\u0027label\u0027: tf.FixedLenFeature(\n            [10], tf.int64), \u0027image\u0027: tf.FixedLenFeature([784], tf.int64)}\n        features \u003d tf.parse_single_example(serialized, feature_def)\n        norm \u003d tf.constant(255, dtype\u003dtf.float32, shape\u003d(784,))\n        image \u003d tf.div(tf.to_float(features[\u0027image\u0027]), norm)\n        print_log(worker_num, \"image: {0}\".format(image))\n        label \u003d tf.to_float(features[\u0027label\u0027])\n        print_log(worker_num, \"label: {0}\".format(label))\n\n        # Return a batch of examples\n        return tf.train.batch([image, label], batch_size, num_threads\u003dargs[\"readers\"], name\u003d\"batch\")\n\n    if job_name \u003d\u003d \"ps\":\n        server.join()\n    elif job_name \u003d\u003d \"worker\":\n        # Assigns ops to the local worker by default.\n        with tf.device(tf.train.replica_device_setter(\n                worker_device\u003d\"/job:worker/task:%d\" % task_index,\n                cluster\u003dcluster)):\n\n            # Variables of the hidden layer\n            hid_w \u003d tf.Variable(tf.truncated_normal([IMAGE_PIXELS * IMAGE_PIXELS, hidden_units],\n                                                    stddev\u003d1.0 / IMAGE_PIXELS), name\u003d\"hid_w\")\n            hid_b \u003d tf.Variable(tf.zeros([hidden_units]), name\u003d\"hid_b\")\n            tf.summary.histogram(\"hidden_weights\", hid_w)\n\n            # Variables of the softmax layer\n            sm_w \u003d tf.Variable(tf.truncated_normal([hidden_units, 10],\n                                                   stddev\u003d1.0 / math.sqrt(hidden_units)), name\u003d\"sm_w\")\n            sm_b \u003d tf.Variable(tf.zeros([10]), name\u003d\"sm_b\")\n            tf.summary.histogram(\"softmax_weights\", sm_w)\n\n            # Placeholders or QueueRunner/Readers for input data\n            num_epochs \u003d 1 if args[\"mode\"] \u003d\u003d \"inference\" else None if args[\"epochs\"] \u003d\u003d 0 else args[\"epochs\"]\n            index \u003d task_index if args[\"mode\"] \u003d\u003d \"inference\" else None\n            workers \u003d num_workers if args[\"mode\"] \u003d\u003d \"inference\" else None\n\n            if args[\"format\"] \u003d\u003d \"csv\":\n                images \u003d TFNode.hdfs_path(args[\"images\"], ctx.defaultFS, ctx.working_dir)\n                labels \u003d TFNode.hdfs_path(args[\"labels\"], ctx.defaultFS, ctx.working_dir)\n                x, y_ \u003d read_csv_examples(\n                    images, labels, 100, num_epochs, index, workers)\n            elif args[\"format\"] \u003d\u003d \"tfr\":\n                images \u003d TFNode.hdfs_path(args[\"images\"], ctx.defaultFS, ctx.working_dir)\n                x, y_ \u003d read_tfr_examples(\n                    images, 100, num_epochs, index, workers)\n            else:\n                raise(\"{0} format not supported for tf input mode\".format(\n                    args[\"format\"]))\n\n            x_img \u003d tf.reshape(x, [-1, IMAGE_PIXELS, IMAGE_PIXELS, 1])\n            tf.summary.image(\"x_img\", x_img)\n\n            hid_lin \u003d tf.nn.xw_plus_b(x, hid_w, hid_b)\n            hid \u003d tf.nn.relu(hid_lin)\n\n            y \u003d tf.nn.softmax(tf.nn.xw_plus_b(hid, sm_w, sm_b))\n\n            global_step \u003d tf.Variable(0)\n\n            loss \u003d -tf.reduce_sum(y_ * tf.log(tf.clip_by_value(y, 1e-10, 1.0)))\n            tf.summary.scalar(\"loss\", loss)\n            train_op \u003d tf.train.AdagradOptimizer(0.01).minimize(\n                loss, global_step\u003dglobal_step)\n\n            # Test trained model\n            label \u003d tf.argmax(y_, 1, name\u003d\"label\")\n            prediction \u003d tf.argmax(y, 1, name\u003d\"prediction\")\n            correct_prediction \u003d tf.equal(prediction, label)\n            accuracy \u003d tf.reduce_mean(\n                tf.cast(correct_prediction, tf.float32), name\u003d\"accuracy\")\n            tf.summary.scalar(\"acc\", accuracy)\n\n            saver \u003d tf.train.Saver()\n            summary_op \u003d tf.summary.merge_all()\n            init_op \u003d tf.global_variables_initializer()\n\n        # Create a \"supervisor\", which oversees the training process and stores model state into HDFS\n        logdir \u003d TFNode.hdfs_path(args[\"model\"], ctx.defaultFS, ctx.working_dir)\n        print(\"tensorflow model path: {0}\".format(logdir))\n\n        summary_writer \u003d TFNode.get_summary_writer(ctx)\n        \n        if args[\"mode\"] \u003d\u003d \"train\":\n            sv \u003d tf.train.Supervisor(is_chief\u003d(task_index \u003d\u003d 0),\n                                     logdir\u003dlogdir,\n                                     init_op\u003dinit_op,\n                                     summary_op\u003dNone,\n                                     saver\u003dsaver,\n                                     global_step\u003dglobal_step,\n                                     stop_grace_secs\u003d300,\n                                     save_model_secs\u003d10)\n        else:\n            sv \u003d tf.train.Supervisor(is_chief\u003d(task_index \u003d\u003d 0),\n                                     logdir\u003dlogdir,\n                                     summary_op\u003dNone,\n                                     saver\u003dsaver,\n                                     global_step\u003dglobal_step,\n                                     stop_grace_secs\u003d300,\n                                     save_model_secs\u003d0)\n            output_dir \u003d TFNode.hdfs_path(args[\"output\"], ctx.defaultFS, ctx.working_dir)\n            output_file \u003d tf.gfile.Open(\n                \"{0}/part-{1:05d}\".format(output_dir, worker_num), mode\u003d\u0027w\u0027)\n\n        # The supervisor takes care of session initialization, restoring from\n        # a checkpoint, and closing when done or an error occurs.\n        with sv.managed_session(server.target) as sess:\n            print(\"{0} session ready\".format(datetime.now().isoformat()))\n\n            # Loop until the supervisor shuts down or 1000000 steps have completed.\n            step \u003d 0\n            count \u003d 0\n            while not sv.should_stop() and step \u003c args[\"steps\"]:\n                # Run a training step asynchronously.\n                # See `tf.train.SyncReplicasOptimizer` for additional details on how to\n                # perform *synchronous* training.\n\n                # using QueueRunners/Readers\n                if args[\"mode\"] \u003d\u003d \"train\":\n                    if (step % 100 \u003d\u003d 0):\n                        print(\"{0} step: {1} accuracy: {2}\".format(\n                            datetime.now().isoformat(), step, sess.run(accuracy)))\n                    _, summary, step \u003d sess.run(\n                        [train_op, summary_op, global_step])\n                    if sv.is_chief:\n                        summary_writer.add_summary(summary, step)\n                else:  # args[\"mode\"] \u003d\u003d \"inference\"\n                    labels, pred, acc \u003d sess.run([label, prediction, accuracy])\n                    #print(\"label: {0}, pred: {1}\".format(labels, pred))\n                    print(\"acc: {0}\".format(acc))\n                    for i in range(len(labels)):\n                        count +\u003d 1\n                        output_file.write(\n                            \"{0} {1}\\n\".format(labels[i], pred[i]))\n                    print(\"count: {0}\".format(count))\n\n        if args[\"mode\"] \u003d\u003d \"inference\":\n            output_file.close()\n            # Delay chief worker from shutting down supervisor during inference, since it can load model, start session,\n            # run inference and request stop before the other workers even start/sync their sessions.\n            if task_index \u003d\u003d 0:\n                time.sleep(60)\n\n        # Ask for all the services to stop.\n        print(\"{0} stopping supervisor\".format(datetime.now().isoformat()))\n        sv.stop()",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:23:22 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514231345671_-693348105",
+      "id": "20171225-194905_967595234_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 25, 2017 7:49:05 PM",
+      "dateStarted": "Dec 28, 2017 9:23:22 AM",
+      "dateFinished": "Dec 28, 2017 9:23:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "num_executors \u003d 2\nnum_ps \u003d 1\n\nargs \u003d {\"epochs\": 1,\n        \"format\": \"tfr\",\n        \"images\":\"/deep-learning/examples/tfos/mnist_data/tfr/train\",\n        \"labels\": None,\n        \"model\": \"mnist_model\",\n        \"cluster_size\": num_executors,\n        \"output\": \"predictions\",\n        \"readers\": 1,\n        \"steps\": 1000,\n        \"mode\": \"train\",\n        \"rdma\": False\n        }\n\nprint(\"{0} \u003d\u003d\u003d\u003d\u003d Start\".format(datetime.now().isoformat()))\ncluster \u003d TFCluster.run(sc, map_fun, args, args[\"cluster_size\"],\n                        num_ps, TFCluster.InputMode.TENSORFLOW)\ncluster.shutdown()\n\nprint(\"{0} \u003d\u003d\u003d\u003d\u003d Stop\".format(datetime.now().isoformat()))",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:23:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 2,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0017/jobs/job?spark\u003dtrue\u0026id\u003d2",
+            "numTasks": 1,
+            "numCompletedTasks": 1,
+            "stages": [
+              {
+                "id": 2,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0017/stages/stage/?id\u003d2\u0026attempt\u003d0",
+                "numCompleteTasks": 1,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 1
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 1,
+        "numTasks": 1,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514231275467_-910220603",
+      "id": "20171225-194755_2015858841_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "2017-12-28T09:23:28.362021 \u003d\u003d\u003d\u003d\u003d Start\n2017-12-28 09:23:28,362 INFO (MainThread-5992) Reserving TFSparkNodes.\n\n2017-12-28 09:23:28,364 INFO (MainThread-5992) listening for reservations at (\u0027ip-10-16-178-17\u0027, 35013)\n\n2017-12-28 09:23:28,366 INFO (MainThread-5992) Starting TensorFlow on executors\n\n2017-12-28 09:23:28,383 INFO (MainThread-5992) Waiting for TFSparkNodes to start\n\n2017-12-28 09:23:28,384 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:29,387 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:30,389 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:31,391 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:32,393 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:33,395 INFO (MainThread-5992) waiting for 2 reservations\n\n2017-12-28 09:23:34,398 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:35,400 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:36,401 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:37,404 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:38,406 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:39,407 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:40,410 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:41,412 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:42,414 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:43,416 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:44,418 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:45,420 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:46,422 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:47,424 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:48,426 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:49,428 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:50,430 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:51,433 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:52,435 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:53,437 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:54,439 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:55,441 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:56,443 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:57,445 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:58,447 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:23:59,449 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:00,451 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:01,453 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:02,455 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:03,457 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:04,459 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:05,461 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:06,463 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:07,466 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:08,468 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:09,470 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:10,472 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:11,474 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:12,476 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:13,478 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:14,480 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:15,482 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:16,484 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:17,486 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:18,488 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:19,490 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:20,492 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:21,494 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:22,496 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:23,498 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:24,500 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:25,502 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:26,504 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:27,506 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:28,508 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:29,510 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:30,512 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:31,514 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:32,516 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:33,518 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:34,520 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:35,522 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:36,524 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:37,526 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:38,527 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:39,529 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:40,531 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:41,533 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:42,535 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:43,537 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:44,540 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:45,542 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:46,544 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:47,546 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:48,548 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:49,550 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:50,552 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:51,554 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:52,556 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:53,558 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:54,560 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:55,562 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:56,565 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:57,567 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:58,568 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:24:59,570 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:00,572 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:01,574 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:02,576 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:03,578 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:04,580 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:05,582 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:06,583 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:07,586 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:08,588 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:09,590 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:10,592 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:11,594 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:12,596 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:13,597 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:14,599 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:15,602 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:16,604 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:17,606 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:18,608 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:19,610 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:20,612 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:21,614 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:22,616 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:23,618 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:24,620 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:25,622 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:26,623 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:27,625 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:28,627 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:29,629 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:30,631 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:31,633 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:32,635 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:33,637 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:34,639 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:35,641 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:36,643 INFO (MainThread-5992) waiting for 1 reservations\n\n2017-12-28 09:25:37,645 INFO (MainThread-5992) all reservations completed\n\n2017-12-28 09:25:37,646 INFO (MainThread-5992) All TFSparkNodes started\n\n2017-12-28 09:25:37,647 INFO (MainThread-5992) {\u0027host\u0027: \u0027ip-10-138-195-160\u0027, \u0027addr\u0027: (\u0027ip-10-138-195-160\u0027, 43219), \u0027worker_num\u0027: 0, \u0027task_index\u0027: 0, \u0027job_name\u0027: \u0027ps\u0027, \u0027authkey\u0027: b\u0027\\xae\\x8f\\x8dp\\xa2\\xdcJB\\x9d\\xc3\\r\\x8e+\\x1d\\xf7\\xd9\u0027, \u0027port\u0027: 42935, \u0027ppid\u0027: 4614}\n\n2017-12-28 09:25:37,647 INFO (MainThread-5992) {\u0027host\u0027: \u0027ip-10-93-184-101\u0027, \u0027addr\u0027: \u0027/tmp/pymp-bcdpo_4w/listener-o1aic10r\u0027, \u0027worker_num\u0027: 1, \u0027task_index\u0027: 0, \u0027job_name\u0027: \u0027worker\u0027, \u0027authkey\u0027: b\u0027\\xf6\\xa3\\xa9\\x7f\\xb1\\xb6M,\\x99r\\xfa\\xf6oXJ\\xce\u0027, \u0027port\u0027: 43737, \u0027ppid\u0027: 1875}\n\n2017-12-28 09:25:37,648 INFO (MainThread-5992) Stopping TensorFlow nodes\n\n2017-12-28 09:29:17,374 INFO (MainThread-5992) Shutting down cluster\n\n2017-12-28T09:29:22.826088 \u003d\u003d\u003d\u003d\u003d Stop\n"
+      },
+      "dateCreated": "Dec 25, 2017 7:47:55 PM",
+      "dateStarted": "Dec 28, 2017 9:23:28 AM",
+      "dateFinished": "Dec 28, 2017 9:29:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%knitr",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 7:56:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/r"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514231533734_1028127387",
+      "id": "20171225-195213_1718542748_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003cscript type\u003d\"text/javascript\"\u003e\nwindow.onload \u003d function() {\n  var imgs \u003d document.getElementsByTagName(\u0027img\u0027), i, img;\n  for (i \u003d 0; i \u003c imgs.length; i++) {\n    img \u003d imgs[i];\n    // center an image if it is the only element of its parent\n    if (img.parentElement.childElementCount \u003d\u003d\u003d 1)\n      img.parentElement.style.textAlign \u003d \u0027center\u0027;\n  }\n};\n\u003c/script\u003e"
+      },
+      "dateCreated": "Dec 25, 2017 7:52:13 PM",
+      "dateStarted": "Dec 28, 2017 7:56:19 AM",
+      "dateFinished": "Dec 28, 2017 7:56:42 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nimport sys.process._\nsys.env(\"LD_LIBRARY_PATH\")",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 8:53:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514446704507_667000701",
+      "id": "20171228-073824_1818877258_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\nimport sys.process._\n\nres13: String \u003d /usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/java/jdk1.8.0_121/jre/lib/amd64:/usr/java/jdk1.8.0_121/jre/../lib/amd64:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/:/usr/java/jdk1.8.0_121//jre/lib/amd64/server:/media/ephemeral0/yarn/local/usercache/root/appcache/application_1514440521907_0011/container_1514440521907_0011_01_000001:/usr/lib/hadoop2/lib/native:/usr/lib/hadoop2/lib/native\n"
+      },
+      "dateCreated": "Dec 28, 2017 7:38:24 AM",
+      "dateStarted": "Dec 28, 2017 8:53:37 AM",
+      "dateFinished": "Dec 28, 2017 8:53:38 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nprint(sc.parallelize(1 to 10).map(x \u003d\u003e sys.env(\"LD_LIBRARY_PATH\")).collect)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:09:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 1,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0015/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "numTasks": 2,
+            "numCompletedTasks": 2,
+            "stages": [
+              {
+                "id": 1,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0015/stages/stage/?id\u003d1\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 2,
+        "numTasks": 2,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514451012304_-1648109528",
+      "id": "20171228-085012_14013020_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "[Ljava.lang.String;@53e18e1e"
+      },
+      "dateCreated": "Dec 28, 2017 8:50:12 AM",
+      "dateStarted": "Dec 28, 2017 9:09:30 AM",
+      "dateFinished": "Dec 28, 2017 9:09:34 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nvar a \u003d sc.parallelize(1 to 10).map(x \u003d\u003e sys.env(\"LD_LIBRARY_PATH\")).collect\na.foreach(println)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:22:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 0,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0017/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "numTasks": 2,
+            "numCompletedTasks": 2,
+            "stages": [
+              {
+                "id": 0,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0017/stages/stage/?id\u003d0\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 2,
+        "numTasks": 2,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514451576545_1901042544",
+      "id": "20171228-085936_1984757508_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "a: Array[String] \u003d Array(/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/, /usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/, /usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/, /usr.../usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n/usr/java/jdk1.8.0_60/jre/lib/amd64/server:/usr/java/jdk1.8.0_60/jre/lib/amd64:/usr/java/jdk1.8.0_60/jre/../lib/amd64:/usr/java/jdk1.8.0_121/jre/lib/amd64/server:/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/\n"
+      },
+      "dateCreated": "Dec 28, 2017 8:59:36 AM",
+      "dateStarted": "Dec 28, 2017 9:22:03 AM",
+      "dateFinished": "Dec 28, 2017 9:22:21 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nvar a \u003d sc.parallelize(1 to 10).map(x \u003d\u003e sys.env(\"JAVA_HOME\")).collect\na.foreach(println)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "Dec 28, 2017 9:12:50 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 3,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0015/jobs/job?spark\u003dtrue\u0026id\u003d3",
+            "numTasks": 2,
+            "numCompletedTasks": 2,
+            "stages": [
+              {
+                "id": 3,
+                "completed": true,
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.184.236.203%3A8088%2Fproxy%2Fapplication_1514440521907_0015/stages/stage/?id\u003d3\u0026attempt\u003d0",
+                "numCompleteTasks": 2,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 2
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 2,
+        "numTasks": 2,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514452339321_-636901884",
+      "id": "20171228-091219_1495025578_q_5TBT385ZWP1514218553",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\na: Array[String] \u003d Array(/usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre, /usr/lib/jvm/jre)\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n/usr/lib/jvm/jre\n"
+      },
+      "dateCreated": "Dec 28, 2017 9:12:19 AM",
+      "dateStarted": "Dec 28, 2017 9:12:50 AM",
+      "dateFinished": "Dec 28, 2017 9:12:50 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1514452370008_2050446590",
+      "id": "20171228-091250_1648118415_q_5TBT385ZWP1514218553",
+      "dateCreated": "Dec 28, 2017 9:12:50 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "tfos-123",
+  "id": "5TBT385ZWP1514218553",
+  "angularObjects": {
+    "2D2UMTTR2908091514218062746:shared_process": [],
+    "2D2PFYJAZ908091513686260888:shared_process": [],
+    "2D4P2XYGK908091513686260883:shared_process": [],
+    "2D4MZWX4B908091513686260880:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
