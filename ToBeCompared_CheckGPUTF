@@ -3,7 +3,7 @@
     {
       "text": "import tensorflow as tf\na \u003d tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape\u003d[2, 3], name\u003d\u0027a\u0027)\nb \u003d tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape\u003d[3, 2], name\u003d\u0027b\u0027)\nc \u003d tf.matmul(a, b)\n# Creates a session with log_device_placement set to True.\nsess \u003d tf.Session(config\u003dtf.ConfigProto(log_device_placement\u003dTrue))\n# Runs the op.\nprint(sess.run(c))",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 12, 2018 5:24:59 PM",
+      "dateUpdated": "Mar 13, 2018 10:25:32 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -34,19 +34,19 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "\n2018-03-12 17:28:14.138030: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX\n\n\n\n\n\n\n2018-03-12 17:28:21.606118: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:892] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero\n2018-03-12 17:28:21.606363: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties: \nname: GRID K520 major: 3 minor: 0 memoryClockRate(GHz): 0.797\npciBusID: 0000:00:03.0\ntotalMemory: 3.94GiB freeMemory: 3.90GiB\n2018-03-12 17:28:21.606385: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -\u003e (device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0)\n\n\n\n2018-03-12 17:28:21.668117: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n/job:localhost/replica:0/task:0/device:GPU:0 -\u003e device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0\n\n\n\n\n2018-03-12 17:28:22.060602: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 17:28:22.060639: I tensorflow/core/common_runtime/placer.cc:874] b: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 17:28:22.060649: I tensorflow/core/common_runtime/placer.cc:874] a: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n[[ 22.  28.]\n [ 49.  64.]]\n"
+        "msg": "\n2018-03-13 10:25:32.687439: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -\u003e (device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0)\n\n\n\n2018-03-13 10:25:32.687766: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n/job:localhost/replica:0/task:0/device:GPU:0 -\u003e device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0\n\n\n\n\n\n2018-03-13 10:25:32.689192: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689219: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689230: I tensorflow/core/common_runtime/placer.cc:874] b_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689238: I tensorflow/core/common_runtime/placer.cc:874] a_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n\n\n2018-03-13 10:25:32.689245: I tensorflow/core/common_runtime/placer.cc:874] b: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689253: I tensorflow/core/common_runtime/placer.cc:874] a: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n[[ 22.  28.]\n [ 49.  64.]]\n"
       },
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateStarted": "Mar 12, 2018 5:24:59 PM",
-      "dateFinished": "Mar 12, 2018 5:28:22 PM",
+      "dateStarted": "Mar 13, 2018 10:25:32 AM",
+      "dateFinished": "Mar 13, 2018 10:25:32 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking GPU for Tensorflow",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTF\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | head -n 1\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027device:GPU:\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTF\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027device:GPU:\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 6:52:14 AM",
+      "dateUpdated": "Mar 13, 2018 10:26:01 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -75,8 +75,8 @@
         "msg": "True\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 13, 2018 6:52:14 AM",
-      "dateFinished": "Mar 13, 2018 6:52:14 AM",
+      "dateStarted": "Mar 13, 2018 10:26:01 AM",
+      "dateFinished": "Mar 13, 2018 10:26:01 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -88,9 +88,9 @@
         "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1520864125600_-1707784166",
-      "id": "20180312-141525_1195087061_q_R99R7EGRET1520856401",
-      "dateCreated": "Mar 12, 2018 2:15:25 PM",
+      "jobName": "paragraph_1520935677056_1264518084",
+      "id": "20180313-100757_733552213_q_R99R7EGRET1520856401",
+      "dateCreated": "Mar 13, 2018 10:07:57 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
