@@ -1,0 +1,270 @@
+{
+  "paragraphs": [
+    {
+      "text": "sc.version",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:38:29 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520853033643_1911093790",
+      "id": "20180312-111033_742270263_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\u00272.1.1\u0027\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:10:33 AM",
+      "dateStarted": "Mar 13, 2018 6:38:29 AM",
+      "dateFinished": "Mar 13, 2018 6:38:29 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Version",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_MISC\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | head -n 1\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u00272.1.1\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:39:24 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520919090714_-1959041267",
+      "id": "20180313-053130_1983386289_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 13, 2018 5:31:30 AM",
+      "dateStarted": "Mar 13, 2018 6:38:30 AM",
+      "dateFinished": "Mar 13, 2018 6:38:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Python Version",
+      "text": "#ToBeCompared\nimport sys\na \u003d sys.version\n(\"3.5.3\") in a",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:39:12 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520853322296_-1251007468",
+      "id": "20180312-111522_1262041705_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:15:22 AM",
+      "dateStarted": "Mar 13, 2018 6:38:33 AM",
+      "dateFinished": "Mar 13, 2018 6:38:33 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Driver on slave",
+      "text": "%sh\n#ToBeCompared\nab\u003d$(jps -m | grep -e \u0027spark\u0027 | wc -l)\nif [ $ab -eq 0 ];\nthen \n    echo True\nelse\n    echo False\nfi\npython \u003c\u003c END\nimport subprocess\na \u003d subprocess.check_output(\"jps -m | grep -e \u0027spark\u0027 | wc -l\", shell\u003dTrue, stderr\u003dsubprocess.STDOUT)\nif a\u003e0:\n    print(True)\nelse:\n    print(False)\nEND",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:47:19 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520852814421_879811851",
+      "id": "20180312-110654_142985358_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\nTrue\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:06:54 AM",
+      "dateStarted": "Mar 13, 2018 6:47:19 AM",
+      "dateFinished": "Mar 13, 2018 6:47:20 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark interpreter properties",
+      "text": "a \u003d sc.getConf().get(\"spark.executor.memory\")\nimport subprocess\nb \u003d subprocess.check_output(\"curl http://169.254.169.254/latest/meta-data/instance-type 2\u003e /dev/null\" , shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d str(b, \u0027utf-8\u0027)\nif b \u003d\u003d \"g2.2xlarge\":\n    if a \u003d\u003d \"8g\":\n        print(True)\n    else:\n        print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:47:14 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520853405372_134027276",
+      "id": "20180312-111645_674020846_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:16:45 AM",
+      "dateStarted": "Mar 13, 2018 6:47:14 AM",
+      "dateFinished": "Mar 13, 2018 6:47:14 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check node bootstrap",
+      "text": "%sh\nif [ -e test_nb_present ];\nthen \n    echo \u0027True\u0027\nelse\n    echo \u0027False\u0027\nfi\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 9:36:05 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520923332899_2107483338",
+      "id": "20180313-064212_1939652537_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 13, 2018 6:42:12 AM",
+      "dateStarted": "Mar 13, 2018 9:36:05 AM",
+      "dateFinished": "Mar 13, 2018 9:36:05 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520933814743_-837231052",
+      "id": "20180313-093654_2066338506_q_6YZPNAP9BR1520832761",
+      "dateCreated": "Mar 13, 2018 9:36:54 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "ToBeCompared_MISC",
+  "id": "6YZPNAP9BR1520832761",
+  "angularObjects": {
+    "2D5ZANCQ1946841516796256905:shared_process": [],
+    "2D4AD5YJF946841516796067432:shared_process": [],
+    "2D3SKE2U8946841516796067437:shared_process": [],
+    "2D6RCD76A946841516796067428:shared_process": [],
+    "2D9ZBDJPN946841520851003485:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
