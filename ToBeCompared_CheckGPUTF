@@ -43,9 +43,10 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "title": "Checking GPU for Tensorflow",
       "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTF\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | head -n 1\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027device:GPU:\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 12, 2018 2:20:42 PM",
+      "dateUpdated": "Mar 13, 2018 6:52:14 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -58,7 +59,8 @@
           "scatter": {}
         },
         "enabled": true,
-        "editorMode": "ace/mode/sh"
+        "editorMode": "ace/mode/sh",
+        "title": true
       },
       "settings": {
         "params": {},
@@ -73,8 +75,8 @@
         "msg": "True\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 12, 2018 2:20:42 PM",
-      "dateFinished": "Mar 12, 2018 2:20:42 PM",
+      "dateStarted": "Mar 13, 2018 6:52:14 AM",
+      "dateFinished": "Mar 13, 2018 6:52:14 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
