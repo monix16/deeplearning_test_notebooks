@@ -3,7 +3,7 @@
     {
       "text": "import os\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027CPU\u0027)\nelse:\n    print(\u0027GPU\u0027)",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 12, 2018 5:27:03 PM",
+      "dateUpdated": "Mar 13, 2018 5:29:57 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -32,20 +32,21 @@
       "jobName": "paragraph_1520856402732_179810980",
       "id": "20180312-120642_669605594_q_8R9BYYSSWG1520875577",
       "result": {
-        "code": "SUCCESS",
+        "code": "ERROR",
         "type": "TEXT",
-        "msg": "\n2018-03-12 14:19:26.458427: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -\u003e (device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0)\n\n\n\n2018-03-12 14:19:26.458739: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n/job:localhost/replica:0/task:0/device:GPU:0 -\u003e device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0\n\n\n\n2018-03-12 14:19:26.460932: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 14:19:26.460961: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n\n\n\n\n2018-03-12 14:19:26.460975: I tensorflow/core/common_runtime/placer.cc:874] b_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 14:19:26.460984: I tensorflow/core/common_runtime/placer.cc:874] a_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 14:19:26.460991: I tensorflow/core/common_runtime/placer.cc:874] b: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-12 14:19:26.460999: I tensorflow/core/common_runtime/placer.cc:874] a: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n[[ 22.  28.]\n [ 49.  64.]]\n"
+        "msg": "Traceback (most recent call last):\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configdefaults.py\", line 1738, in filter_compiledir\n    os.makedirs(path, 0o770)  # read-write-execute for user and group\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/os.py\", line 231, in makedirs\n    makedirs(head, mode, exist_ok)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/os.py\", line 241, in makedirs\n    mkdir(name, mode)\nPermissionError: [Errno 13] Permission denied: \u0027/home/.theano\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2055145354582191069.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/__init__.py\", line 66, in \u003cmodule\u003e\n    from theano.compile import (\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/__init__.py\", line 10, in \u003cmodule\u003e\n    from theano.compile.function_module import *\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 21, in \u003cmodule\u003e\n    import theano.compile.mode\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/mode.py\", line 10, in \u003cmodule\u003e\n    import theano.gof.vm\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/vm.py\", line 662, in \u003cmodule\u003e\n    from . import lazylinker_c\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/lazylinker_c.py\", line 42, in \u003cmodule\u003e\n    location \u003d os.path.join(config.compiledir, \u0027lazylinker_ext\u0027)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configparser.py\", line 333, in __get__\n    self.__set__(cls, val_str)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configparser.py\", line 344, in __set__\n    self.val \u003d self.filter(val)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configdefaults.py\", line 1745, in filter_compiledir\n    \" \u0027%s\u0027. Check the permissions.\" % path)\nValueError: Unable to create the compiledir directory \u0027/home/.theano/compiledir_Linux-4.9-amzn1.x86_64-x86_64-with-glibc2.2.5-x86_64-3.5.3-64\u0027. Check the permissions.\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2055145354582191069.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configdefaults.py\", line 1738, in filter_compiledir\n    os.makedirs(path, 0o770)  # read-write-execute for user and group\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/os.py\", line 231, in makedirs\n    makedirs(head, mode, exist_ok)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/os.py\", line 241, in makedirs\n    mkdir(name, mode)\nPermissionError: [Errno 13] Permission denied: \u0027/home/.theano\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-2055145354582191069.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/__init__.py\", line 66, in \u003cmodule\u003e\n    from theano.compile import (\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/__init__.py\", line 10, in \u003cmodule\u003e\n    from theano.compile.function_module import *\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 21, in \u003cmodule\u003e\n    import theano.compile.mode\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/mode.py\", line 10, in \u003cmodule\u003e\n    import theano.gof.vm\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/vm.py\", line 662, in \u003cmodule\u003e\n    from . import lazylinker_c\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/lazylinker_c.py\", line 42, in \u003cmodule\u003e\n    location \u003d os.path.join(config.compiledir, \u0027lazylinker_ext\u0027)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configparser.py\", line 333, in __get__\n    self.__set__(cls, val_str)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configparser.py\", line 344, in __set__\n    self.val \u003d self.filter(val)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/configdefaults.py\", line 1745, in filter_compiledir\n    \" \u0027%s\u0027. Check the permissions.\" % path)\nValueError: Unable to create the compiledir directory \u0027/home/.theano/compiledir_Linux-4.9-amzn1.x86_64-x86_64-with-glibc2.2.5-x86_64-3.5.3-64\u0027. Check the permissions.\n\n"
       },
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateStarted": "Mar 12, 2018 2:19:26 PM",
-      "dateFinished": "Mar 12, 2018 2:19:26 PM",
-      "status": "FINISHED",
+      "dateStarted": "Mar 13, 2018 5:29:57 AM",
+      "dateFinished": "Mar 13, 2018 5:30:37 AM",
+      "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
+      "title": "Checking GPU for Theano",
       "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTheano\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | head -n 1\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 5:24:57 AM",
+      "dateUpdated": "Mar 13, 2018 6:50:30 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -58,7 +59,8 @@
           "scatter": {}
         },
         "enabled": true,
-        "editorMode": "ace/mode/sh"
+        "editorMode": "ace/mode/sh",
+        "title": true
       },
       "settings": {
         "params": {},
@@ -70,11 +72,11 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "True\n"
+        "msg": "False\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 12, 2018 2:20:42 PM",
-      "dateFinished": "Mar 12, 2018 2:20:42 PM",
+      "dateStarted": "Mar 13, 2018 5:31:08 AM",
+      "dateFinished": "Mar 13, 2018 5:31:08 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
