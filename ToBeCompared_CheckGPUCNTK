@@ -44,9 +44,9 @@
     },
     {
       "title": "Checking GPU for CNTK",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUCNTK\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | head -n 1\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_CheckGPUCNTK\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/ | grep \u0027name\\\":\u0027\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 6:51:20 AM",
+      "dateUpdated": "Mar 13, 2018 9:59:21 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -75,8 +75,8 @@
         "msg": "False\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 13, 2018 6:51:20 AM",
-      "dateFinished": "Mar 13, 2018 6:51:20 AM",
+      "dateStarted": "Mar 13, 2018 9:59:21 AM",
+      "dateFinished": "Mar 13, 2018 9:59:21 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -88,9 +88,9 @@
         "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1520864125600_-1707784166",
-      "id": "20180312-141525_1195087061_q_VXCMWPEEYV1520875709",
-      "dateCreated": "Mar 12, 2018 2:15:25 PM",
+      "jobName": "paragraph_1520930615484_1914363386",
+      "id": "20180313-084335_1054477293_q_VXCMWPEEYV1520875709",
+      "dateCreated": "Mar 13, 2018 8:43:35 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
