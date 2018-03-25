@@ -170,3 +170,7 @@ variational_autoencoder_deconv_KERAS_TENSORFLOW:
  nb_name : variational_autoencoder_deconv_KERAS_TENSORFLOW
 TFOS:
  nb_name : TFOS
+ interpreter_settings : 
+  spark.dynamicAllocation.enabled : true
+  spark.executor.instances : 1
+  spark.qubole.max.executors : 1
