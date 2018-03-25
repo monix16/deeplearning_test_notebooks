@@ -1,4 +1,11 @@
 CIFAR10_CNN_PYTORCH1:
  nb_name : CIFAR10_CNN_PYTORCH
+TFOS:
+ nb_name : TFOS
+ interpreter_settings :
+  spark.dynamicAllocation.enabled : true
+  spark.executor.instances : 1
+  spark.qubole.max.executors : 1
 MNIST_MXNET1:
  nb_name : MNIST_MXNET
+
