@@ -2,14 +2,8 @@ CHECK_SPARK_VERSION:
  nb_name: CHECK_SPARK_VERSION
  cluster_label: spark_cluster_2
  interpreter_settings:
-cluster_configs:
- - sparkcluster:
-    spark_version: 2.1-latest
-    flavor: spark
-    master_instance_type: c1.xlarge
-    slave_instance_type: c1.xlarge 
  - spark_cluster_2:
     spark_version: 2.2-latest
     flavor: spark
-    master_instance_type: c1.xlarge 
-    slave_instance_type: c1.xlarge 
+    master_instance_type: m3.xlarge
+    slave_instance_type: m3.xlarge
