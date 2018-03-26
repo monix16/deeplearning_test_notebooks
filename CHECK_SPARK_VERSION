@@ -1,0 +1,68 @@
+{
+  "paragraphs": [
+    {
+      "text": "sc.version",
+      "user": "kundank+1@qubole.com",
+      "dateUpdated": "Mar 26, 2018 11:36:56 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1522064131657_-490395496",
+      "id": "20180326-113531_2020238769_q_VSEPV1JN9Q1522064130",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "java.lang.IllegalArgumentException: requirement failed: Config entry spark.sql.qubole.metrics.enable already registered!\n\tat scala.Predef$.require(Predef.scala:224)\n\tat org.apache.spark.internal.config.ConfigEntry$.registerEntry(ConfigEntry.scala:156)\n\tat org.apache.spark.internal.config.ConfigEntry.\u003cinit\u003e(ConfigEntry.scala:58)\n\tat org.apache.spark.internal.config.ConfigEntryWithDefault.\u003cinit\u003e(ConfigEntry.scala:79)\n\tat org.apache.spark.internal.config.TypedConfigBuilder.createWithDefault(ConfigBuilder.scala:125)\n\tat org.apache.spark.internal.config.package$.\u003cinit\u003e(package.scala:263)\n\tat org.apache.spark.internal.config.package$.\u003cclinit\u003e(package.scala)\n\tat org.apache.spark.SparkContext.\u003cinit\u003e(SparkContext.scala:471)\n\tat org.apache.spark.SparkContext$.getOrCreate(SparkContext.scala:2557)\n\tat org.apache.spark.sql.SparkSession$Builder$$anonfun$8.apply(SparkSession.scala:888)\n\tat org.apache.spark.sql.SparkSession$Builder$$anonfun$8.apply(SparkSession.scala:880)\n\tat scala.Option.getOrElse(Option.scala:121)\n\tat org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:880)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:60)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:45)\n\tat org.apache.zeppelin.spark.SparkInterpreter.createSparkSession(SparkInterpreter.java:489)\n\tat org.apache.zeppelin.spark.SparkInterpreter.getSparkSession(SparkInterpreter.java:363)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:1025)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:74)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:108)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:421)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:195)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n"
+      },
+      "dateCreated": "Mar 26, 2018 11:35:31 AM",
+      "dateSubmitted": "Mar 26, 2018 11:36:56 AM",
+      "dateStarted": "Mar 26, 2018 11:36:59 AM",
+      "dateFinished": "Mar 26, 2018 11:37:04 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1522064166659_-263580824",
+      "id": "20180326-113606_1627845702_q_VSEPV1JN9Q1522064130",
+      "dateCreated": "Mar 26, 2018 11:36:06 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "check_spark_version",
+  "id": "VSEPV1JN9Q1522064130",
+  "angularObjects": {
+    "2D8R6GSNR258261519107801593:shared_process": [],
+    "2D6V8YDS1258261519107801598:shared_process": [],
+    "2D7W3H4GH258261519107801603:shared_process": [],
+    "2DBWPNHCJ258261522064201493:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
