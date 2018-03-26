@@ -12,11 +12,11 @@ MNIST_MXNET1:
 cluster_configs:
  - deep_learning_cluster:
     spark_version: 2.1-latest
-    flavor: deeplearning
-    master_instance_type: g2.2xlarge
-    slave_instance_type: g2.2xlarge
+    flavor: spark
+    master_instance_type: c1.xlarge
+    slave_instance_type: c1.xlarge 
  - deep_learning_cluster2:
     spark_version: 2.2-latest
-    flavor: deeplearning
-    master_instance_type: g2.2xlarge
-    slave_instance_type: g2.2xlarge 
+    flavor: spark
+    master_instance_type: c1.xlarge 
+    slave_instance_type: c1.xlarge 
