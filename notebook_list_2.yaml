@@ -15,7 +15,7 @@ cluster_configs :
     flavor : deeplearning
     master_instance_type : g2.2xlarge
     slave_instance_type : g2.2xlarge
-- deep_learning_cluster2 :
+ - deep_learning_cluster2 :
     spark_version : 2.2-latest
     flavor : deeplearning
     master_instance_type : g2.2xlarge
