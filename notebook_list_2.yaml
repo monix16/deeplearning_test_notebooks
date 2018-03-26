@@ -1,22 +1,22 @@
 CIFAR10_CNN_PYTORCH1:
- nb_name : CIFAR10_CNN_PYTORCH
- cluster_label : deep_learning_cluster
- interpreter_settings :
+ nb_name: CIFAR10_CNN_PYTORCH
+ cluster_label: deep_learning_cluster
+ interpreter_settings:
 mnist_transfer_cnn:
  nb_name : mnist_transfer_cnn
- interpreter_settings :
- cluster_label : deep_learning_cluster
+ interpreter_settings:
+ cluster_label: deep_learning_cluster
 MNIST_MXNET1:
- nb_name : MNIST_MXNET
- cluster_label : deep_learning_cluster
-cluster_configs :
- - deep_learning_cluster :
-    spark_version : 2.1-latest
-    flavor : deeplearning
-    master_instance_type : g2.2xlarge
-    slave_instance_type : g2.2xlarge
- - deep_learning_cluster2 :
-    spark_version : 2.2-latest
-    flavor : deeplearning
-    master_instance_type : g2.2xlarge
-    slave_instance_type : g2.2xlarge 
+ nb_name: MNIST_MXNET
+ cluster_label: deep_learning_cluster
+cluster_configs:
+ - deep_learning_cluster:
+    spark_version: 2.1-latest
+    flavor: deeplearning
+    master_instance_type: g2.2xlarge
+    slave_instance_type: g2.2xlarge
+ - deep_learning_cluster2:
+    spark_version: 2.2-latest
+    flavor: deeplearning
+    master_instance_type: g2.2xlarge
+    slave_instance_type: g2.2xlarge 
