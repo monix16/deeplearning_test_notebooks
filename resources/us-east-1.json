@@ -1,0 +1,34 @@
+{
+    "cloud_config": {
+        "compute_config": {
+            "use_account_compute_creds": true
+        },
+        "location": {
+            "aws_region": "us-east-1",
+            "aws_availability_zone": "Any"
+        }
+    },
+    "cluster_info": {
+        "master_instance_type": "g2.2xlarge",
+        "slave_instance_type": "g2.2xlarge",
+        "min_nodes": 1,
+        "max_nodes": 2,
+        "slave_request_type": "spot",
+        "spot_settings": {
+            "spot_instance_settings": {
+                "maximum_bid_price_percentage": "100",
+                "timeout_for_request": "10",
+                "maximum_spot_instance_percentage": "100"
+            },
+			"stable_spot_bid_settings": {
+				"maximum_bid_price_percentage": "160",
+				"timeout_for_request": "10",
+                "stable_spot_fallback": true
+			}
+		}
+    },
+    "engine_config": {
+        "flavour": "deeplearning"
+    }
+}
+
