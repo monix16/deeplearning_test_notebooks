@@ -1,176 +1,208 @@
-CIFAR10_CNN_PYTORCH:
- nb_name : CIFAR10_CNN_PYTORCH
-MNIST_MXNET:
- nb_name : MNIST_MXNET
-CIFAR10_CNN:
- nb_name : CIFAR10_CNN
-CIFAR10_CNN_KERAS_TENSORFLOW:
- nb_name : CIFAR10_CNN_KERAS_TENSORFLOW
-CIFAR10_KERAS_TF_TB_CNN:
- nb_name : CIFAR10_KERAS_TF_TB_CNN
-CIFAR10_RESNET:
- nb_name : CIFAR10_RESNET
-CIFAR10_RESNET_KERAS_CNTK:
- nb_name : CIFAR10_RESNET_KERAS_CNTK
-CIFAR10_RESNET_KERAS_TENSORFLOW:
- nb_name : CIFAR10_RESNET_KERAS_TENSORFLOW
-IMDB_CNN_KERAS_TENSORFLOW:
- nb_name : IMDB_CNN_KERAS_TENSORFLOW
-IMDB_KERAS_TF_TB:
- nb_name : IMDB_KERAS_TF_TB
-IMDB_KERAS_TF_TB_LSTM:
- nb_name : IMDB_KERAS_TF_TB_LSTM
-IMDB_LSTM:
- nb_name : IMDB_LSTM
-IMDB_LSTM_KERAS_CNTK:
- nb_name : IMDB_LSTM_KERAS_CNTK
-IMDB_LSTM_KERAS_TENSORFLOW:
- nb_name : IMDB_LSTM_KERAS_TENSORFLOW
-MNIST_CNN:
- nb_name : MNIST_CNN
-MNIST_CNN_KERAS_CNTK:
- nb_name : MNIST_CNN_KERAS_CNTK
-MNIST_CNN_KERAS_TENSORFLOW:
- nb_name : MNIST_CNN_KERAS_TENSORFLOW
-MNIST_IRNN:
- nb_name : MNIST_IRNN
-MNIST_IRNN_KERAS_CNTK:
- nb_name : MNIST_IRNN_KERAS_CNTK
-MNIST_IRNN_KERAS_TENSORFLOW:
- nb_name : MNIST_IRNN_KERAS_TENSORFLOW
-MNIST_KERAS_TF_TB_CNN:
- nb_name : MNIST_KERAS_TF_TB_CNN
-MNIST_KERAS_TF_TB_IRNN:
- nb_name : MNIST_KERAS_TF_TB_IRNN
 addition_rnn:
- nb_name : addition_rnn
+ nb_name: addition_rnn
 addition_rnn_KERAS_CNTK:
- nb_name : addition_rnn_KERAS_CNTK
+ nb_name: addition_rnn_KERAS_CNTK
 addition_rnn_KERAS_TENSORFLOW:
- nb_name : addition_rnn_KERAS_TENSORFLOW
+ nb_name: addition_rnn_KERAS_TENSORFLOW
 antirectifier_custom_layer_mnist:
- nb_name : antirectifier_custom_layer_mnist
+ nb_name: antirectifier_custom_layer_mnist
 antirectifier_custom_layer_mnist_KERAS_CNTK:
- nb_name : antirectifier_custom_layer_mnist_KERAS_CNTK
+ nb_name: antirectifier_custom_layer_mnist_KERAS_CNTK
 antirectifier_custom_layer_mnist_KERAS_TENSORFLOW:
- nb_name : antirectifier_custom_layer_mnist_KERAS_TENSORFLOW
+ nb_name: antirectifier_custom_layer_mnist_KERAS_TENSORFLOW
 bAbI_KERAS_TF_TB_RNN:
- nb_name : bAbI_KERAS_TF_TB_RNN
-bAbI_RNN:
- nb_name : bAbI_RNN
-bAbI_RNN_KERAS_CNTK:
- nb_name : bAbI_RNN_KERAS_CNTK
-bAbI_RNN_KERAS_TENSORFLOW:
- nb_name : bAbI_RNN_KERAS_TENSORFLOW
+ nb_name: bAbI_KERAS_TF_TB_RNN
 bAbI_memnn:
- nb_name : bAbI_memnn
+ nb_name: bAbI_memnn
+bAbI_MEMNN_CNTK:
+ nb_name: bAbI_MEMNN_CNTK
 bAbI_memnn_KERAS_CNTK:
- nb_name : bAbI_memnn_KERAS_CNTK
+ nb_name: bAbI_memnn_KERAS_CNTK
 bAbI_memnn_KERAS_TENSORFLOW:
- nb_name : bAbI_memnn_KERAS_TENSORFLOW
+ nb_name: bAbI_memnn_KERAS_TENSORFLOW
+bAbI_RNN:
+ nb_name: bAbI_RNN
+bAbI_RNN_CNTK:
+ nb_name: bAbI_RNN_CNTK
+bAbI_RNN_KERAS_CNTK:
+ nb_name: bAbI_RNN_KERAS_CNTK
+bAbI_RNN_KERAS_TENSORFLOW:
+ nb_name: bAbI_RNN_KERAS_TENSORFLOW
+CHECK_SPARK_VERSION:
+ nb_name: CHECK_SPARK_VERSION
+CIFAR10_CNN:
+ nb_name: CIFAR10_CNN
+CIFAR10_CNN_KERAS_TENSORFLOW:
+ nb_name: CIFAR10_CNN_KERAS_TENSORFLOW
+CIFAR10_CNN_PYTORCH:
+ nb_name: CIFAR10_CNN_PYTORCH
+CIFAR10_KERAS_TF_TB_CNN:
+ nb_name: CIFAR10_KERAS_TF_TB_CNN
+CIFAR10_RESNET:
+ nb_name: CIFAR10_RESNET
+CIFAR10_RESNET_KERAS_CNTK:
+ nb_name: CIFAR10_RESNET_KERAS_CNTK
+CIFAR10_RESNET_KERAS_TENSORFLOW:
+ nb_name: CIFAR10_RESNET_KERAS_TENSORFLOW
+conv_filter_visualization:
+ nb_name: conv_filter_visualization
+conv_filter_visualization_KERAS_TENSORFLOW:
+ nb_name: conv_filter_visualization_KERAS_TENSORFLOW
 conv_lstm:
- nb_name : conv_lstm
+ nb_name: conv_lstm
 conv_lstm_KERAS_TENSORFLOW:
- nb_name : conv_lstm_KERAS_TENSORFLOW
+ nb_name: conv_lstm_KERAS_TENSORFLOW
+deep_dream:
+ nb_name: deep_dream
+deep_dream_KERAS_CNTK:
+ nb_name: deep_dream_KERAS_CNTK
+deep_dream_KERAS_TENSORFLOW:
+ nb_name: deep_dream_KERAS_TENSORFLOW
 imdb_bidirectional_lstm:
- nb_name : imdb_bidirectional_lstm
+ nb_name: imdb_bidirectional_lstm
 imdb_bidirectional_lstm_KERAS_CNTK:
- nb_name : imdb_bidirectional_lstm_KERAS_CNTK
+ nb_name: imdb_bidirectional_lstm_KERAS_CNTK
 imdb_bidirectional_lstm_KERAS_TENSORFLOW:
- nb_name : imdb_bidirectional_lstm_KERAS_TENSORFLOW
+ nb_name: imdb_bidirectional_lstm_KERAS_TENSORFLOW
+IMDB_CNN_KERAS_TENSORFLOW:
+ nb_name: IMDB_CNN_KERAS_TENSORFLOW
 imdb_cnn_lstm:
- nb_name : imdb_cnn_lstm
+ nb_name: imdb_cnn_lstm
 imdb_cnn_lstm_KERAS_CNTK:
- nb_name : imdb_cnn_lstm_KERAS_CNTK
+ nb_name: imdb_cnn_lstm_KERAS_CNTK
 imdb_cnn_lstm_KERAS_TENSORFLOW:
- nb_name : imdb_cnn_lstm_KERAS_TENSORFLOW
+ nb_name: imdb_cnn_lstm_KERAS_TENSORFLOW
 imdb_fasttext:
- nb_name : imdb_fasttext
+ nb_name: imdb_fasttext
 imdb_fasttext_KERAS_CNTK:
- nb_name : imdb_fasttext_KERAS_CNTK
+ nb_name: imdb_fasttext_KERAS_CNTK
 imdb_fasttext_KERAS_TENSORFLOW:
- nb_name : imdb_fasttext_KERAS_TENSORFLOW
+ nb_name: imdb_fasttext_KERAS_TENSORFLOW
+IMDB_KERAS_TF_TB:
+ nb_name: IMDB_KERAS_TF_TB
 imdb_keras_tf_tb_cnn_lstm:
- nb_name : imdb_keras_tf_tb_cnn_lstm
+ nb_name: imdb_keras_tf_tb_cnn_lstm
+IMDB_KERAS_TF_TB_LSTM:
+ nb_name: IMDB_KERAS_TF_TB_LSTM
+IMDB_LSTM:
+ nb_name: IMDB_LSTM
+IMDB_LSTM_KERAS_CNTK:
+ nb_name: IMDB_LSTM_KERAS_CNTK
+IMDB_LSTM_KERAS_TENSORFLOW:
+ nb_name: IMDB_LSTM_KERAS_TENSORFLOW
 lstm_stateful:
- nb_name : lstm_stateful
+ nb_name: lstm_stateful
 lstm_stateful_KERAS_CNTK:
- nb_name : lstm_stateful_KERAS_CNTK
+ nb_name: lstm_stateful_KERAS_CNTK
 lstm_stateful_KERAS_TENSORFLOW:
- nb_name : lstm_stateful_KERAS_TENSORFLOW
+ nb_name: lstm_stateful_KERAS_TENSORFLOW
 lstm_text_generation:
- nb_name : lstm_text_generation
+ nb_name: lstm_text_generation
 lstm_text_generation_KERAS_CNTK:
- nb_name : lstm_text_generation_KERAS_CNTK
+ nb_name: lstm_text_generation_KERAS_CNTK
 lstm_text_generation_KERAS_TENSORFLOW:
- nb_name : lstm_text_generation_KERAS_TENSORFLOW
+ nb_name: lstm_text_generation_KERAS_TENSORFLOW
 mnist_acgan:
- nb_name : mnist_acgan
+ nb_name: mnist_acgan
 mnist_acgan_KERAS_CNTK:
- nb_name : mnist_acgan_KERAS_CNTK
+ nb_name: mnist_acgan_KERAS_CNTK
 mnist_acgan_KERAS_TENSORFLOW:
- nb_name : mnist_acgan_KERAS_TENSORFLOW
+ nb_name: mnist_acgan_KERAS_TENSORFLOW
+MNIST_CNN:
+ nb_name: MNIST_CNN
+MNIST_CNN_KERAS_CNTK:
+ nb_name: MNIST_CNN_KERAS_CNTK
+MNIST_CNN_KERAS_TENSORFLOW:
+ nb_name: MNIST_CNN_KERAS_TENSORFLOW
 mnist_dataset_api_KERAS_TENSORFLOW:
- nb_name : mnist_dataset_api_KERAS_TENSORFLOW
+ nb_name: mnist_dataset_api_KERAS_TENSORFLOW
 mnist_denoising_autoencoder:
- nb_name : mnist_denoising_autoencoder
+ nb_name: mnist_denoising_autoencoder
 mnist_denoising_autoencoder_KERAS_CNTK:
- nb_name : mnist_denoising_autoencoder_KERAS_CNTK
+ nb_name: mnist_denoising_autoencoder_KERAS_CNTK
 mnist_denoising_autoencoder_KERAS_TENSORFLOW:
- nb_name : mnist_denoising_autoencoder_KERAS_TENSORFLOW
+ nb_name: mnist_denoising_autoencoder_KERAS_TENSORFLOW
 mnist_hierarchical_rnn:
- nb_name : mnist_hierarchical_rnn
+ nb_name: mnist_hierarchical_rnn
 mnist_hierarchical_rnn_KERAS_TENSORFLOW:
- nb_name : mnist_hierarchical_rnn_KERAS_TENSORFLOW
+ nb_name: mnist_hierarchical_rnn_KERAS_TENSORFLOW
+MNIST_IRNN:
+ nb_name: MNIST_IRNN
+MNIST_IRNN_KERAS_CNTK:
+ nb_name: MNIST_IRNN_KERAS_CNTK
+MNIST_IRNN_KERAS_TENSORFLOW:
+ nb_name: MNIST_IRNN_KERAS_TENSORFLOW
+MNIST_KERAS_TF_TB_CNN:
+ nb_name: MNIST_KERAS_TF_TB_CNN
+MNIST_KERAS_TF_TB_IRNN:
+ nb_name: MNIST_KERAS_TF_TB_IRNN
 mnist_keras_tf_tb_mlp:
- nb_name : mnist_keras_tf_tb_mlp
+ nb_name: mnist_keras_tf_tb_mlp
 mnist_mlp:
- nb_name : mnist_mlp
+ nb_name: mnist_mlp
 mnist_mlp_KERAS_CNTK:
- nb_name : mnist_mlp_KERAS_CNTK
+ nb_name: mnist_mlp_KERAS_CNTK
 mnist_mlp_KERAS_TENSORFLOW:
- nb_name : mnist_mlp_KERAS_TENSORFLOW
+ nb_name: mnist_mlp_KERAS_TENSORFLOW
+MNIST_MXNET:
+ nb_name: MNIST_MXNET
 mnist_siamese:
- nb_name : mnist_siamese
+ nb_name: mnist_siamese
 mnist_siamese_KERAS_TENSORFLOW:
- nb_name : mnist_siamese_KERAS_TENSORFLOW
+ nb_name: mnist_siamese_KERAS_TENSORFLOW
 mnist_sklearn_wrapper:
- nb_name : mnist_sklearn_wrapper
+ nb_name: mnist_sklearn_wrapper
 mnist_sklearn_wrapper_KERAS_CNTK:
- nb_name : mnist_sklearn_wrapper_KERAS_CNTK
+ nb_name: mnist_sklearn_wrapper_KERAS_CNTK
 mnist_sklearn_wrapper_KERAS_TENSORFLOW:
- nb_name : mnist_sklearn_wrapper_KERAS_TENSORFLOW
+ nb_name: mnist_sklearn_wrapper_KERAS_TENSORFLOW
 mnist_tfrecord_KERAS_TENSORFLOW:
- nb_name : mnist_tfrecord_KERAS_TENSORFLOW
+ nb_name: mnist_tfrecord_KERAS_TENSORFLOW
 mnist_transfer_cnn:
- nb_name : mnist_transfer_cnn
+ nb_name: mnist_transfer_cnn
 mnist_transfer_cnn_KERAS_CNTK:
- nb_name : mnist_transfer_cnn_KERAS_CNTK
+ nb_name: mnist_transfer_cnn_KERAS_CNTK
 mnist_transfer_cnn_KERAS_TENSORFLOW:
- nb_name : mnist_transfer_cnn_KERAS_TENSORFLOW
+ nb_name: mnist_transfer_cnn_KERAS_TENSORFLOW
+notebook_list.yaml:
+ nb_name: notebook_list.yaml
+notebook_list_2.yaml:
+ nb_name: notebook_list_2.yaml
+README.md:
+ nb_name: README.md
 reuters_keras_tf_tb_mlp:
- nb_name : reuters_keras_tf_tb_mlp
+ nb_name: reuters_keras_tf_tb_mlp
 reuters_mlp:
- nb_name : reuters_mlp
+ nb_name: reuters_mlp
 reuters_mlp_KERAS_CNTK:
- nb_name : reuters_mlp_KERAS_CNTK
+ nb_name: reuters_mlp_KERAS_CNTK
 reuters_mlp_KERAS_TENSORFLOW:
- nb_name : reuters_mlp_KERAS_TENSORFLOW
+ nb_name: reuters_mlp_KERAS_TENSORFLOW
 reuters_mlp_relu_vs_selu:
- nb_name : reuters_mlp_relu_vs_selu
+ nb_name: reuters_mlp_relu_vs_selu
 reuters_mlp_relu_vs_selu_KERAS_TENSORFLOW:
- nb_name : reuters_mlp_relu_vs_selu_KERAS_TENSORFLOW
-variational_autoencoder:
- nb_name : variational_autoencoder
-variational_autoencoder_KERAS_TENSORFLOW:
- nb_name : variational_autoencoder_KERAS_TENSORFLOW
-variational_autoencoder_deconv:
- nb_name : variational_autoencoder_deconv
-variational_autoencoder_deconv_KERAS_TENSORFLOW:
- nb_name : variational_autoencoder_deconv_KERAS_TENSORFLOW
+ nb_name: reuters_mlp_relu_vs_selu_KERAS_TENSORFLOW
+test_analyze:
+ nb_name: test_analyze
 TFOS:
  nb_name : TFOS
  interpreter_settings : 
   spark.dynamicAllocation.enabled : true
   spark.executor.instances : 1
   spark.qubole.max.executors : 1
+ToBeCompared_CheckGPUCNTK:
+ nb_name: ToBeCompared_CheckGPUCNTK
+ToBeCompared_CheckGPUTF:
+ nb_name: ToBeCompared_CheckGPUTF
+ToBeCompared_CheckGPUTheano:
+ nb_name: ToBeCompared_CheckGPUTheano
+ToBeCompared_MISC:
+ nb_name: ToBeCompared_MISC
+variational_autoencoder:
+ nb_name: variational_autoencoder
+variational_autoencoder_deconv:
+ nb_name: variational_autoencoder_deconv
+variational_autoencoder_deconv_KERAS_TENSORFLOW:
+ nb_name: variational_autoencoder_deconv_KERAS_TENSORFLOW
+variational_autoencoder_KERAS_TENSORFLOW:
+ nb_name: variational_autoencoder_KERAS_TENSORFLOW
