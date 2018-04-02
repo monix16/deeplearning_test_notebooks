@@ -164,10 +164,6 @@ mnist_transfer_cnn_KERAS_CNTK:
  nb_name: mnist_transfer_cnn_KERAS_CNTK
 mnist_transfer_cnn_KERAS_TENSORFLOW:
  nb_name: mnist_transfer_cnn_KERAS_TENSORFLOW
-notebook_list.yaml:
- nb_name: notebook_list.yaml
-notebook_list_2.yaml:
- nb_name: notebook_list_2.yaml
 reuters_keras_tf_tb_mlp:
  nb_name: reuters_keras_tf_tb_mlp
 reuters_mlp:
