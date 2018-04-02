@@ -168,8 +168,6 @@ notebook_list.yaml:
  nb_name: notebook_list.yaml
 notebook_list_2.yaml:
  nb_name: notebook_list_2.yaml
-README.md:
- nb_name: README.md
 reuters_keras_tf_tb_mlp:
  nb_name: reuters_keras_tf_tb_mlp
 reuters_mlp:
