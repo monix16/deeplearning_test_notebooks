@@ -1,0 +1,99 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nprint(\"hello world\")",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Apr 9, 2018 6:16:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254016514_2144048714",
+      "id": "20180409-060656_972730597_q_D8FTYKJ9GR1523254015",
+      "dateCreated": "Apr 9, 2018 6:06:56 AM",
+      "dateSubmitted": "Apr 9, 2018 6:16:03 AM",
+      "dateStarted": "Apr 9, 2018 6:16:03 AM",
+      "dateFinished": "Apr 9, 2018 6:16:03 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_NPE_spark_mem\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027Required executor memory\u0027 in c and \u0027is above the max threshold\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Apr 9, 2018 6:17:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254049495_1484786669",
+      "id": "20180409-060729_1754910247_q_D8FTYKJ9GR1523254015",
+      "dateCreated": "Apr 9, 2018 6:07:29 AM",
+      "dateSubmitted": "Apr 9, 2018 6:17:58 AM",
+      "dateStarted": "Apr 9, 2018 6:17:58 AM",
+      "dateFinished": "Apr 9, 2018 6:17:58 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254612348_-1802895972",
+      "id": "20180409-061652_239567645_q_D8FTYKJ9GR1523254015",
+      "dateCreated": "Apr 9, 2018 6:16:52 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "test_NPE_spark_mem_100g",
+  "id": "D8FTYKJ9GR1523254015",
+  "angularObjects": {
+    "2D9GGS5SE964881519065589584:shared_process": [],
+    "2D5VHDPUZ964881519065589577:shared_process": [],
+    "2D5S3WHJ2964881519065589571:shared_process": [],
+    "2D9A7UHW5964881519065972084:shared_process": [],
+    "2D9M97V1V964881519065589510:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "spark"
+  },
+  "info": {},
+  "source": "FCN"
+}
