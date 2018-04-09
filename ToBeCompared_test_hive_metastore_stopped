@@ -1,0 +1,166 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nmonit stop metastore1_2\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Apr 9, 2018 7:50:08 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254016514_2144048714",
+      "id": "20180409-060656_972730597_q_GFKAXNFPJF1523254949",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Apr 9, 2018 6:06:56 AM",
+      "dateSubmitted": "Apr 9, 2018 7:50:08 AM",
+      "dateStarted": "Apr 9, 2018 7:50:08 AM",
+      "dateFinished": "Apr 9, 2018 7:50:08 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sql\nshow tables",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Apr 9, 2018 7:50:17 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [
+            {
+              "name": "database",
+              "index": 0.0,
+              "aggr": "sum"
+            }
+          ],
+          "values": [
+            {
+              "name": "tableName",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          ],
+          "groups": [],
+          "scatter": {
+            "xAxis": {
+              "name": "database",
+              "index": 0.0,
+              "aggr": "sum"
+            },
+            "yAxis": {
+              "name": "tableName",
+              "index": 1.0,
+              "aggr": "sum"
+            }
+          }
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523257009175_-1300553470",
+      "id": "20180409-065649_1988584266_q_GFKAXNFPJF1523254949",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "MetaException(message:Could not connect to meta store using any of the URIs provided. Most recent failure: org.apache.thrift.transport.TTransportException: java.net.ConnectException: Connection refused\n\tat org.apache.thrift.transport.TSocket.open(TSocket.java:226)\n\tat org.apache.hadoop.hive.metastore.HiveMetaStoreClient.open(HiveMetaStoreClient.java:420)\n\tat org.apache.hadoop.hive.metastore.HiveMetaStoreClient.\u003cinit\u003e(HiveMetaStoreClient.java:236)\n\tat org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.\u003cinit\u003e(SessionHiveMetaStoreClient.java:74)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1527)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.\u003cinit\u003e(RetryingMetaStoreClient.java:88)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:134)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:106)\n\tat org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:4067)\n\tat org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:4088)\n\tat org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:708)\n\tat org.apache.spark.sql.hive.client.HiveClientImpl.\u003cinit\u003e(HiveClientImpl.scala:189)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.hive.client.IsolatedClientLoader.createClient(IsolatedClientLoader.scala:264)\n\tat org.apache.spark.sql.hive.HiveUtils$.newClientForMetadata(HiveUtils.scala:499)\n\tat org.apache.spark.sql.hive.HiveUtils$.newClientForMetadata(HiveUtils.scala:403)\n\tat org.apache.spark.sql.hive.HiveExternalCatalog.\u003cinit\u003e(HiveExternalCatalog.scala:66)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.internal.SharedState$.org$apache$spark$sql$internal$SharedState$$reflect(SharedState.scala:166)\n\tat org.apache.spark.sql.internal.SharedState.\u003cinit\u003e(SharedState.scala:86)\n\tat org.apache.spark.sql.SparkSession$$anonfun$sharedState$1.apply(SparkSession.scala:104)\n\tat org.apache.spark.sql.SparkSession$$anonfun$sharedState$1.apply(SparkSession.scala:104)\n\tat scala.Option.getOrElse(Option.scala:121)\n\tat org.apache.spark.sql.SparkSession.sharedState$lzycompute(SparkSession.scala:104)\n\tat org.apache.spark.sql.SparkSession.sharedState(SparkSession.scala:103)\n\tat org.apache.spark.sql.internal.SessionState.\u003cinit\u003e(SessionState.scala:157)\n\tat org.apache.spark.sql.hive.HiveSessionState.\u003cinit\u003e(HiveSessionState.scala:32)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.SparkSession$.org$apache$spark$sql$SparkSession$$reflect(SparkSession.scala:1014)\n\tat org.apache.spark.sql.SparkSession.sessionState$lzycompute(SparkSession.scala:113)\n\tat org.apache.spark.sql.SparkSession.sessionState(SparkSession.scala:112)\n\tat org.apache.spark.sql.SparkSession.listenerManager(SparkSession.scala:163)\n\tat org.apache.spark.sql.SparkSession.\u003cinit\u003e(SparkSession.scala:142)\n\tat org.apache.spark.sql.SparkSession.\u003cinit\u003e(SparkSession.scala:82)\n\tat org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:897)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:60)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:45)\n\tat org.apache.zeppelin.spark.SparkInterpreter.createSparkSession(SparkInterpreter.java:489)\n\tat org.apache.zeppelin.spark.SparkInterpreter.getSparkSession(SparkInterpreter.java:363)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:1025)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:74)\n\tat org.apache.zeppelin.spark.SparkSqlInterpreter.getSparkInterpreter(SparkSqlInterpreter.java:77)\n\tat org.apache.zeppelin.spark.SparkSqlInterpreter.open(SparkSqlInterpreter.java:59)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:74)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:108)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:421)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:195)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\nCaused by: java.net.ConnectException: Connection refused\n\tat java.net.PlainSocketImpl.socketConnect(Native Method)\n\tat java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)\n\tat java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)\n\tat java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)\n\tat java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)\n\tat java.net.Socket.connect(Socket.java:579)\n\tat org.apache.thrift.transport.TSocket.open(TSocket.java:221)\n\t... 71 more\n)\n\tat org.apache.hadoop.hive.metastore.HiveMetaStoreClient.open(HiveMetaStoreClient.java:466)\n\tat org.apache.hadoop.hive.metastore.HiveMetaStoreClient.\u003cinit\u003e(HiveMetaStoreClient.java:236)\n\tat org.apache.hadoop.hive.ql.metadata.SessionHiveMetaStoreClient.\u003cinit\u003e(SessionHiveMetaStoreClient.java:74)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.hadoop.hive.metastore.MetaStoreUtils.newInstance(MetaStoreUtils.java:1527)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.\u003cinit\u003e(RetryingMetaStoreClient.java:88)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:134)\n\tat org.apache.hadoop.hive.metastore.RetryingMetaStoreClient.getProxy(RetryingMetaStoreClient.java:106)\n\tat org.apache.hadoop.hive.ql.metadata.Hive.createMetaStoreClient(Hive.java:4067)\n\tat org.apache.hadoop.hive.ql.metadata.Hive.getMSC(Hive.java:4088)\n\tat org.apache.hadoop.hive.ql.session.SessionState.start(SessionState.java:708)\n\tat org.apache.spark.sql.hive.client.HiveClientImpl.\u003cinit\u003e(HiveClientImpl.scala:189)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.hive.client.IsolatedClientLoader.createClient(IsolatedClientLoader.scala:264)\n\tat org.apache.spark.sql.hive.HiveUtils$.newClientForMetadata(HiveUtils.scala:499)\n\tat org.apache.spark.sql.hive.HiveUtils$.newClientForMetadata(HiveUtils.scala:403)\n\tat org.apache.spark.sql.hive.HiveExternalCatalog.\u003cinit\u003e(HiveExternalCatalog.scala:66)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.internal.SharedState$.org$apache$spark$sql$internal$SharedState$$reflect(SharedState.scala:166)\n\tat org.apache.spark.sql.internal.SharedState.\u003cinit\u003e(SharedState.scala:86)\n\tat org.apache.spark.sql.SparkSession$$anonfun$sharedState$1.apply(SparkSession.scala:104)\n\tat org.apache.spark.sql.SparkSession$$anonfun$sharedState$1.apply(SparkSession.scala:104)\n\tat scala.Option.getOrElse(Option.scala:121)\n\tat org.apache.spark.sql.SparkSession.sharedState$lzycompute(SparkSession.scala:104)\n\tat org.apache.spark.sql.SparkSession.sharedState(SparkSession.scala:103)\n\tat org.apache.spark.sql.internal.SessionState.\u003cinit\u003e(SessionState.scala:157)\n\tat org.apache.spark.sql.hive.HiveSessionState.\u003cinit\u003e(HiveSessionState.scala:32)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:526)\n\tat org.apache.spark.sql.SparkSession$.org$apache$spark$sql$SparkSession$$reflect(SparkSession.scala:1014)\n\tat org.apache.spark.sql.SparkSession.sessionState$lzycompute(SparkSession.scala:113)\n\tat org.apache.spark.sql.SparkSession.sessionState(SparkSession.scala:112)\n\tat org.apache.spark.sql.SparkSession.listenerManager(SparkSession.scala:163)\n\tat org.apache.spark.sql.SparkSession.\u003cinit\u003e(SparkSession.scala:142)\n\tat org.apache.spark.sql.SparkSession.\u003cinit\u003e(SparkSession.scala:82)\n\tat org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:897)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:606)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:60)\n\tat org.apache.zeppelin.spark.Utils.invokeMethodWithException(Utils.java:45)\n\tat org.apache.zeppelin.spark.SparkInterpreter.createSparkSession(SparkInterpreter.java:489)\n\tat org.apache.zeppelin.spark.SparkInterpreter.getSparkSession(SparkInterpreter.java:363)\n\tat org.apache.zeppelin.spark.SparkInterpreter.open(SparkInterpreter.java:1025)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:74)\n\tat org.apache.zeppelin.spark.SparkSqlInterpreter.getSparkInterpreter(SparkSqlInterpreter.java:77)\n\tat org.apache.zeppelin.spark.SparkSqlInterpreter.open(SparkSqlInterpreter.java:59)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.open(LazyOpenInterpreter.java:74)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:108)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:421)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:195)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:139)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:471)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:262)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:178)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:292)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)\n\tat java.lang.Thread.run(Thread.java:745)\n"
+      },
+      "dateCreated": "Apr 9, 2018 6:56:49 AM",
+      "dateSubmitted": "Apr 9, 2018 7:50:17 AM",
+      "dateStarted": "Apr 9, 2018 7:50:19 AM",
+      "dateFinished": "Apr 9, 2018 7:50:46 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_hive_metastore_stopped\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027Could not connect to meta store\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 1",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Apr 9, 2018 7:54:44 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254049495_1484786669",
+      "id": "20180409-060729_1754910247_q_GFKAXNFPJF1523254949",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Apr 9, 2018 6:07:29 AM",
+      "dateSubmitted": "Apr 9, 2018 7:54:44 AM",
+      "dateStarted": "Apr 9, 2018 7:54:44 AM",
+      "dateFinished": "Apr 9, 2018 7:54:44 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1523254612348_-1802895972",
+      "id": "20180409-061652_239567645_q_GFKAXNFPJF1523254949",
+      "dateCreated": "Apr 9, 2018 6:16:52 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "test_hive_metastore_stopped",
+  "id": "GFKAXNFPJF1523254949",
+  "angularObjects": {
+    "2D9GGS5SE964881519065589584:shared_process": [],
+    "2D5VHDPUZ964881519065589577:shared_process": [],
+    "2D5S3WHJ2964881519065589571:shared_process": [],
+    "2D9A7UHW5964881519065972084:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "spark"
+  },
+  "info": {},
+  "source": "FCN"
+}
