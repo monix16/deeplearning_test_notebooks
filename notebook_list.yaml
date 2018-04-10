@@ -44,20 +44,10 @@ CIFAR10_RESNET_KERAS_CNTK:
  nb_name: CIFAR10_RESNET_KERAS_CNTK
 CIFAR10_RESNET_KERAS_TENSORFLOW:
  nb_name: CIFAR10_RESNET_KERAS_TENSORFLOW
-conv_filter_visualization:
- nb_name: conv_filter_visualization
-conv_filter_visualization_KERAS_TENSORFLOW:
- nb_name: conv_filter_visualization_KERAS_TENSORFLOW
 conv_lstm:
  nb_name: conv_lstm
 conv_lstm_KERAS_TENSORFLOW:
  nb_name: conv_lstm_KERAS_TENSORFLOW
-deep_dream:
- nb_name: deep_dream
-deep_dream_KERAS_CNTK:
- nb_name: deep_dream_KERAS_CNTK
-deep_dream_KERAS_TENSORFLOW:
- nb_name: deep_dream_KERAS_TENSORFLOW
 imdb_bidirectional_lstm:
  nb_name: imdb_bidirectional_lstm
 imdb_bidirectional_lstm_KERAS_CNTK:
