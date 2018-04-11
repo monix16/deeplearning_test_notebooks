@@ -174,8 +174,6 @@ TFOS:
   spark.dynamicAllocation.enabled : true
   spark.executor.instances : 1
   spark.qubole.max.executors : 1
-ToBeCompared_CheckGPUCNTK:
- nb_name: ToBeCompared_CheckGPUCNTK
 ToBeCompared_CheckGPUTF:
  nb_name: ToBeCompared_CheckGPUTF
 ToBeCompared_CheckGPUTheano:
