@@ -18,18 +18,6 @@
         "min_nodes": 3,
         "max_nodes": 6,
         "slave_request_type": "ondemand",
-        "spot_settings": {
-            "spot_instance_settings": {
-                "maximum_bid_price_percentage": "80",
-                "timeout_for_request": "10",
-                "maximum_spot_instance_percentage": "100"
-            },
-                        "stable_spot_bid_settings": {
-                                "maximum_bid_price_percentage": "100",
-                                "timeout_for_request": "10",
-                "stable_spot_fallback": true
-                        }
-                },
 	"datadisk": {
             "size": 100,
             "count": 1,
