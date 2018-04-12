@@ -17,7 +17,7 @@
         "slave_instance_type": "p2.xlarge",
         "min_nodes": 3,
         "max_nodes": 6,
-        "slave_request_type": "spot",
+        "slave_request_type": "ondemand",
         "spot_settings": {
             "spot_instance_settings": {
                 "maximum_bid_price_percentage": "80",
