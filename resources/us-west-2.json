@@ -18,6 +18,7 @@
         "min_nodes": 3,
         "max_nodes": 6,
         "slave_request_type": "ondemand",
+	"spot_settings":{},
 	"datadisk": {
             "size": 100,
             "count": 1,
