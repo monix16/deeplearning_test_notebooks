@@ -45,9 +45,9 @@
     },
     {
       "title": "Checking GPU for Theano",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027.lower() in c.lower():\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "monikak+qa3@qubole.com",
-      "dateUpdated": "Apr 17, 2018 5:27:23 AM",
+      "dateUpdated": "Apr 17, 2018 5:28:57 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -73,12 +73,12 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "False\n"
+        "msg": "True\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateSubmitted": "Apr 17, 2018 5:27:23 AM",
-      "dateStarted": "Apr 17, 2018 5:28:14 AM",
-      "dateFinished": "Apr 17, 2018 5:28:14 AM",
+      "dateSubmitted": "Apr 17, 2018 5:28:57 AM",
+      "dateStarted": "Apr 17, 2018 5:28:57 AM",
+      "dateFinished": "Apr 17, 2018 5:28:57 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
