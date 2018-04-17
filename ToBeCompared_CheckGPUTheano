@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "#ToBeCompared\nimport os\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027False\u0027)\nelse:\n    print(\u0027True\u0027)",
-      "user": "somyak@qubole.com",
-      "dateUpdated": "Apr 11, 2018 6:22:14 AM",
+      "text": "import os\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027False\u0027)\nelse:\n    print(\u0027True\u0027)",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Apr 17, 2018 5:27:31 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -16,7 +16,7 @@
           "scatter": {}
         },
         "enabled": true,
-        "editorMode": "ace/mode/scala"
+        "editorMode": "ace/mode/python"
       },
       "settings": {
         "params": {},
@@ -30,24 +30,24 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_1SW914JT1V1523426722",
+      "id": "20180312-120642_669605594_q_REW9HVV8F41523926726",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "Using cuDNN version 7005 on context None\nMapped name None to device cuda: Tesla K80 (0000:00:1E.0)\n[GpuElemwise{exp,no_inplace}(\u003cGpuArrayType\u003cNone\u003e(float32, vector)\u003e), HostFromGpu(gpuarray)(GpuElemwise{exp,no_inplace}.0)]\nLooping 1000 times took 0.208526 seconds\nResult is [1.2317803 1.6187935 1.5227807 ... 2.2077181 2.2996776 1.623233 ]\nGPU\n"
+        "msg": "Using cuDNN version 7005 on context None\nMapped name None to device cuda: Tesla K80 (0000:00:1E.0)\n[GpuElemwise{exp,no_inplace}(\u003cGpuArrayType\u003cNone\u003e(float32, vector)\u003e), HostFromGpu(gpuarray)(GpuElemwise{exp,no_inplace}.0)]\nLooping 1000 times took 0.202434 seconds\nResult is [1.2317803 1.6187935 1.5227807 ... 2.2077181 2.2996776 1.623233 ]\nTrue\n"
       },
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateSubmitted": "Apr 11, 2018 6:10:44 AM",
-      "dateStarted": "Apr 11, 2018 6:11:35 AM",
-      "dateFinished": "Apr 11, 2018 6:17:47 AM",
+      "dateSubmitted": "Apr 17, 2018 1:07:10 AM",
+      "dateStarted": "Apr 17, 2018 1:08:09 AM",
+      "dateFinished": "Apr 17, 2018 1:12:14 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking GPU for Theano",
-      "text": "%sh\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
-      "user": "somyak@qubole.com",
-      "dateUpdated": "Apr 11, 2018 6:23:17 AM",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027.lower() in c.lower():\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Apr 17, 2018 5:28:57 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -69,16 +69,16 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_1SW914JT1V1523426722",
+      "id": "20180312-120829_405084188_q_REW9HVV8F41523926726",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "False\n"
+        "msg": "True\n"
       },
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateSubmitted": "Apr 11, 2018 6:10:44 AM",
-      "dateStarted": "Apr 11, 2018 6:10:56 AM",
-      "dateFinished": "Apr 11, 2018 6:10:56 AM",
+      "dateSubmitted": "Apr 17, 2018 5:28:57 AM",
+      "dateStarted": "Apr 17, 2018 5:28:57 AM",
+      "dateFinished": "Apr 17, 2018 5:28:57 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -91,31 +91,32 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520934345530_2012742492",
-      "id": "20180313-094545_1449338141_q_1SW914JT1V1523426722",
+      "id": "20180313-094545_1449338141_q_REW9HVV8F41523926726",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
         "msg": ""
       },
       "dateCreated": "Mar 13, 2018 9:45:45 AM",
-      "dateSubmitted": "Apr 11, 2018 6:11:35 AM",
-      "dateStarted": "Apr 11, 2018 6:17:47 AM",
-      "dateFinished": "Apr 11, 2018 6:17:47 AM",
+      "dateSubmitted": "Apr 17, 2018 1:08:09 AM",
+      "dateStarted": "Apr 17, 2018 1:12:14 AM",
+      "dateFinished": "Apr 17, 2018 1:12:14 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "ToBeCompared_CheckGPUTheano",
-  "id": "1SW914JT1V1523426722",
+  "id": "REW9HVV8F41523926726",
   "angularObjects": {
-    "2DAZ8KSXM283751522976640377:shared_process": [],
-    "2DCSFHNKX283751522976640389:shared_process": [],
-    "2DCXYPAES283751523427022628:shared_process": [],
-    "2DD14D1NA283751522976640392:shared_process": [],
-    "2DC3356M7283751522976640395:shared_process": []
+    "2DDX8DZYP286331523927133573:shared_process": [],
+    "2DDDTB5YN286331523927133586:shared_process": [],
+    "2DC8KGZUU286331523927133736:shared_process": [],
+    "2DAWRSHJP286331523927133734:shared_process": [],
+    "2DDGEQVDD286331523927202610:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"
