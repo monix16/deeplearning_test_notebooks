@@ -76,7 +76,7 @@
       "progressUpdateIntervalMs": 1000
     }
   ],
-  "name": "zep-2246-hive",
+  "name": "ToBeCompared_HiveNewTableOutputFormat",
   "id": "N66P4NR2Z71525066266",
   "angularObjects": {
     "2DBZ6UED3658041525079978140:shared_process": [],

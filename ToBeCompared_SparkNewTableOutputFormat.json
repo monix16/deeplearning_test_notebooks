@@ -193,7 +193,7 @@
     },
     {
       "title": "Checking version and result for spark sql",
-      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_CheckGPUCNTK\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\nprint(resultMsg)\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\nif (version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 0\n",
+      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\nprint(resultMsg)\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\nif (version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 0\n",
       "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:19:00 AM",
       "config": {
@@ -232,7 +232,7 @@
     },
     {
       "title": "Checking version and result for z.show(df)",
-      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_CheckGPUCNTK\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\n\nif (resultType \u003d\u003d \u0027TABLE\u0027) and ((version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json)):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 1",
+      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\n\nif (resultType \u003d\u003d \u0027TABLE\u0027) and ((version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json)):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 1",
       "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:23:21 AM",
       "config": {
@@ -271,7 +271,7 @@
     },
     {
       "title": "Check version and result for normal spark para",
-      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_CheckGPUCNTK\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalidJson \u003d True\ntry:\n    json.loads(resultMsg)\nexcept:\n    validJson \u003d False\n    pass\n\nif resultType \u003d\u003d \u0027TEXT\u0027 and not validJson:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 2",
+      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalidJson \u003d True\ntry:\n    json.loads(resultMsg)\nexcept:\n    validJson \u003d False\n    pass\n\nif resultType \u003d\u003d \u0027TEXT\u0027 and not validJson:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 2",
       "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:31:10 AM",
       "config": {
@@ -323,7 +323,7 @@
       "progressUpdateIntervalMs": 1000
     }
   ],
-  "name": "a11 - Clone",
+  "name": "ToBeCompared_SparkNewTableOutputFormat",
   "id": "X5B1U7ZCDS1524634203",
   "angularObjects": {
     "2DDQGF4K8658061525079592051:shared_process": [],
