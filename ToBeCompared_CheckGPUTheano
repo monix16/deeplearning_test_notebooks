@@ -1,0 +1,121 @@
+{
+  "paragraphs": [
+    {
+      "text": "import os\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027False\u0027)\nelse:\n    print(\u0027True\u0027)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "May 4, 2018 7:22:31 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520856402732_179810980",
+      "id": "20180312-120642_669605594_q_REZV3DYRUG1525395520",
+      "dateCreated": "Mar 12, 2018 12:06:42 PM",
+      "dateSubmitted": "May 4, 2018 7:22:31 AM",
+      "dateStarted": "May 4, 2018 7:22:31 AM",
+      "dateFinished": "May 4, 2018 7:22:31 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Checking GPU for Theano",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027True\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "May 4, 2018 7:22:33 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520856509622_953461108",
+      "id": "20180312-120829_405084188_q_REZV3DYRUG1525395520",
+      "dateCreated": "Mar 12, 2018 12:08:29 PM",
+      "dateSubmitted": "May 4, 2018 7:22:33 AM",
+      "dateStarted": "May 4, 2018 7:22:33 AM",
+      "dateFinished": "May 4, 2018 7:22:33 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark\nz.run(\"20180312-120829_405084188\")",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "May 4, 2018 10:29:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1525418541393_-1847869265",
+      "id": "20180504-072221_1820406290_q_REZV3DYRUG1525395520",
+      "dateCreated": "May 4, 2018 7:22:21 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "16006-ToBeCompared_CheckGPUTheano",
+  "id": "REZV3DYRUG1525395520",
+  "angularObjects": {
+    "2DEYNSJ77292151524791142540:shared_process": [],
+    "2DE61N6A4292151524791147329:shared_process": [],
+    "2DBRA8ZBN292151524791142533:shared_process": [],
+    "2DCDVWE59292151524791142531:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "pyspark"
+  },
+  "info": {},
+  "source": "FCN"
+}

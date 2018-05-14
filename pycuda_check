@@ -1,0 +1,67 @@
+{
+  "paragraphs": [
+    {
+      "text": "import pycuda.gpuarray as gpuarray\nimport pycuda.driver as cuda\nimport pycuda.autoinit\nimport numpy\n\na_gpu \u003d gpuarray.to_gpu(numpy.random.randn(4,4).astype(numpy.float32))\na_doubled \u003d (2*a_gpu).get()\nprint(a_doubled)\nprint(a_gpu)",
+      "user": "somyak@qubole.com",
+      "dateUpdated": "May 10, 2018 10:30:02 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1525948074918_553806778",
+      "id": "20180510-102754_1663033986_q_CEHP9FJZM71525948074",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6553751013754447441.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named \u0027pycuda\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6553751013754447441.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6553751013754447441.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nImportError: No module named \u0027pycuda\u0027\n\n"
+      },
+      "dateCreated": "May 10, 2018 10:27:54 AM",
+      "dateStarted": "May 10, 2018 10:30:02 AM",
+      "dateFinished": "May 10, 2018 10:30:02 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1525948097966_2029516380",
+      "id": "20180510-102817_1649562373_q_CEHP9FJZM71525948074",
+      "dateCreated": "May 10, 2018 10:28:17 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "pycuda-check",
+  "id": "CEHP9FJZM71525948074",
+  "angularObjects": {
+    "2DBWNRRZ1525311522154255116:shared_process": [],
+    "2DAHWTZ5S525311522154063614:shared_process": [],
+    "2DA5J1SGX525311522154063621:shared_process": [],
+    "2D9TJP62B525311522154063617:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}

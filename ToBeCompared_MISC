@@ -30,16 +30,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853033643_1911093790",
-      "id": "20180312-111033_742270263_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "\u00272.1.1\u0027\n"
-      },
+      "id": "20180312-111033_742270263_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 12, 2018 11:10:33 AM",
       "dateStarted": "Mar 13, 2018 6:38:29 AM",
       "dateFinished": "Mar 13, 2018 6:38:29 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -68,16 +64,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520919090714_-1959041267",
-      "id": "20180313-053130_1983386289_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180313-053130_1983386289_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 13, 2018 5:31:30 AM",
       "dateStarted": "Mar 13, 2018 6:38:30 AM",
       "dateFinished": "Mar 13, 2018 6:38:30 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -106,16 +98,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853322296_-1251007468",
-      "id": "20180312-111522_1262041705_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180312-111522_1262041705_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 12, 2018 11:15:22 AM",
       "dateStarted": "Mar 13, 2018 6:38:33 AM",
       "dateFinished": "Mar 13, 2018 6:38:33 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -144,16 +132,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520852814421_879811851",
-      "id": "20180312-110654_142985358_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\nTrue\n"
-      },
+      "id": "20180312-110654_142985358_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 12, 2018 11:06:54 AM",
       "dateStarted": "Mar 13, 2018 6:47:19 AM",
       "dateFinished": "Mar 13, 2018 6:47:20 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -188,16 +172,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853405372_134027276",
-      "id": "20180312-111645_674020846_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180312-111645_674020846_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 12, 2018 11:16:45 AM",
       "dateStarted": "Mar 13, 2018 6:47:14 AM",
       "dateFinished": "Mar 13, 2018 6:47:14 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -226,41 +206,52 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520923332899_2107483338",
-      "id": "20180313-064212_1939652537_q_6YZPNAP9BR1520832761",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180313-064212_1939652537_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 13, 2018 6:42:12 AM",
       "dateStarted": "Mar 13, 2018 9:36:05 AM",
       "dateFinished": "Mar 13, 2018 9:36:05 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "",
-      "config": {},
+      "text": "%spark\nz.run(\"20180313-064212_1939652537\")\nz.run(\"20180312-110654_142985358\")\nz.run(\"20180313-053130_1983386289\")",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "May 4, 2018 10:31:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "version": "v0",
       "jobName": "paragraph_1520933814743_-837231052",
-      "id": "20180313-093654_2066338506_q_6YZPNAP9BR1520832761",
+      "id": "20180313-093654_2066338506_q_9AKRXXW16X1525396989",
       "dateCreated": "Mar 13, 2018 9:36:54 AM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "ToBeCompared_MISC",
-  "id": "6YZPNAP9BR1520832761",
+  "id": "9AKRXXW16X1525396989",
   "angularObjects": {
-    "2D5ZANCQ1946841516796256905:shared_process": [],
-    "2D4AD5YJF946841516796067432:shared_process": [],
-    "2D3SKE2U8946841516796067437:shared_process": [],
-    "2D6RCD76A946841516796067428:shared_process": [],
-    "2D9ZBDJPN946841520851003485:shared_process": []
+    "2DEYNSJ77292151524791142540:shared_process": [],
+    "2DE61N6A4292151524791147329:shared_process": [],
+    "2DBRA8ZBN292151524791142533:shared_process": [],
+    "2DCDVWE59292151524791142531:shared_process": []
   },
   "config": {
     "isDashboard": false

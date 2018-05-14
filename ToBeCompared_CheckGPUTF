@@ -30,16 +30,12 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_R99R7EGRET1520856401",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "\n2018-03-13 10:25:32.687439: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -\u003e (device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0)\n\n\n\n2018-03-13 10:25:32.687766: I tensorflow/core/common_runtime/direct_session.cc:299] Device mapping:\n/job:localhost/replica:0/task:0/device:GPU:0 -\u003e device: 0, name: GRID K520, pci bus id: 0000:00:03.0, compute capability: 3.0\n\n\n\n\n\n2018-03-13 10:25:32.689192: I tensorflow/core/common_runtime/placer.cc:874] MatMul_1: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689219: I tensorflow/core/common_runtime/placer.cc:874] MatMul: (MatMul)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689230: I tensorflow/core/common_runtime/placer.cc:874] b_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689238: I tensorflow/core/common_runtime/placer.cc:874] a_1: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n\n\n2018-03-13 10:25:32.689245: I tensorflow/core/common_runtime/placer.cc:874] b: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n2018-03-13 10:25:32.689253: I tensorflow/core/common_runtime/placer.cc:874] a: (Const)/job:localhost/replica:0/task:0/device:GPU:0\n[[ 22.  28.]\n [ 49.  64.]]\n"
-      },
+      "id": "20180312-120642_669605594_q_U2ENPDECPZ1525400116",
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
       "dateStarted": "Mar 13, 2018 10:25:32 AM",
       "dateFinished": "Mar 13, 2018 10:25:32 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -68,40 +64,52 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_R99R7EGRET1520856401",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180312-120829_405084188_q_U2ENPDECPZ1525400116",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
       "dateStarted": "Mar 13, 2018 10:26:01 AM",
       "dateFinished": "Mar 13, 2018 10:26:01 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "",
-      "config": {},
+      "text": "%spark\nz.run(\"20180312-120829_405084188\")",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "May 4, 2018 10:27:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
       "settings": {
         "params": {},
         "forms": {}
       },
       "version": "v0",
       "jobName": "paragraph_1520935677056_1264518084",
-      "id": "20180313-100757_733552213_q_R99R7EGRET1520856401",
+      "id": "20180313-100757_733552213_q_U2ENPDECPZ1525400116",
       "dateCreated": "Mar 13, 2018 10:07:57 AM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "ToBeCompared_CheckGPUTF",
-  "id": "R99R7EGRET1520856401",
+  "id": "U2ENPDECPZ1525400116",
   "angularObjects": {
-    "2D5ZANCQ1946841516796256905:shared_process": [],
-    "2D4AD5YJF946841516796067432:shared_process": [],
-    "2D3SKE2U8946841516796067437:shared_process": [],
-    "2D6RCD76A946841516796067428:shared_process": []
+    "2DEYNSJ77292151524791142540:shared_process": [],
+    "2DE61N6A4292151524791147329:shared_process": [],
+    "2DBRA8ZBN292151524791142533:shared_process": [],
+    "2DCDVWE59292151524791142531:shared_process": []
   },
   "config": {
     "isDashboard": false
