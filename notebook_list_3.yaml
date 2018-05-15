@@ -1,6 +1,8 @@
 ToBeCompared_SparkNewTableOutputFormat:
  nb_name: ToBeCompared_SparkNewTableOutputFormat
  cluster_label: spark_cluster_2
+ cluster_type: spark
+ note_type: spark
 cluster_configs:
  - spark_cluster_2:
     spark_version: 2.2-latest

@@ -2,7 +2,6 @@
   "paragraphs": [
     {
       "text": "%sql\nshow tables\n",
-      "user": "poojas@qubole.com",
       "dateUpdated": "Apr 30, 2018 9:16:02 AM",
       "config": {
         "colWidth": 12.0,
@@ -22,30 +21,18 @@
         "params": {},
         "forms": {}
       },
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "JOB UI",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.137.193.199%3A8088%2Fproxy%2Fapplication_1525071035181_0007/jobs/job?spark\u003dtrue\u0026id\u003d0"
-          ],
-          "interpreterSettingId": "2DEA6N9BV658061525079592005"
-        }
-      },
       "paragraphProgress": {
         "jobs": [
           {
-            "id": 0,
-            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.137.193.199%3A8088%2Fproxy%2Fapplication_1525071035181_0007/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "id": 6,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.154.172.219%3A8088%2Fproxy%2Fapplication_1526379989354_0001/jobs/job?spark\u003dtrue\u0026id\u003d6",
             "numTasks": 1,
             "numCompletedTasks": 1,
             "stages": [
               {
-                "id": 0,
+                "id": 6,
                 "completed": true,
-                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.137.193.199%3A8088%2Fproxy%2Fapplication_1525071035181_0007/stages/stage/?id\u003d0\u0026attempt\u003d0",
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.154.172.219%3A8088%2Fproxy%2Fapplication_1526379989354_0001/stages/stage/?id\u003d6\u0026attempt\u003d0",
                 "numCompleteTasks": 1,
                 "numActiveTasks": 0,
                 "numFailedTasks": 0,
@@ -59,24 +46,19 @@
         "numTasks": 1,
         "truncated": false
       },
-      "version": "v0",
+      "version": "v1",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TABLE",
-        "msg": "database\ttableName\tisTemporary\ndefault\tdefault_qubole_airline_origin_destination\tfalse\ndefault\tdefault_qubole_memetracker\tfalse\ndefault\tt1\tfalse\ndefault\tt112\tfalse\ndefault\tt12\tfalse\ndefault\tt2\tfalse\ndefault\tt3\tfalse\n"
-      },
+      "id": "20180312-120642_669605594_q_WFX8AHZCMN1526379188",
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateSubmitted": "Apr 30, 2018 9:16:02 AM",
-      "dateStarted": "Apr 30, 2018 9:16:07 AM",
-      "dateFinished": "Apr 30, 2018 9:17:09 AM",
+      "dateSubmitted": "May 15, 2018 10:43:31 AM",
+      "dateStarted": "May 15, 2018 10:43:41 AM",
+      "dateFinished": "May 15, 2018 10:43:42 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "val df \u003d spark.sql(\"show tables\")\nz.show(df)",
-      "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:13:51 AM",
       "config": {
         "colWidth": 12.0,
@@ -96,30 +78,18 @@
         "params": {},
         "forms": {}
       },
-      "runtimeInfos": {
-        "jobUrl": {
-          "propertyName": "jobUrl",
-          "label": "JOB UI",
-          "tooltip": "View in Spark web UI",
-          "group": "spark",
-          "values": [
-            "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.16.220.155%3A8088%2Fproxy%2Fapplication_1524633782254_0001/jobs/job?spark\u003dtrue\u0026id\u003d1"
-          ],
-          "interpreterSettingId": "2DB3B576A658061524577729408"
-        }
-      },
       "paragraphProgress": {
         "jobs": [
           {
-            "id": 1,
-            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.16.220.155%3A8088%2Fproxy%2Fapplication_1524633782254_0001/jobs/job?spark\u003dtrue\u0026id\u003d1",
+            "id": 7,
+            "jobUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.154.172.219%3A8088%2Fproxy%2Fapplication_1526379989354_0001/jobs/job?spark\u003dtrue\u0026id\u003d7",
             "numTasks": 1,
             "numCompletedTasks": 1,
             "stages": [
               {
-                "id": 1,
+                "id": 7,
                 "completed": true,
-                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.16.220.155%3A8088%2Fproxy%2Fapplication_1524633782254_0001/stages/stage/?id\u003d1\u0026attempt\u003d0",
+                "stageUrl": "https://qa.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.154.172.219%3A8088%2Fproxy%2Fapplication_1526379989354_0001/stages/stage/?id\u003d7\u0026attempt\u003d0",
                 "numCompleteTasks": 1,
                 "numActiveTasks": 0,
                 "numFailedTasks": 0,
@@ -135,22 +105,17 @@
       },
       "version": "v1",
       "jobName": "paragraph_1524634338673_-587724117",
-      "id": "20180425-053218_215011434_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TABLE",
-        "msg": "{\"data\":[[\"database\",\"tableName\",\"isTemporary\"],[\"default\",\"default_qubole_airline_origin_destination\",\"false\"],[\"default\",\"default_qubole_memetracker\",\"false\"],[\"default\",\"t1\",\"false\"],[\"default\",\"t112\",\"false\"],[\"default\",\"t2\",\"false\"],[\"default\",\"t3\",\"false\"]],\"exceeded\":-1}"
-      },
+      "id": "20180425-053218_215011434_q_WFX8AHZCMN1526379188",
       "dateCreated": "Apr 25, 2018 5:32:18 AM",
-      "dateSubmitted": "Apr 25, 2018 6:13:51 AM",
-      "dateStarted": "Apr 25, 2018 6:13:51 AM",
-      "dateFinished": "Apr 25, 2018 6:13:53 AM",
+      "dateSubmitted": "May 15, 2018 10:43:41 AM",
+      "dateStarted": "May 15, 2018 10:43:42 AM",
+      "dateFinished": "May 15, 2018 10:43:43 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "sc.version\n",
-      "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:20:01 AM",
       "config": {
         "colWidth": 12.0,
@@ -178,24 +143,19 @@
       },
       "version": "v1",
       "jobName": "paragraph_1524637198854_-736349396",
-      "id": "20180425-061958_1811486514_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "\nres2: String \u003d 2.1.0\n"
-      },
+      "id": "20180425-061958_1811486514_q_WFX8AHZCMN1526379188",
       "dateCreated": "Apr 25, 2018 6:19:58 AM",
-      "dateSubmitted": "Apr 25, 2018 6:20:01 AM",
-      "dateStarted": "Apr 25, 2018 6:20:02 AM",
-      "dateFinished": "Apr 25, 2018 6:20:03 AM",
+      "dateSubmitted": "May 15, 2018 10:43:42 AM",
+      "dateStarted": "May 15, 2018 10:43:43 AM",
+      "dateFinished": "May 15, 2018 10:43:43 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "title": "Checking version and result for spark sql",
-      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\nprint(resultMsg)\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\nif (version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 0\n",
-      "user": "poojas@qubole.com",
-      "dateUpdated": "Apr 25, 2018 6:19:00 AM",
+      "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\nif (version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 0\n",
+      "dateUpdated": "May 15, 2018 10:38:06 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -217,23 +177,18 @@
       },
       "version": "v1",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "{\"data\":[[\"database\",\"tableName\",\"isTemporary\"],[\"default\",\"default_qubole_airline_origin_destination\",\"false\"],[\"default\",\"default_qubole_memetracker\",\"false\"],[\"default\",\"t1\",\"false\"],[\"default\",\"t112\",\"false\"],[\"default\",\"t2\",\"false\"],[\"default\",\"t3\",\"false\"]],\"exceeded\":-1}\nTrue\n"
-      },
+      "id": "20180312-120829_405084188_q_WFX8AHZCMN1526379188",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateSubmitted": "Apr 25, 2018 6:09:55 AM",
-      "dateStarted": "Apr 25, 2018 6:09:55 AM",
-      "dateFinished": "Apr 25, 2018 6:09:55 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 15, 2018 10:43:43 AM",
+      "dateStarted": "May 15, 2018 10:43:43 AM",
+      "dateFinished": "May 15, 2018 10:43:43 AM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking version and result for z.show(df)",
       "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalid_json \u003d True\ntry:\n    json.loads(resultMsg)\nexcept e:\n    valid_json \u003d False\n\nif (resultType \u003d\u003d \u0027TABLE\u0027) and ((version \u003d\u003d \u0027v1\u0027 and valid_json) or (version \u003d\u003d \u0027v0\u0027 and not valid_json)):\n    print(True)\nelse:\n    print(False)\nEND\n}\n\ngetResultsForPara 1",
-      "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:23:21 AM",
       "config": {
         "colWidth": 12.0,
@@ -256,23 +211,18 @@
       },
       "version": "v1",
       "jobName": "paragraph_1520935441087_-1955966483",
-      "id": "20180313-100401_1162213427_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "{\"data\":[[\"database\",\"tableName\",\"isTemporary\"],[\"default\",\"default_qubole_airline_origin_destination\",\"false\"],[\"default\",\"default_qubole_memetracker\",\"false\"],[\"default\",\"t1\",\"false\"],[\"default\",\"t112\",\"false\"],[\"default\",\"t2\",\"false\"],[\"default\",\"t3\",\"false\"]],\"exceeded\":-1}\nTABLE\nTrue\n"
-      },
+      "id": "20180313-100401_1162213427_q_WFX8AHZCMN1526379188",
       "dateCreated": "Mar 13, 2018 10:04:01 AM",
-      "dateSubmitted": "Apr 25, 2018 6:23:03 AM",
-      "dateStarted": "Apr 25, 2018 6:23:03 AM",
-      "dateFinished": "Apr 25, 2018 6:23:03 AM",
+      "dateSubmitted": "May 15, 2018 10:43:44 AM",
+      "dateStarted": "May 15, 2018 10:43:44 AM",
+      "dateFinished": "May 15, 2018 10:43:44 AM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Check version and result for normal spark para",
       "text": "%sh\n\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_SparkNewTableOutputFormat\"\n    python \u003c\u003c END\n    \nimport subprocess\nimport json\nfile \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nfile \u003d file.split(\":\")[0]\n\nfileContent \u003d open(file, \u0027r\u0027)\nnb \u003d json.load(fileContent)\nresultMsg \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nresultType \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027type\u0027]\nversion \u003d nb[\u0027paragraphs\u0027][$para_id][\u0027version\u0027]\n\nvalidJson \u003d True\ntry:\n    json.loads(resultMsg)\nexcept:\n    validJson \u003d False\n    pass\n\nif resultType \u003d\u003d \u0027TEXT\u0027 and not validJson:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 2",
-      "user": "poojas@qubole.com",
       "dateUpdated": "Apr 25, 2018 6:31:10 AM",
       "config": {
         "colWidth": 12.0,
@@ -295,17 +245,127 @@
       },
       "version": "v1",
       "jobName": "paragraph_1524635085815_812061900",
-      "id": "20180425-054445_576898924_q_X5B1U7ZCDS1524634203",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "True\n"
-      },
+      "id": "20180425-054445_576898924_q_WFX8AHZCMN1526379188",
       "dateCreated": "Apr 25, 2018 5:44:45 AM",
-      "dateSubmitted": "Apr 25, 2018 6:31:10 AM",
-      "dateStarted": "Apr 25, 2018 6:31:10 AM",
-      "dateFinished": "Apr 25, 2018 6:31:10 AM",
+      "dateSubmitted": "May 15, 2018 10:43:44 AM",
+      "dateStarted": "May 15, 2018 10:43:44 AM",
+      "dateFinished": "May 15, 2018 10:43:44 AM",
       "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "z.run(\"20180312-120829_405084188\")",
+      "dateUpdated": "May 15, 2018 10:38:21 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1524637494844_1356713625",
+      "id": "20180425-062454_1328897877_q_WFX8AHZCMN1526379188",
+      "dateCreated": "Apr 25, 2018 6:24:54 AM",
+      "dateSubmitted": "May 15, 2018 10:43:43 AM",
+      "dateStarted": "May 15, 2018 10:43:43 AM",
+      "dateFinished": "May 15, 2018 10:43:43 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "z.run(\"20180313-100401_1162213427\")",
+      "dateUpdated": "May 15, 2018 10:38:02 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1526380565875_-1786997325",
+      "id": "20180515-103605_550995032_q_WFX8AHZCMN1526379188",
+      "dateCreated": "May 15, 2018 10:36:05 AM",
+      "dateSubmitted": "May 15, 2018 10:43:43 AM",
+      "dateStarted": "May 15, 2018 10:43:44 AM",
+      "dateFinished": "May 15, 2018 10:43:44 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "z.run(\"20180425-054445_576898924\")",
+      "dateUpdated": "May 15, 2018 10:38:36 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1526380593259_1495741587",
+      "id": "20180515-103633_1657272328_q_WFX8AHZCMN1526379188",
+      "dateCreated": "May 15, 2018 10:36:33 AM",
+      "dateSubmitted": "May 15, 2018 10:43:44 AM",
+      "dateStarted": "May 15, 2018 10:43:44 AM",
+      "dateFinished": "May 15, 2018 10:43:45 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
@@ -315,22 +375,25 @@
         "params": {},
         "forms": {}
       },
-      "version": "v0",
-      "jobName": "paragraph_1524637494844_1356713625",
-      "id": "20180425-062454_1328897877_q_X5B1U7ZCDS1524634203",
-      "dateCreated": "Apr 25, 2018 6:24:54 AM",
-      "status": "READY",
+      "version": "v1",
+      "jobName": "paragraph_1526380716106_-23307843",
+      "id": "20180515-103836_690312811_q_WFX8AHZCMN1526379188",
+      "dateCreated": "May 15, 2018 10:38:36 AM",
+      "dateSubmitted": "May 15, 2018 10:43:44 AM",
+      "dateStarted": "May 15, 2018 10:43:45 AM",
+      "dateFinished": "May 15, 2018 10:43:45 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "ToBeCompared_SparkNewTableOutputFormat",
-  "id": "X5B1U7ZCDS1524634203",
+  "id": "WFX8AHZCMN1526379188",
   "angularObjects": {
-    "2DDQGF4K8658061525079592051:shared_process": [],
-    "2DD5XD95W658061525349457705:shared_process": [],
-    "2DCX9HJU7658061525079592044:shared_process": [],
-    "2DEA6N9BV658061525079592005:shared_process": [],
-    "2DD3YWNZN658061525079592059:shared_process": []
+    "2DF9ENKH71014281526374503635:shared_process": [],
+    "2DDWA3THX1014281526374503630:shared_process": [],
+    "2DFT74S931014281526374503642:shared_process": [],
+    "2DCWXXJ831014281526374511714:shared_process": []
   },
   "config": {
     "isDashboard": false,
