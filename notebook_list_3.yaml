@@ -1,5 +1,5 @@
-ToBeCompared_SparkNewOutputFormat:
- nb_name: ToBeCompared_SparkNewOutputFormat
+ToBeCompared_SparkNewTableOutputFormat:
+ nb_name: ToBeCompared_SparkNewTableOutputFormat
  cluster_label: spark_cluster_2
 cluster_configs:
  - spark_cluster_2:
