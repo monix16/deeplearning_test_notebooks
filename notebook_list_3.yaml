@@ -1,0 +1,9 @@
+ToBeCompared_SparkNewOutputFormat.json:
+ nb_name: ToBeCompared_SparkNewOutputFormat.json
+ cluster_label: spark_cluster_2
+ cluster_configs:
+  - spark_cluster_2:
+    spark_version: 2.2-latest
+    flavor: spark
+    master_instance_type: m3.2xlarge 
+    slave_instance_type: m3.2xlarge 
