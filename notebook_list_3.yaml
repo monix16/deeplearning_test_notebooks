@@ -1,5 +1,5 @@
-ToBeCompared_SparkNewOutputFormat.json:
- nb_name: ToBeCompared_SparkNewOutputFormat.json
+ToBeCompared_SparkNewOutputFormat:
+ nb_name: ToBeCompared_SparkNewOutputFormat
  cluster_label: spark_cluster_2
 cluster_configs:
  - spark_cluster_2:
