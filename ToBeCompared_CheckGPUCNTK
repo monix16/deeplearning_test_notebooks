@@ -3,7 +3,7 @@
     {
       "text": "import cntk\ncntk.logging.set_trace_level(2)\ncntk.all_devices() ",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 10:27:31 AM",
+      "dateUpdated": "May 17, 2018 7:29:59 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -30,23 +30,20 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_VXCMWPEEYV1520875709",
-      "result": {
-        "code": "ERROR",
-        "type": "TEXT",
-        "msg": "Traceback (most recent call last):\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 18, in swig_import_helper\n    return importlib.import_module(mname)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 986, in _gcd_import\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 969, in _find_and_load\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 956, in _find_and_load_unlocked\nImportError: No module named \u0027cntk._cntk_py\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3256889236613956509.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/__init__.py\", line 10, in \u003cmodule\u003e\n    from . import cntk_py\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 21, in \u003cmodule\u003e\n    _cntk_py \u003d swig_import_helper()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 20, in swig_import_helper\n    return importlib.import_module(\u0027_cntk_py\u0027)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nImportError: libjpeg.so.8: cannot open shared object file: No such file or directory\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3256889236613956509.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 18, in swig_import_helper\n    return importlib.import_module(mname)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 986, in _gcd_import\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 969, in _find_and_load\n  File \"\u003cfrozen importlib._bootstrap\u003e\", line 956, in _find_and_load_unlocked\nImportError: No module named \u0027cntk._cntk_py\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-3256889236613956509.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/__init__.py\", line 10, in \u003cmodule\u003e\n    from . import cntk_py\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 21, in \u003cmodule\u003e\n    _cntk_py \u003d swig_import_helper()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/cntk/cntk_py.py\", line 20, in swig_import_helper\n    return importlib.import_module(\u0027_cntk_py\u0027)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/importlib/__init__.py\", line 126, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\nImportError: libjpeg.so.8: cannot open shared object file: No such file or directory\n\n"
-      },
+      "id": "20180312-120642_669605594_q_3JXC3XFYWK1526542153",
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateStarted": "Mar 13, 2018 10:27:31 AM",
-      "dateFinished": "Mar 13, 2018 10:27:34 AM",
+      "dateSubmitted": "May 17, 2018 7:29:59 AM",
+      "dateStarted": "May 17, 2018 7:29:59 AM",
+      "dateFinished": "May 17, 2018 7:30:00 AM",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking GPU for CNTK",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompared_CheckGPUCNTK\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 10:27:27 AM",
+      "dateUpdated": "May 17, 2018 7:30:00 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -68,43 +65,27 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_VXCMWPEEYV1520875709",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "False\n"
-      },
+      "id": "20180312-120829_405084188_q_3JXC3XFYWK1526542153",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 13, 2018 10:27:27 AM",
-      "dateFinished": "Mar 13, 2018 10:27:27 AM",
+      "dateSubmitted": "May 17, 2018 7:30:00 AM",
+      "dateStarted": "May 17, 2018 7:30:00 AM",
+      "dateFinished": "May 17, 2018 7:30:00 AM",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "version": "v0",
-      "jobName": "paragraph_1520935441087_-1955966483",
-      "id": "20180313-100401_1162213427_q_VXCMWPEEYV1520875709",
-      "dateCreated": "Mar 13, 2018 10:04:01 AM",
-      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "ToBeCompared_CheckGPUCNTK",
-  "id": "VXCMWPEEYV1520875709",
+  "id": "3JXC3XFYWK1526542153",
   "angularObjects": {
-    "2D5ZANCQ1946841516796256905:shared_process": [],
-    "2D4AD5YJF946841516796067432:shared_process": [],
-    "2D3SKE2U8946841516796067437:shared_process": [],
-    "2D6RCD76A946841516796067428:shared_process": []
+    "2D9FH4TJ4994861522998286786:shared_process": [],
+    "2DADUJXD9994861522998286783:shared_process": [],
+    "2DAZQCZS7994861522998286780:shared_process": [],
+    "2DBD1CFQF994861522998348600:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"
