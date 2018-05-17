@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "import os\nos.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027False\u0027)\nelse:\n    print(\u0027True\u0027)",
+      "text": "import os\nos.environ[\u0027KERAS_BACKEND\u0027] \u003d \u0027theano\u0027\n#os.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda\u0027\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/,dnn.enabled\u003dTrue,cuda.root\u003d/usr/local\u0027\nfrom theano import function, config, shared, tensor\nimport numpy\nimport time\nvlen \u003d 10 * 30 * 768  # 10 x #cores x # threads per core\niters \u003d 1000\n\nrng \u003d numpy.random.RandomState(22)\nx \u003d shared(numpy.asarray(rng.rand(vlen), config.floatX))\nf \u003d function([], tensor.exp(x))\nprint(f.maker.fgraph.toposort())\nt0 \u003d time.time()\nfor i in range(iters):\n    r \u003d f()\nt1 \u003d time.time()\nprint(\"Looping %d times took %f seconds\" % (iters, t1 - t0))\nprint(\"Result is %s\" % (r,))\nif numpy.any([isinstance(x.op, tensor.Elemwise) and\n              (\u0027Gpu\u0027 not in type(x.op).__name__)\n              for x in f.maker.fgraph.toposort()]):\n    print(\u0027False\u0027)\nelse:\n    print(\u0027True\u0027)",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "May 4, 2018 7:22:31 AM",
+      "dateUpdated": "May 17, 2018 7:07:23 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -29,21 +29,21 @@
         "truncated": false
       },
       "version": "v0",
-      "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_REZV3DYRUG1525395520",
-      "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateSubmitted": "May 4, 2018 7:22:31 AM",
-      "dateStarted": "May 4, 2018 7:22:31 AM",
-      "dateFinished": "May 4, 2018 7:22:31 AM",
-      "status": "FINISHED",
+      "jobName": "paragraph_1526540355857_-785002471",
+      "id": "20180517-065915_1920547138_q_PC2GTT9HPX1526538237",
+      "dateCreated": "May 17, 2018 6:59:15 AM",
+      "dateSubmitted": "May 17, 2018 7:07:23 AM",
+      "dateStarted": "May 17, 2018 7:07:36 AM",
+      "dateFinished": "May 17, 2018 7:08:00 AM",
+      "status": "ERROR",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 1000
     },
     {
       "title": "Checking GPU for Theano",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027True\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027True\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "May 4, 2018 7:22:33 AM",
+      "dateUpdated": "May 17, 2018 7:07:23 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -65,19 +65,19 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_REZV3DYRUG1525395520",
+      "id": "20180312-120829_405084188_q_PC2GTT9HPX1526538237",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateSubmitted": "May 4, 2018 7:22:33 AM",
-      "dateStarted": "May 4, 2018 7:22:33 AM",
-      "dateFinished": "May 4, 2018 7:22:33 AM",
+      "dateSubmitted": "May 17, 2018 7:07:23 AM",
+      "dateStarted": "May 17, 2018 7:07:23 AM",
+      "dateFinished": "May 17, 2018 7:08:00 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nz.run(\"20180312-120829_405084188\")",
+      "text": "",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "May 4, 2018 10:29:18 AM",
+      "dateUpdated": "May 17, 2018 7:07:23 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -89,28 +89,32 @@
           "groups": [],
           "scatter": {}
         },
-        "enabled": true
+        "enabled": true,
+        "editorMode": "ace/mode/python"
       },
       "settings": {
         "params": {},
         "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1525418541393_-1847869265",
-      "id": "20180504-072221_1820406290_q_REZV3DYRUG1525395520",
-      "dateCreated": "May 4, 2018 7:22:21 AM",
-      "status": "READY",
+      "jobName": "paragraph_1526540391694_-123188391",
+      "id": "20180517-065951_1892717936_q_PC2GTT9HPX1526538237",
+      "dateCreated": "May 17, 2018 6:59:51 AM",
+      "dateSubmitted": "May 17, 2018 7:07:36 AM",
+      "dateStarted": "May 17, 2018 7:08:00 AM",
+      "dateFinished": "May 17, 2018 7:08:00 AM",
+      "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     }
   ],
-  "name": "16006-ToBeCompared_CheckGPUTheano",
-  "id": "REZV3DYRUG1525395520",
+  "name": "ToBeCompared_CheckGPUTheano",
+  "id": "PC2GTT9HPX1526538237",
   "angularObjects": {
-    "2DEYNSJ77292151524791142540:shared_process": [],
-    "2DE61N6A4292151524791147329:shared_process": [],
-    "2DBRA8ZBN292151524791142533:shared_process": [],
-    "2DCDVWE59292151524791142531:shared_process": []
+    "2D9FH4TJ4994861522998286786:shared_process": [],
+    "2DADUJXD9994861522998286783:shared_process": [],
+    "2DAZQCZS7994861522998286780:shared_process": [],
+    "2DBD1CFQF994861522998348600:shared_process": []
   },
   "config": {
     "isDashboard": false,
