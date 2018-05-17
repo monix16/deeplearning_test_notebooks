@@ -1,5 +1,5 @@
-ToBeCompared_HiveNewOutputFormat.json:
- nb_name: ToBeCompared_HiveNewOutputFormat.json
+ToBeCompared_HiveNewOutputFormat:
+ nb_name: ToBeCompared_HiveNewOutputFormat
  cluster_label: hadoop_cluster_2
  interpreter_dependencies:
   org.apache.hive:hive-jdbc:0.14.0
