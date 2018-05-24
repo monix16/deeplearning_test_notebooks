@@ -3,7 +3,7 @@
     {
       "text": "import cntk\ncntk.logging.set_trace_level(2)\ncntk.all_devices() ",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "May 17, 2018 7:29:59 AM",
+      "dateUpdated": "May 24, 2018 6:33:28 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -30,20 +30,20 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_3JXC3XFYWK1526542153",
+      "id": "20180312-120642_669605594_q_1WV5GCX5Q71527143217",
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateSubmitted": "May 17, 2018 7:29:59 AM",
-      "dateStarted": "May 17, 2018 7:29:59 AM",
-      "dateFinished": "May 17, 2018 7:30:00 AM",
+      "dateSubmitted": "May 24, 2018 6:33:28 AM",
+      "dateStarted": "May 24, 2018 6:33:41 AM",
+      "dateFinished": "May 24, 2018 6:34:04 AM",
       "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking GPU for CNTK",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUTheano\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027ToBeCompare_CheckGPUCNTK\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027GPU\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "May 17, 2018 7:30:00 AM",
+      "dateUpdated": "May 24, 2018 6:55:53 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -65,18 +65,33 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_3JXC3XFYWK1526542153",
+      "id": "20180312-120829_405084188_q_1WV5GCX5Q71527143217",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateSubmitted": "May 17, 2018 7:30:00 AM",
-      "dateStarted": "May 17, 2018 7:30:00 AM",
-      "dateFinished": "May 17, 2018 7:30:00 AM",
+      "dateSubmitted": "May 24, 2018 6:55:53 AM",
+      "dateStarted": "May 24, 2018 6:55:53 AM",
+      "dateFinished": "May 24, 2018 6:55:53 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1527143573028_186037689",
+      "id": "20180524-063253_1747129894_q_1WV5GCX5Q71527143217",
+      "dateCreated": "May 24, 2018 6:32:53 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "ToBeCompared_CheckGPUCNTK",
-  "id": "3JXC3XFYWK1526542153",
+  "id": "1WV5GCX5Q71527143217",
   "angularObjects": {
     "2D9FH4TJ4994861522998286786:shared_process": [],
     "2DADUJXD9994861522998286783:shared_process": [],
