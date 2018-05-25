@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027",
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027\nos.environ[\u0027MKL_THREADING_LAYER\u0027] \u003d \"GNU\"",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Jan 22, 2018 7:19:56 AM",
+      "dateUpdated": "May 25, 2018 7:21:35 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,23 +22,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516357900302_1487390355",
-      "id": "20180119-103140_151148002_q_2V12NEX84F1516357894",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180119-103140_151148002_q_GFQ92UAV3A1527183822",
       "dateCreated": "Jan 19, 2018 10:31:40 AM",
-      "dateStarted": "Jan 22, 2018 7:19:56 AM",
-      "dateFinished": "Jan 22, 2018 7:19:56 AM",
+      "dateSubmitted": "May 24, 2018 5:44:21 PM",
+      "dateStarted": "May 24, 2018 5:44:32 PM",
+      "dateFinished": "May 24, 2018 5:44:53 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 7:19:56 AM",
       "config": {
         "colWidth": 12.0,
@@ -58,23 +60,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516357907341_1792126808",
-      "id": "20180119-103147_1343880080_q_2V12NEX84F1516357894",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "theano\n"
-      },
+      "id": "20180119-103147_1343880080_q_GFQ92UAV3A1527183822",
       "dateCreated": "Jan 19, 2018 10:31:47 AM",
-      "dateStarted": "Jan 22, 2018 7:19:56 AM",
-      "dateFinished": "Jan 22, 2018 7:19:56 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 24, 2018 5:44:32 PM",
+      "dateStarted": "May 24, 2018 5:44:54 PM",
+      "dateFinished": "May 24, 2018 5:44:54 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "from __future__ import print_function\nimport numpy as np\n\nfrom keras.preprocessing import sequence\nfrom keras.models import Sequential\nfrom keras.layers import Dense\nfrom keras.layers import Embedding\nfrom keras.layers import GlobalAveragePooling1D\nfrom keras.datasets import imdb\n\n\ndef create_ngram_set(input_list, ngram_value\u003d2):\n    \"\"\"\n    Extract a set of n-grams from a list of integers.\n    \u003e\u003e\u003e create_ngram_set([1, 4, 9, 4, 1, 4], ngram_value\u003d2)\n    {(4, 9), (4, 1), (1, 4), (9, 4)}\n    \u003e\u003e\u003e create_ngram_set([1, 4, 9, 4, 1, 4], ngram_value\u003d3)\n    [(1, 4, 9), (4, 9, 4), (9, 4, 1), (4, 1, 4)]\n    \"\"\"\n    return set(zip(*[input_list[i:] for i in range(ngram_value)]))\n\n\ndef add_ngram(sequences, token_indice, ngram_range\u003d2):\n    \"\"\"\n    Augment the input list of list (sequences) by appending n-grams values.\n    Example: adding bi-gram\n    \u003e\u003e\u003e sequences \u003d [[1, 3, 4, 5], [1, 3, 7, 9, 2]]\n    \u003e\u003e\u003e token_indice \u003d {(1, 3): 1337, (9, 2): 42, (4, 5): 2017}\n    \u003e\u003e\u003e add_ngram(sequences, token_indice, ngram_range\u003d2)\n    [[1, 3, 4, 5, 1337, 2017], [1, 3, 7, 9, 2, 1337, 42]]\n    Example: adding tri-gram\n    \u003e\u003e\u003e sequences \u003d [[1, 3, 4, 5], [1, 3, 7, 9, 2]]\n    \u003e\u003e\u003e token_indice \u003d {(1, 3): 1337, (9, 2): 42, (4, 5): 2017, (7, 9, 2): 2018}\n    \u003e\u003e\u003e add_ngram(sequences, token_indice, ngram_range\u003d3)\n    [[1, 3, 4, 5, 1337], [1, 3, 7, 9, 2, 1337, 2018]]\n    \"\"\"\n    new_sequences \u003d []\n    for input_list in sequences:\n        new_list \u003d input_list[:]\n        for i in range(len(new_list) - ngram_range + 1):\n            for ngram_value in range(2, ngram_range + 1):\n                ngram \u003d tuple(new_list[i:i + ngram_value])\n                if ngram in token_indice:\n                    new_list.append(token_indice[ngram])\n        new_sequences.append(new_list)\n\n    return new_sequences\n\n# Set parameters:\n# ngram_range \u003d 2 will add bi-grams features\nngram_range \u003d 1\nmax_features \u003d 20000\nmaxlen \u003d 400\nbatch_size \u003d 32\nembedding_dims \u003d 50\nepochs \u003d 2\n\nprint(\u0027Loading data...\u0027)\n(x_train, y_train), (x_test, y_test) \u003d imdb.load_data(num_words\u003dmax_features)\nprint(len(x_train), \u0027train sequences\u0027)\nprint(len(x_test), \u0027test sequences\u0027)\nprint(\u0027Average train sequence length: {}\u0027.format(np.mean(list(map(len, x_train)), dtype\u003dint)))\nprint(\u0027Average test sequence length: {}\u0027.format(np.mean(list(map(len, x_test)), dtype\u003dint)))\n\nif ngram_range \u003e 1:\n    print(\u0027Adding {}-gram features\u0027.format(ngram_range))\n    # Create set of unique n-gram from the training set.\n    ngram_set \u003d set()\n    for input_list in x_train:\n        for i in range(2, ngram_range + 1):\n            set_of_ngram \u003d create_ngram_set(input_list, ngram_value\u003di)\n            ngram_set.update(set_of_ngram)\n\n    # Dictionary mapping n-gram token to a unique integer.\n    # Integer values are greater than max_features in order\n    # to avoid collision with existing features.\n    start_index \u003d max_features + 1\n    token_indice \u003d {v: k + start_index for k, v in enumerate(ngram_set)}\n    indice_token \u003d {token_indice[k]: k for k in token_indice}\n\n    # max_features is the highest integer that could be found in the dataset.\n    max_features \u003d np.max(list(indice_token.keys())) + 1\n\n    # Augmenting x_train and x_test with n-grams features\n    x_train \u003d add_ngram(x_train, token_indice, ngram_range)\n    x_test \u003d add_ngram(x_test, token_indice, ngram_range)\n    print(\u0027Average train sequence length: {}\u0027.format(np.mean(list(map(len, x_train)), dtype\u003dint)))\n    print(\u0027Average test sequence length: {}\u0027.format(np.mean(list(map(len, x_test)), dtype\u003dint)))\n\nprint(\u0027Pad sequences (samples x time)\u0027)\nx_train \u003d sequence.pad_sequences(x_train, maxlen\u003dmaxlen)\nx_test \u003d sequence.pad_sequences(x_test, maxlen\u003dmaxlen)\nprint(\u0027x_train shape:\u0027, x_train.shape)\nprint(\u0027x_test shape:\u0027, x_test.shape)\n\nprint(\u0027Build model...\u0027)\nmodel \u003d Sequential()\n\n# we start off with an efficient embedding layer which maps\n# our vocab indices into embedding_dims dimensions\nmodel.add(Embedding(max_features,\n                    embedding_dims,\n                    input_length\u003dmaxlen))\n\n# we add a GlobalAveragePooling1D, which will average the embeddings\n# of all words in the document\nmodel.add(GlobalAveragePooling1D())\n\n# We project onto a single unit output layer, and squash it with a sigmoid:\nmodel.add(Dense(1, activation\u003d\u0027sigmoid\u0027))\n\nmodel.compile(loss\u003d\u0027binary_crossentropy\u0027,\n              optimizer\u003d\u0027adam\u0027,\n              metrics\u003d[\u0027accuracy\u0027])\n\nmodel.fit(x_train, y_train,\n          batch_size\u003dbatch_size,\n          epochs\u003depochs,\n          validation_data\u003d(x_test, y_test))",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 7:19:56 AM",
       "config": {
         "colWidth": 12.0,
@@ -102,16 +106,13 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516095486201_649557388",
-      "id": "20180116-093806_1995982867_q_2V12NEX84F1516357894",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "Loading data...\n25000 train sequences\n25000 test sequences\nAverage train sequence length: 238\nAverage test sequence length: 230\nPad sequences (samples x time)\nx_train shape: (25000, 400)\nx_test shape: (25000, 400)\nBuild model...\nTrain on 25000 samples, validate on 25000 samples\nEpoch 1/2\n\n   32/25000 [..............................] - ETA: 2s - loss: 0.6927 - acc: 0.5625\n\n  864/25000 [\u003e.............................] - ETA: 1s - loss: 0.6927 - acc: 0.5486\n\n 1696/25000 [\u003d\u003e............................] - ETA: 1s - loss: 0.6919 - acc: 0.5560\n\n 2528/25000 [\u003d\u003d\u003e...........................] - ETA: 1s - loss: 0.6910 - acc: 0.5704\n\n 3360/25000 [\u003d\u003d\u003d\u003e..........................] - ETA: 1s - loss: 0.6901 - acc: 0.5789\n\n 4192/25000 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 1s - loss: 0.6893 - acc: 0.5787\n\n 5024/25000 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 1s - loss: 0.6880 - acc: 0.5868\n\n 5856/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 1s - loss: 0.6865 - acc: 0.6113\n\n 6656/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 1s - loss: 0.6852 - acc: 0.6227\n\n 7488/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 1s - loss: 0.6833 - acc: 0.6322\n\n 8320/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 1s - loss: 0.6815 - acc: 0.6404\n\n 9152/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 0s - loss: 0.6790 - acc: 0.6538\n\n 9984/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 0s - loss: 0.6765 - acc: 0.6628\n\n10816/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 0s - loss: 0.6741 - acc: 0.6685\n\n11616/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 0s - loss: 0.6712 - acc: 0.6757\n\n12448/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 0.6682 - acc: 0.6828\n\n13280/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 0s - loss: 0.6653 - acc: 0.6866\n\n14112/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 0s - loss: 0.6621 - acc: 0.6914\n\n14944/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 0.6590 - acc: 0.6954\n\n15776/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 0s - loss: 0.6555 - acc: 0.7006\n\n16608/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 0s - loss: 0.6518 - acc: 0.7059\n\n17440/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 0s - loss: 0.6479 - acc: 0.7110\n\n18272/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 0.6446 - acc: 0.7138\n\n19104/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 0s - loss: 0.6411 - acc: 0.7168\n\n19936/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 0s - loss: 0.6375 - acc: 0.7205\n\n20768/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 0s - loss: 0.6335 - acc: 0.7242\n\n21600/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s - loss: 0.6293 - acc: 0.7277\n\n22432/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 0s - loss: 0.6260 - acc: 0.7301\n\n23264/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 0s - loss: 0.6223 - acc: 0.7328\n\n24096/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 0.6185 - acc: 0.7358\n\n24928/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 0s - loss: 0.6146 - acc: 0.7386\n\n25000/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 2s 88us/step - loss: 0.6144 - acc: 0.7388 - val_loss: 0.5078 - val_acc: 0.8209\n\nEpoch 2/2\n\n   32/25000 [..............................] - ETA: 2s - loss: 0.4726 - acc: 0.7500\n\n  864/25000 [\u003e.............................] - ETA: 1s - loss: 0.5091 - acc: 0.8125\n\n 1696/25000 [\u003d\u003e............................] - ETA: 1s - loss: 0.4938 - acc: 0.8320\n\n 2560/25000 [\u003d\u003d\u003e...........................] - ETA: 1s - loss: 0.4897 - acc: 0.8316\n\n 3392/25000 [\u003d\u003d\u003d\u003e..........................] - ETA: 1s - loss: 0.4801 - acc: 0.8420\n\n 4224/25000 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 1s - loss: 0.4739 - acc: 0.8461\n\n 5056/25000 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 1s - loss: 0.4695 - acc: 0.8479\n\n 5888/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 1s - loss: 0.4646 - acc: 0.8500\n\n 6720/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 1s - loss: 0.4620 - acc: 0.8506\n\n 7552/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 1s - loss: 0.4603 - acc: 0.8513\n\n 8384/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 1s - loss: 0.4570 - acc: 0.8515\n\n 9216/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 0s - loss: 0.4544 - acc: 0.8525\n\n10048/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 0s - loss: 0.4514 - acc: 0.8517\n\n10880/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 0s - loss: 0.4484 - acc: 0.8525\n\n11712/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 0s - loss: 0.4455 - acc: 0.8535\n\n12544/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 0s - loss: 0.4418 - acc: 0.8548\n\n13376/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 0s - loss: 0.4388 - acc: 0.8559\n\n14208/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 0s - loss: 0.4360 - acc: 0.8568\n\n15040/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 0s - loss: 0.4331 - acc: 0.8574\n\n15872/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 0s - loss: 0.4310 - acc: 0.8579\n\n16704/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 0s - loss: 0.4279 - acc: 0.8590\n\n17536/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 0s - loss: 0.4258 - acc: 0.8593\n\n18368/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 0s - loss: 0.4242 - acc: 0.8590\n\n19200/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 0s - loss: 0.4215 - acc: 0.8596\n\n20032/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 0s - loss: 0.4193 - acc: 0.8603\n\n20864/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 0s - loss: 0.4173 - acc: 0.8606\n\n21696/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 0s - loss: 0.4156 - acc: 0.8608\n\n22528/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 0s - loss: 0.4138 - acc: 0.8610\n\n23360/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 0s - loss: 0.4111 - acc: 0.8622\n\n24192/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 0s - loss: 0.4093 - acc: 0.8621\n\n25000/25000 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 2s 87us/step - loss: 0.4083 - acc: 0.8625 - val_loss: 0.3754 - val_acc: 0.8644\n\n\u003ckeras.callbacks.History object at 0x7ff3c447c390\u003e\n"
-      },
+      "id": "20180116-093806_1995982867_q_GFQ92UAV3A1527183822",
       "dateCreated": "Jan 16, 2018 9:38:06 AM",
-      "dateStarted": "Jan 22, 2018 7:19:56 AM",
-      "dateFinished": "Jan 22, 2018 7:20:09 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 24, 2018 5:44:54 PM",
+      "dateStarted": "May 24, 2018 5:44:54 PM",
+      "dateFinished": "May 24, 2018 5:44:55 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -138,14 +139,14 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516099320473_1243699393",
-      "id": "20180116-104200_1205061388_q_2V12NEX84F1516357894",
+      "id": "20180116-104200_1205061388_q_GFQ92UAV3A1527183822",
       "dateCreated": "Jan 16, 2018 10:42:00 AM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 7:19:56 AM",
       "config": {
         "colWidth": 12.0,
@@ -167,28 +168,28 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516605513266_2069999351",
-      "id": "20180122-071833_2104781247_q_2V12NEX84F1516357894",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180122-071833_2104781247_q_GFQ92UAV3A1527183822",
       "dateCreated": "Jan 22, 2018 7:18:33 AM",
-      "dateStarted": "Jan 22, 2018 7:19:56 AM",
-      "dateFinished": "Jan 22, 2018 7:20:09 AM",
+      "dateSubmitted": "May 24, 2018 5:44:55 PM",
+      "dateStarted": "May 24, 2018 5:44:55 PM",
+      "dateFinished": "May 24, 2018 5:44:55 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "imdb_fasttext",
-  "id": "2V12NEX84F1516357894",
+  "id": "GFQ92UAV3A1527183822",
   "angularObjects": {
-    "2D7M1HZP5932661518613479637:shared_process": [],
-    "2D6B43M8G932661515762929145:shared_process": [],
-    "2D35KXZZK932661515762929137:shared_process": []
+    "2DDDJQ5MF1090031527183841055:shared_process": [],
+    "2DEK3QV851090031527168688484:shared_process": [],
+    "2DENTX6JV1090031527168688466:shared_process": [],
+    "2DDED8P751090031527168688477:shared_process": [],
+    "2DDBWFX441090031527168688480:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"
