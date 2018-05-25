@@ -2,7 +2,6 @@
   "paragraphs": [
     {
       "text": "sc.version",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Mar 13, 2018 6:38:29 AM",
       "config": {
         "colWidth": 12.0,
@@ -30,19 +29,24 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853033643_1911093790",
-      "id": "20180312-111033_742270263_q_9AKRXXW16X1525396989",
+      "id": "20180312-111033_742270263_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\u00272.2.0\u0027\n"
+      },
       "dateCreated": "Mar 12, 2018 11:10:33 AM",
-      "dateStarted": "Mar 13, 2018 6:38:29 AM",
-      "dateFinished": "Mar 13, 2018 6:38:29 AM",
+      "dateSubmitted": "May 24, 2018 5:08:39 PM",
+      "dateStarted": "May 24, 2018 5:08:55 PM",
+      "dateFinished": "May 24, 2018 5:09:16 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Spark Version",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_MISC\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u00272.1.1\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_MISC\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u00272.2.0\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 10:29:05 AM",
+      "dateUpdated": "May 25, 2018 7:38:29 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -64,19 +68,24 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520919090714_-1959041267",
-      "id": "20180313-053130_1983386289_q_9AKRXXW16X1525396989",
+      "id": "20180313-053130_1983386289_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "False\n"
+      },
       "dateCreated": "Mar 13, 2018 5:31:30 AM",
-      "dateStarted": "Mar 13, 2018 6:38:30 AM",
-      "dateFinished": "Mar 13, 2018 6:38:30 AM",
+      "dateSubmitted": "May 24, 2018 5:09:17 PM",
+      "dateStarted": "May 24, 2018 5:09:17 PM",
+      "dateFinished": "May 24, 2018 5:09:17 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Python Version",
-      "text": "#ToBeCompared\nimport sys\na \u003d sys.version\n(\"3.5.3\") in a",
+      "text": "#ToBeCompared\nimport sys\na \u003d sys.version\n(\"3.5\") in a",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 6:39:12 AM",
+      "dateUpdated": "May 25, 2018 7:38:45 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -98,18 +107,22 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853322296_-1251007468",
-      "id": "20180312-111522_1262041705_q_9AKRXXW16X1525396989",
+      "id": "20180312-111522_1262041705_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "False\n"
+      },
       "dateCreated": "Mar 12, 2018 11:15:22 AM",
-      "dateStarted": "Mar 13, 2018 6:38:33 AM",
-      "dateFinished": "Mar 13, 2018 6:38:33 AM",
+      "dateSubmitted": "May 24, 2018 5:08:55 PM",
+      "dateStarted": "May 24, 2018 5:09:16 PM",
+      "dateFinished": "May 24, 2018 5:09:16 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Driver on slave",
       "text": "%sh\n#ToBeCompared\nab\u003d$(jps -m | grep -e \u0027spark\u0027 | wc -l)\nif [ $ab -eq 0 ];\nthen \n    echo True\nelse\n    echo False\nfi\npython \u003c\u003c END\nimport subprocess\na \u003d subprocess.check_output(\"jps -m | grep -e \u0027spark\u0027 | wc -l\", shell\u003dTrue, stderr\u003dsubprocess.STDOUT)\nif a\u003e0:\n    print(True)\nelse:\n    print(False)\nEND",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Mar 13, 2018 6:47:19 AM",
       "config": {
         "colWidth": 12.0,
@@ -132,18 +145,22 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520852814421_879811851",
-      "id": "20180312-110654_142985358_q_9AKRXXW16X1525396989",
+      "id": "20180312-110654_142985358_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\nTrue\n"
+      },
       "dateCreated": "Mar 12, 2018 11:06:54 AM",
-      "dateStarted": "Mar 13, 2018 6:47:19 AM",
-      "dateFinished": "Mar 13, 2018 6:47:20 AM",
+      "dateSubmitted": "May 24, 2018 5:09:17 PM",
+      "dateStarted": "May 24, 2018 5:09:17 PM",
+      "dateFinished": "May 24, 2018 5:09:17 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Spark interpreter properties",
       "text": "a \u003d sc.getConf().get(\"spark.executor.memory\")\nimport subprocess\nb \u003d subprocess.check_output(\"curl http://169.254.169.254/latest/meta-data/instance-type 2\u003e /dev/null\" , shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d str(b, \u0027utf-8\u0027)\nif b \u003d\u003d \"g2.2xlarge\":\n    if a \u003d\u003d \"8g\":\n        print(True)\n    else:\n        print(False)",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Mar 13, 2018 6:47:14 AM",
       "config": {
         "colWidth": 12.0,
@@ -172,18 +189,22 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520853405372_134027276",
-      "id": "20180312-111645_674020846_q_9AKRXXW16X1525396989",
+      "id": "20180312-111645_674020846_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
       "dateCreated": "Mar 12, 2018 11:16:45 AM",
-      "dateStarted": "Mar 13, 2018 6:47:14 AM",
-      "dateFinished": "Mar 13, 2018 6:47:14 AM",
+      "dateSubmitted": "May 24, 2018 5:09:16 PM",
+      "dateStarted": "May 24, 2018 5:09:16 PM",
+      "dateFinished": "May 24, 2018 5:09:16 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Check node bootstrap",
       "text": "%sh\nif [ -e test_nb_present ];\nthen \n    echo \u0027True\u0027\nelse\n    echo \u0027False\u0027\nfi\n",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Mar 13, 2018 9:36:05 AM",
       "config": {
         "colWidth": 12.0,
@@ -206,17 +227,21 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520923332899_2107483338",
-      "id": "20180313-064212_1939652537_q_9AKRXXW16X1525396989",
+      "id": "20180313-064212_1939652537_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "False\n"
+      },
       "dateCreated": "Mar 13, 2018 6:42:12 AM",
-      "dateStarted": "Mar 13, 2018 9:36:05 AM",
-      "dateFinished": "Mar 13, 2018 9:36:05 AM",
+      "dateSubmitted": "May 24, 2018 5:09:17 PM",
+      "dateStarted": "May 24, 2018 5:09:17 PM",
+      "dateFinished": "May 24, 2018 5:09:17 PM",
       "status": "FINISHED",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%spark\nz.run(\"20180313-064212_1939652537\")\nz.run(\"20180312-110654_142985358\")\nz.run(\"20180313-053130_1983386289\")",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "May 4, 2018 10:31:37 AM",
       "config": {
         "colWidth": 12.0,
@@ -236,25 +261,40 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1520933814743_-837231052",
-      "id": "20180313-093654_2066338506_q_9AKRXXW16X1525396989",
+      "id": "20180313-093654_2066338506_q_RY5S7WQZT61527181684",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
       "dateCreated": "Mar 13, 2018 9:36:54 AM",
-      "status": "READY",
-      "errorMessage": "",
+      "dateSubmitted": "May 24, 2018 5:09:16 PM",
+      "dateStarted": "May 24, 2018 5:09:17 PM",
+      "dateFinished": "May 24, 2018 5:09:17 PM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "ToBeCompared_MISC",
-  "id": "9AKRXXW16X1525396989",
+  "id": "RY5S7WQZT61527181684",
   "angularObjects": {
-    "2DEYNSJ77292151524791142540:shared_process": [],
-    "2DE61N6A4292151524791147329:shared_process": [],
-    "2DBRA8ZBN292151524791142533:shared_process": [],
-    "2DCDVWE59292151524791142531:shared_process": []
+    "2DEK3QV851090031527168688484:shared_process": [],
+    "2DENTX6JV1090031527168688466:shared_process": [],
+    "2DFSKD1KH1090031527181698946:shared_process": [],
+    "2DDED8P751090031527168688477:shared_process": [],
+    "2DDBWFX441090031527168688480:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"
