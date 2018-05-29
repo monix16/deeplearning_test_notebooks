@@ -1,0 +1,672 @@
+{
+  "paragraphs": [
+    {
+      "title": "Check CUDA Version",
+      "text": "%sh\n#ToBeCompared\npython \u003c\u003cEND\nimport subprocess\na \u003d subprocess.check_output(\u0027/usr/local/cuda/bin/nvcc --version\u0027,shell\u003dTrue,stderr\u003dsubprocess.STDOUT)\nif \u0027V8.0.44\u0027 in a:\n    print(True)\nelse:\n    print(False)\nEND",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:05:28 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521119368599_-807862742",
+      "id": "20180315-130928_1770593799_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 15, 2018 1:09:28 PM",
+      "dateStarted": "Mar 15, 2018 1:40:33 PM",
+      "dateFinished": "Mar 15, 2018 1:40:33 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check CUDN Version",
+      "text": "%sh\n#ToBeCompared\npython \u003c\u003cEND\nimport subprocess\na \u003d subprocess.check_output(\u0027cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR\u0027,shell\u003dTrue,stderr\u003dsubprocess.STDOUT)\nif \u0027CUDNN_MAJOR      6\u0027 in a:\n    print(True)\nelse:\n    print(False)\nEND",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:05:29 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521120092702_1147669254",
+      "id": "20180315-132132_1902389304_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 15, 2018 1:21:32 PM",
+      "dateStarted": "Mar 15, 2018 1:27:54 PM",
+      "dateFinished": "Mar 15, 2018 1:27:54 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Version",
+      "text": "c \u003d sc.version\nif \u00272.1.1\u0027 in c:\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:11:34 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520919090714_-1959041267",
+      "id": "20180313-053130_1983386289_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 13, 2018 5:31:30 AM",
+      "dateStarted": "Mar 16, 2018 9:11:34 AM",
+      "dateFinished": "Mar 16, 2018 9:11:34 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Python Version",
+      "text": "#ToBeCompared\nimport sys\na \u003d sys.version\n(\"3.5.3\") in a",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 13, 2018 6:39:12 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520853322296_-1251007468",
+      "id": "20180312-111522_1262041705_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:15:22 AM",
+      "dateStarted": "Mar 13, 2018 6:38:33 AM",
+      "dateFinished": "Mar 13, 2018 6:38:33 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Driver on slave",
+      "text": "%sh\n#ToBeCompared\nab\u003d$(jps -m | grep -e \u0027spark\u0027 | wc -l)\nif [ $ab -eq 0 ];\nthen \n    echo True\nelse\n    echo False\nfi",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 15, 2018 12:58:40 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520852814421_879811851",
+      "id": "20180312-110654_142985358_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:06:54 AM",
+      "dateStarted": "Mar 15, 2018 12:58:40 PM",
+      "dateFinished": "Mar 15, 2018 12:58:41 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "spark.driver.memory\n#ToBeCompared\na \u003d sc.getConf().get(\"spark.driver.memory\")\nprint(a)\nif b \u003d\u003d \"g2.2xlarge\":\n    if a \u003d\u003d \"8g\":\n        print(True)\n    else:\n        print(False)\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:37:11 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521193004125_671680760",
+      "id": "20180316-093644_1153748161_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6178201239130983531.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nAttributeError: \u0027SparkSession\u0027 object has no attribute \u0027driver\u0027\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6178201239130983531.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-6178201239130983531.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 1, in \u003cmodule\u003e\nAttributeError: \u0027SparkSession\u0027 object has no attribute \u0027driver\u0027\n\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:36:44 AM",
+      "dateStarted": "Mar 16, 2018 9:37:11 AM",
+      "dateFinished": "Mar 16, 2018 9:37:11 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Interpreter Property :- spark.executor.memory",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.executor.memory\")\nimport subprocess\nb \u003d subprocess.check_output(\"curl http://169.254.169.254/latest/meta-data/instance-type 2\u003e /dev/null\" , shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d str(b, \u0027utf-8\u0027)\nif b \u003d\u003d \"g2.2xlarge\":\n    if a \u003d\u003d \"8g\":\n        print(True)\n    else:\n        print(False)\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:35:06 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520853405372_134027276",
+      "id": "20180312-111645_674020846_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 12, 2018 11:16:45 AM",
+      "dateStarted": "Mar 16, 2018 9:35:06 AM",
+      "dateFinished": "Mar 16, 2018 9:35:06 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Interpreter Property :- spark.executorEnv.JAVA_HOME",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.executorEnv.JAVA_HOME\")\nif (a \u003d\u003d \u0027/usr/lib/jvm/jre\u0027):\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:33:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192441822_956566801",
+      "id": "20180316-092721_1642098441_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:27:21 AM",
+      "dateStarted": "Mar 16, 2018 9:28:26 AM",
+      "dateFinished": "Mar 16, 2018 9:28:26 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Interpreter Property :- spark.dynamicAllocation.enabled",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.dynamicAllocation.enabled\")\nif (a \u003d\u003d \u0027false\u0027):\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:34:21 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192753066_342752743",
+      "id": "20180316-093233_1841712886_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:32:33 AM",
+      "dateStarted": "Mar 16, 2018 9:34:22 AM",
+      "dateFinished": "Mar 16, 2018 9:34:22 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Interpreter Property :- spark.dynamicAllocation.minExecutors",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.dynamicAllocation.minExecutors\")\nif (a \u003d\u003d \u00270\u0027):\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:32:18 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192675678_-499385978",
+      "id": "20180316-093115_1056196297_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:31:15 AM",
+      "dateStarted": "Mar 16, 2018 9:32:18 AM",
+      "dateFinished": "Mar 16, 2018 9:32:18 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Interpreter Property :- spark.pyspark.python",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.pyspark.python\")\nif (a \u003d\u003d \u0027/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/python\u0027):\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:30:22 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192517829_1600190414",
+      "id": "20180316-092837_275775776_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:28:37 AM",
+      "dateStarted": "Mar 16, 2018 9:29:37 AM",
+      "dateFinished": "Mar 16, 2018 9:29:37 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Spark Property :- spark.executorEnv.LD_LIBRARY_PATH",
+      "text": "#ToBeCompared\na \u003d sc.getConf().get(\"spark.executorEnv.LD_LIBRARY_PATH\")\nif (a \u003d\u003d \u0027/usr/lib/hadoop2.6/lib/native/:/usr/local/cuda-8.0/lib64:/usr/local/cuda/extras/CUPTI/lib64/:/usr/lib/jvm/jre/lib/amd64/server\u0027):\n    print(True)\nelse:\n    print(False)",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:27:34 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192329085_782859512",
+      "id": "20180316-092529_1850236626_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 16, 2018 9:25:29 AM",
+      "dateStarted": "Mar 16, 2018 9:26:41 AM",
+      "dateFinished": "Mar 16, 2018 9:26:41 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Check node bootstrap",
+      "text": "#ToBeCompared\n%sh\nif [ -e test_nb_present ];\nthen \n    echo \u0027True\u0027\nelse\n    echo \u0027False\u0027\nfi\n",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:06:03 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1520923332899_2107483338",
+      "id": "20180313-064212_1939652537_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "True\n"
+      },
+      "dateCreated": "Mar 13, 2018 6:42:12 AM",
+      "dateStarted": "Mar 15, 2018 1:08:47 PM",
+      "dateFinished": "Mar 15, 2018 1:08:47 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Nvidia Version",
+      "text": "%sh \n#ToBeLogged\nnvidia-smi",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:07:02 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521119348052_-449292091",
+      "id": "20180315-130908_2004248426_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "Fri Mar 16 09:06:35 2018       \n+-----------------------------------------------------------------------------+\n| NVIDIA-SMI 384.81                 Driver Version: 384.81                    |\n|-------------------------------+----------------------+----------------------+\n| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |\n|\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d+\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d+\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d|\n|   0  GRID K520           Off  | 00000000:00:03.0 Off |                  N/A |\n| N/A   26C    P8    18W / 125W |      0MiB /  4036MiB |      0%      Default |\n+-------------------------------+----------------------+----------------------+\n                                                                               \n+-----------------------------------------------------------------------------+\n| Processes:                                                       GPU Memory |\n|  GPU       PID   Type   Process name                             Usage      |\n|\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d|\n|  No running processes found                                                 |\n+-----------------------------------------------------------------------------+\n"
+      },
+      "dateCreated": "Mar 15, 2018 1:09:08 PM",
+      "dateStarted": "Mar 16, 2018 9:06:35 AM",
+      "dateFinished": "Mar 16, 2018 9:06:35 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "title": "Conda Environment Package list",
+      "text": "%sh\n#ToBeLogged\nsource  /usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/activate\nconda list",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:24:24 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "title": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521191331691_146688456",
+      "id": "20180316-090851_855605272_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "INFO: activate-gcc_linux-64.sh made the following environmental changes:\n+CC\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-cc\n+CFLAGS\u003d-march\u003dnocona -mtune\u003dhaswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -pipe\n+CPPFLAGS\u003d-DNDEBUG -D_FORTIFY_SOURCE\u003d2 -O2\n+CPP\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-cpp\n+DEBUG_CFLAGS\u003d-march\u003dnocona -mtune\u003dhaswell -ftree-vectorize -fPIC -fstack-protector-all -fno-plt -Og -g -Wall -Wextra -fvar-tracking-assignments -pipe\n+DEBUG_CPPFLAGS\u003d-D_DEBUG -D_FORTIFY_SOURCE\u003d2 -Og\n+GCC_AR\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-gcc-ar\n+GCC_NM\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-gcc-nm\n+GCC_RANLIB\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-gcc-ranlib\n+GCC\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-gcc\n+HOST\u003dx86_64-conda_cos6-linux-gnu\n+LDFLAGS\u003d-Wl,-O2 -Wl,--sort-common -Wl,--as-needed -Wl,-z,relro -Wl,-z,now\n+_PYTHON_SYSCONFIGDATA_NAME\u003d_sysconfigdata_x86_64_conda_cos6_linux_gnu\nINFO: activate-gxx_linux-64.sh made the following environmental changes:\n+CXXFLAGS\u003d-fvisibility-inlines-hidden -std\u003dc++17 -fmessage-length\u003d0 -march\u003dnocona -mtune\u003dhaswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -pipe\n+CXX\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-c++\n+DEBUG_CXXFLAGS\u003d-fvisibility-inlines-hidden -std\u003dc++17 -fmessage-length\u003d0 -march\u003dnocona -mtune\u003dhaswell -ftree-vectorize -fPIC -fstack-protector-all -fno-plt -Og -g -Wall -Wextra -fvar-tracking-assignments -pipe\n+GXX\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-g++\nINFO: activate-binutils_linux-64.sh made the following environmental changes:\n+ADDR2LINE\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-addr2line\n+AR\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-ar\n+AS\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-as\n+CXXFILT\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-c++filt\n+ELFEDIT\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-elfedit\n+GPROF\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-gprof\n+LD_GOLD\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-ld.gold\n+LD\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-ld\n+NM\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-nm\n+OBJCOPY\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-objcopy\n+OBJDUMP\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-objdump\n+RANLIB\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-ranlib\n+READELF\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-readelf\n+SIZE\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-size\n+STRINGS\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-strings\n+STRIP\u003d/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/bin/x86_64-conda_cos6-linux-gnu-strip\n# packages in environment at /usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full:\n#\n# Name                    Version                   Build  Channel\n_license                  1.1                      py35_1  \n_nb_ext_conf              0.4.0                    py35_1  \nabsl-py                   0.1.10                    \u003cpip\u003e\nalabaster                 0.7.10                   py35_0  \nanaconda                  custom           py35h104c396_0  \nanaconda-clean            1.1.0                    py35_0  \nanaconda-client           1.6.3                    py35_0  \nanaconda-navigator        1.6.2                    py35_0  \nanaconda-project          0.6.0                    py35_0  \nargcomplete               1.0.0                    py35_1  \nasn1crypto                0.22.0                   py35_0  \nastroid                   1.4.9                    py35_0  \nastropy                   1.3.2               np112py35_0  \nbabel                     2.4.0                    py35_0  \nbackports                 1.0                      py35_0  \nbackports.functools_lru_cache 1.4                      py35_1    conda-forge\nbcolz                     1.1.2               np112py35_0    conda-forge\nbeautifulsoup4            4.6.0                    py35_0  \nbinutils_impl_linux-64    2.28.1               h04c84fa_2  \nbinutils_linux-64         7.2.0                        25  \nbitarray                  0.8.1                    py35_0  \nblas                      1.1                    openblas    conda-forge\nblaze                     0.10.1                   py35_0  \nbleach                    1.5.0                    py35_0  \nbokeh                     0.12.5                   py35_1  \nboost-cpp                 1.64.0                        1    conda-forge\nboto                      2.46.1                   py35_0  \nboto3                     1.4.8            py35h4658e5d_0  \nbotocore                  1.8.5            py35hbe5d90e_0  \nbottleneck                1.2.1               np112py35_0  \nbz2file                   0.98                     py35_0  \nbzip2                     1.0.6                         1    conda-forge\nca-certificates           2017.11.5                     0    conda-forge\ncairo                     1.14.6                        4    conda-forge\ncertifi                   2018.1.18                 \u003cpip\u003e\ncffi                      1.10.0                   py35_0  \nchainer                   3.3.0                     \u003cpip\u003e\nchardet                   3.0.3                    py35_0  \nchest                     0.2.3                    py35_0  \nclick                     6.7                      py35_0  \ncloudpickle               0.2.2                    py35_0  \nclyent                    1.2.2                    py35_0  \ncntk                      2.3.1                     \u003cpip\u003e\ncolorama                  0.3.9                    py35_0  \nconda                     4.4.8                    py35_0  \nconda-build               3.0.19           py35he3ba529_0  \nconda-env                 2.6.0                h36134e3_1  \nconda-verify              2.0.0                    py35_0  \nconfigobj                 5.0.6                    py35_0  \ncontextlib2               0.5.5                    py35_0  \ncryptography              1.8.1                    py35_0  \ncudatoolkit               8.0                           3  \ncupy                      2.3.0                     \u003cpip\u003e\ncurl                      7.52.1                        0  \ncycler                    0.10.0                   py35_0  \ncython                    0.25.2                   py35_0  \ncytoolz                   0.8.2                    py35_0  \ndask                      0.16.1                     py_0    conda-forge\ndask-core                 0.16.1                     py_0    conda-forge\ndatashape                 0.5.4                    py35_0  \ndbus                      1.10.10                       0  \ndecorator                 4.0.11                   py35_0  \ndill                      0.2.6                    py35_0  \ndistributed               1.20.2                   py35_0    conda-forge\ndm-sonnet-gpu             1.16                      \u003cpip\u003e\ndocutils                  0.13.1                   py35_0  \ndynd-python               0.7.2                    py35_0  \nentrypoints               0.2.2                    py35_1  \nenum34                    1.1.6                     \u003cpip\u003e\net_xmlfile                1.0.1                    py35_0  \nexpat                     2.1.0                         0  \nfastcache                 1.0.2                    py35_1  \nfastrlock                 0.3                       \u003cpip\u003e\nfilelock                  2.0.7                    py35_0  \nflask                     0.12.2                   py35_0  \nflask-cors                3.0.2                    py35_0  \nfontconfig                2.12.1                        5    conda-forge\nfreetype                  2.7                           1    conda-forge\ngcc_impl_linux-64         7.2.0                hc5ce805_2  \ngcc_linux-64              7.2.0                        25  \ngensim                    3.1.0            py35h7300b16_0  \nget_terminal_size         1.0.0                    py35_0  \ngettext                   0.19.7                        1    conda-forge\ngevent                    1.2.1                    py35_0  \nglib                      2.51.4                        0    conda-forge\nglob2                     0.5                      py35_0  \ngraphite2                 1.3.10                        0    conda-forge\ngraphviz                  0.8.1                     \u003cpip\u003e\ngraphviz                  2.38.0                        5    conda-forge\ngreenlet                  0.4.12                   py35_0  \ngst-plugins-base          1.8.0                         0  \ngstreamer                 1.8.0                         0  \ngxx_impl_linux-64         7.2.0                hd3faf3d_2  \ngxx_linux-64              7.2.0                        25  \nh2o                       3.10.0.9                      0  \nh5py                      2.7.0               np112py35_0  \nharfbuzz                  1.4.3                         0    conda-forge\nhdf5                      1.8.17                       11    conda-forge\nhdfs3                     0.3.0                    py35_0    conda-forge\nheapdict                  1.0.0                    py35_1  \nhtml5lib                  0.9999999                 \u003cpip\u003e\nhtml5lib                  0.999                    py35_0  \nicu                       58.2                          0    conda-forge\nidna                      2.5                      py35_0  \nimagesize                 0.7.1                    py35_0  \nintel-openmp              2018.0.0             hc7b2577_8  \nipykernel                 4.6.1                    py35_0  \nipython                   5.3.0                    py35_0  \nipython_genutils          0.2.0                    py35_0  \nipywidgets                6.0.0                    py35_0  \nisort                     4.2.5                    py35_0  \nitsdangerous              0.24                     py35_0  \njbig                      2.1                           0  \njdcal                     1.3                      py35_0  \njedi                      0.10.2                   py35_2  \njinja2                    2.9.6                    py35_0  \njmespath                  0.9.3            py35h8a35363_0  \njoblib                    0.11                     py35_0  \njpeg                      9b                            0  \njsonschema                2.6.0                    py35_0  \njupyter                   1.0.0                    py35_3  \njupyter_client            5.0.1                    py35_0  \njupyter_console           5.1.0                    py35_0  \njupyter_core              4.3.0                    py35_0  \nKeras                     2.1.3                     \u003cpip\u003e\nkrb5                      1.14.2                        0    conda-forge\nlazy-object-proxy         1.2.2                    py35_0  \nlibdynd                   0.7.2                         0  \nlibffi                    3.2.1                         1  \nlibgcc                    4.8.5                         2  \nlibgcc-ng                 7.2.0                h7cc24e2_2  \nlibgcrypt                 1.8.0                         1    conda-forge\nlibgfortran               3.0.0                         1  \nlibgpg-error              1.27                          1    conda-forge\nlibgpuarray               0.7.5                h14c3975_0  \nlibgsasl                  1.8.0                         1    conda-forge\nlibhdfs3                  2.3                           0    conda-forge\nlibiconv                  1.14                          0  \nlibntlm                   1.4                           0    conda-forge\nlibpng                    1.6.28                        1    conda-forge\nlibsodium                 1.0.10                        0  \nlibstdcxx-ng              7.2.0                h7a57d05_2  \nlibtiff                   4.0.6                         3  \nlibtool                   2.4.2                         0  \nlibuuid                   1.0.3                         1    conda-forge\nlibxcb                    1.12                          1  \nlibxml2                   2.9.4                         0  \nlibxslt                   1.1.29                        0  \nllvmlite                  0.18.0                   py35_0  \nlocket                    0.2.0                    py35_1  \nlxml                      3.7.3                    py35_0  \nmako                      1.0.7            py35h69899ea_0  \nMarkdown                  2.6.11                    \u003cpip\u003e\nmarkupsafe                0.23                     py35_2  \nmatplotlib                2.1.1                    py35_0    conda-forge\nmistune                   0.7.4                    py35_0  \nmkl                       2018.0.1             h19d6760_4  \nmkl-service               1.1.2                    py35_3  \nmpld3                     0.2                      py35_0  \nmpmath                    0.19                     py35_1  \nmsgpack-python            0.4.8                    py35_0  \nmultipledispatch          0.4.9                    py35_0  \nmxnet-cu80                1.0.0.post4               \u003cpip\u003e\nnavigator-updater         0.1.0                    py35_0  \nnb_anacondacloud          1.4.0                    py35_0  \nnb_conda                  2.2.0                    py35_0  \nnb_conda_kernels          2.1.0                    py35_0  \nnbconvert                 5.1.1                    py35_0  \nnbformat                  4.3.0                    py35_0  \nnbpresent                 3.0.2                    py35_0  \nnetworkx                  1.11                     py35_0  \nnltk                      3.2.3                    py35_0  \nnose                      1.3.7                    py35_1  \nnotebook                  5.0.0                    py35_0  \nnumba                     0.33.0              np112py35_0  \nnumexpr                   2.6.4            py35h119f745_0  \nnumpy                     1.12.1          py35_blas_openblas_201  [blas_openblas]  conda-forge\nnumpydoc                  0.6.0                    py35_0  \nodo                       0.5.0                    py35_1  \nolefile                   0.44                     py35_0  \nopenblas                  0.2.20                        7    conda-forge\nopenjdk                   8.0.121                       1  \nopenpyxl                  2.4.7                    py35_0  \nopenssl                   1.0.2n                        0    conda-forge\npackaging                 16.8                     py35_0  \npandas                    0.20.1              np112py35_0  \npandocfilters             1.4.1                    py35_0  \npango                     1.40.4                        0    conda-forge\npartd                     0.3.8                    py35_0  \npatchelf                  0.9                           0  \npath.py                   10.3.1                   py35_0  \npathlib2                  2.2.1                    py35_0  \npatsy                     0.4.1                    py35_0  \npcre                      8.39                          1  \npep8                      1.7.0                    py35_0  \npexpect                   4.2.1                    py35_0  \npickleshare               0.7.4                    py35_0  \npillow                    4.3.0                    py35_0    conda-forge\npip                       9.0.1                    py35_1  \npixman                    0.34.0                        0  \npkginfo                   1.4.1                    py35_0  \nply                       3.10                     py35_0  \nprompt_toolkit            1.0.14                   py35_0  \nprotobuf                  3.5.1                     \u003cpip\u003e\nprotobuf                  3.3.2                    py35_0    conda-forge\npsutil                    5.2.2                    py35_0  \nptyprocess                0.5.1                    py35_0  \npy                        1.4.33                   py35_0  \npyasn1                    0.2.3                    py35_0  \npycosat                   0.6.3            py35h6b6bb97_0  \npycparser                 2.17                     py35_0  \npycrypto                  2.6.1                    py35_6  \npycurl                    7.43.0                   py35_2  \npyflakes                  1.5.0                    py35_0  \npygments                  2.2.0                    py35_0  \npygpu                     0.7.5                    py35_0    conda-forge\npylint                    1.6.4                    py35_1  \npymc3                     3.2              py35h9f7775c_0  \npyodbc                    4.0.16                   py35_0  \npyopenssl                 17.0.0                   py35_0  \npyparsing                 2.1.4                    py35_0  \npyqt                      5.6.0                    py35_2  \npytables                  3.3.0               np112py35_0  \npytest                    3.0.7                    py35_0  \npython                    3.5.3                         1  \npython-dateutil           2.6.0                    py35_0  \npytorch                   0.3.0           py35_cuda8.0.61_cudnn7.0.3hb362f6e_4    pytorch\npytz                      2017.2                   py35_0  \npywavelets                0.5.2               np112py35_0  \npyyaml                    3.12                     py35_0  \npyzmq                     16.0.2                   py35_0  \nqdlpy                     1.0.0                     \u003cpip\u003e\nqt                        5.6.2                         3    conda-forge\nqtawesome                 0.4.4                    py35_0  \nqtconsole                 4.3.0                    py35_0  \nqtpy                      1.2.1                    py35_0  \nreadline                  6.2                           2  \nredis                     3.2.0                         0  \nredis-py                  2.10.5                   py35_0  \nrequests                  2.14.2                   py35_0  \nrequests                  2.18.4                    \u003cpip\u003e\nrope                      0.9.4                    py35_1  \nruamel_yaml               0.11.14                  py35_1  \ns3transfer                0.1.11           py35hb3b1e1f_1  \nscikit-fuzzy              0.3.1                     \u003cpip\u003e\nscikit-image              0.13.0              np112py35_0  \nscikit-learn              0.19.1          py35_blas_openblas_201  [blas_openblas]  conda-forge\nscipy                     1.0.0           py35_blas_openblas_201  [blas_openblas]  conda-forge\nseaborn                   0.8.1            py35h04cba02_0  \nsetuptools                27.2.0                   py35_0  \nsimplegeneric             0.8.1                    py35_1  \nsingledispatch            3.4.0.3                  py35_0  \nsip                       4.18                     py35_0  \nsix                       1.10.0                   py35_0  \nsmart_open                1.5.3                    py35_0  \nsnowballstemmer           1.2.1                    py35_0  \nsockjs-tornado            1.0.3                    py35_0  \nsortedcollections         0.5.3                    py35_0  \nsortedcontainers          1.5.7                    py35_0  \nsphinx                    1.5.6                    py35_0  \nspyder                    3.1.4                    py35_0  \nsqlalchemy                1.1.9                    py35_0  \nsqlite                    3.13.0                        0  \nstatsmodels               0.8.0               np112py35_0  \nsympy                     1.0                      py35_0  \ntblib                     1.3.2                    py35_0  \ntensorflow-gpu            1.4.1                     \u003cpip\u003e\ntensorflow-tensorboard    0.4.0                     \u003cpip\u003e\nterminado                 0.6                      py35_0  \ntestpath                  0.3                      py35_0  \ntflearn                   0.3.2                     \u003cpip\u003e\ntheano                    1.0.1                    py35_1    conda-forge\ntk                        8.5.18                        0  \ntoolz                     0.8.2                    py35_0  \ntorchvision               0.2.0            py35heaa392f_1    pytorch\ntornado                   4.5.1                    py35_0  \ntqdm                      4.19.4           py35h68e51d2_0  \ntraitlets                 4.3.2                    py35_0  \nunicodecsv                0.14.1                   py35_0  \nunixodbc                  2.3.4                         0  \nurllib3                   1.22                      \u003cpip\u003e\nwcwidth                   0.1.7                    py35_0  \nwerkzeug                  0.12.2                   py35_0  \nwheel                     0.29.0                   py35_0  \nwidgetsnbextension        2.0.0                    py35_0  \nwrapt                     1.10.10                  py35_0  \nxlrd                      1.0.0                    py35_0  \nxlsxwriter                0.9.6                    py35_0  \nxlwt                      1.2.0                    py35_0  \nxz                        5.2.2                         1  \nyaml                      0.1.6                         0  \nzeromq                    4.1.5                         0  \nzict                      0.1.3                      py_0    conda-forge\nzlib                      1.2.8                         3  \n"
+      },
+      "dateCreated": "Mar 16, 2018 9:08:51 AM",
+      "dateStarted": "Mar 16, 2018 9:24:24 AM",
+      "dateFinished": "Mar 16, 2018 9:24:26 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh \nconda list",
+      "user": "prashantp@qubole.com",
+      "dateUpdated": "Mar 16, 2018 9:21:42 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521191521919_-1822796836",
+      "id": "20180316-091201_1290688408_q_6YZPNAP9BR1520832761",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "bash: conda: command not found\nExitValue: 127"
+      },
+      "dateCreated": "Mar 16, 2018 9:12:01 AM",
+      "dateStarted": "Mar 16, 2018 9:21:42 AM",
+      "dateFinished": "Mar 16, 2018 9:21:42 AM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1521192092154_-272030550",
+      "id": "20180316-092132_354923457_q_6YZPNAP9BR1520832761",
+      "dateCreated": "Mar 16, 2018 9:21:32 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "ToBeCompared_MISC",
+  "id": "6YZPNAP9BR1520832761",
+  "angularObjects": {
+    "2D5ZANCQ1946841516796256905:shared_process": [],
+    "2D4AD5YJF946841516796067432:shared_process": [],
+    "2D3SKE2U8946841516796067437:shared_process": [],
+    "2D6RCD76A946841516796067428:shared_process": [],
+    "2D9ZBDJPN946841520851003485:shared_process": []
+  },
+  "config": {
+    "isDashboard": false
+  },
+  "info": {},
+  "source": "FCN"
+}
