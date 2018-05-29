@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027",
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027\nos.environ[\u0027MKL_THREADING_LAYER\u0027] \u003d \"GNU\"",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Jan 22, 2018 1:34:14 PM",
+      "dateUpdated": "May 25, 2018 7:14:15 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,23 +22,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516358360368_-1188428579",
-      "id": "20180119-103920_405736436_q_184GR4ARKB1516358302",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180119-103920_405736436_q_QMSMNEG4PJ1527182129",
       "dateCreated": "Jan 19, 2018 10:39:20 AM",
-      "dateStarted": "Jan 22, 2018 1:34:14 PM",
-      "dateFinished": "Jan 22, 2018 1:34:14 PM",
+      "dateSubmitted": "May 24, 2018 5:16:03 PM",
+      "dateStarted": "May 24, 2018 5:16:19 PM",
+      "dateFinished": "May 24, 2018 5:16:41 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 1:34:14 PM",
       "config": {
         "colWidth": 12.0,
@@ -58,23 +60,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516358351925_1863014948",
-      "id": "20180119-103911_2068011920_q_184GR4ARKB1516358302",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "theano\n"
-      },
+      "id": "20180119-103911_2068011920_q_QMSMNEG4PJ1527182129",
       "dateCreated": "Jan 19, 2018 10:39:11 AM",
-      "dateStarted": "Jan 22, 2018 1:34:14 PM",
-      "dateFinished": "Jan 22, 2018 1:34:14 PM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 24, 2018 5:16:19 PM",
+      "dateStarted": "May 24, 2018 5:16:42 PM",
+      "dateFinished": "May 24, 2018 5:16:42 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "from __future__ import print_function\n\nimport keras\nfrom keras.datasets import mnist\nfrom keras.models import Sequential\nfrom keras.layers import Dense, Dropout\nfrom keras.optimizers import RMSprop\n\nbatch_size \u003d 128\nnum_classes \u003d 10\nepochs \u003d 20\n\n# the data, shuffled and split between train and test sets\n(x_train, y_train), (x_test, y_test) \u003d mnist.load_data()\n\nx_train \u003d x_train.reshape(60000, 784)\nx_test \u003d x_test.reshape(10000, 784)\nx_train \u003d x_train.astype(\u0027float32\u0027)\nx_test \u003d x_test.astype(\u0027float32\u0027)\nx_train /\u003d 255\nx_test /\u003d 255\nprint(x_train.shape[0], \u0027train samples\u0027)\nprint(x_test.shape[0], \u0027test samples\u0027)\n\n# convert class vectors to binary class matrices\ny_train \u003d keras.utils.to_categorical(y_train, num_classes)\ny_test \u003d keras.utils.to_categorical(y_test, num_classes)\n\nmodel \u003d Sequential()\nmodel.add(Dense(512, activation\u003d\u0027relu\u0027, input_shape\u003d(784,)))\nmodel.add(Dropout(0.2))\nmodel.add(Dense(512, activation\u003d\u0027relu\u0027))\nmodel.add(Dropout(0.2))\nmodel.add(Dense(num_classes, activation\u003d\u0027softmax\u0027))\n\nmodel.summary()\n\nmodel.compile(loss\u003d\u0027categorical_crossentropy\u0027,\n              optimizer\u003dRMSprop(),\n              metrics\u003d[\u0027accuracy\u0027])\n\nhistory \u003d model.fit(x_train, y_train,\n                    batch_size\u003dbatch_size,\n                    epochs\u003depochs,\n                    verbose\u003d1,\n                    validation_data\u003d(x_test, y_test))\nscore \u003d model.evaluate(x_test, y_test, verbose\u003d0)\nprint(\u0027Test loss:\u0027, score[0])\nprint(\u0027Test accuracy:\u0027, score[1])",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 1:34:14 PM",
       "config": {
         "colWidth": 12.0,
@@ -102,16 +106,13 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516097587201_778266548",
-      "id": "20180116-101307_1892521233_q_184GR4ARKB1516358302",
-      "result": {
-        "code": "ERROR",
-        "type": "TEXT",
-        "msg": "60000 train samples\n10000 test samples\n_________________________________________________________________\nLayer (type)                 Output Shape              Param #   \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\ndense_6 (Dense)              (None, 512)               401920    \n_________________________________________________________________\ndropout_3 (Dropout)          (None, 512)               0         \n_________________________________________________________________\ndense_7 (Dense)              (None, 512)               262656    \n_________________________________________________________________\ndropout_4 (Dropout)          (None, 512)               0         \n_________________________________________________________________\ndense_8 (Dense)              (None, 10)                5130      \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nTotal params: 669,706\nTrainable params: 669,706\nNon-trainable params: 0\n_________________________________________________________________\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7440562212192925453.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 35, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/models.py\", line 965, in fit\n    validation_steps\u003dvalidation_steps)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1653, in fit\n    self._make_test_function()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 992, in _make_test_function\n    **self._function_kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/theano_backend.py\", line 1236, in function\n    return Function(inputs, outputs, updates\u003dupdates, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/theano_backend.py\", line 1222, in __init__\n    **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function.py\", line 317, in function\n    output_keys\u003doutput_keys)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/pfunc.py\", line 486, in pfunc\n    output_keys\u003doutput_keys)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 1839, in orig_function\n    name\u003dname)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 1519, in __init__\n    optimizer_profile \u003d optimizer(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 99, in __call__\n    return self.optimize(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 88, in optimize\n    ret \u003d self.apply(fgraph, *args, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 242, in apply\n    sub_prof \u003d optimizer.optimize(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 88, in optimize\n    ret \u003d self.apply(fgraph, *args, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2525, in apply\n    sub_prof \u003d gopt.apply(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2128, in apply\n    nb +\u003d self.process_node(fgraph, node)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2019, in process_node\n    replacements \u003d lopt.transform(node)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/tensor/opt.py\", line 6507, in constant_folding\n    no_recycling\u003d[], impl\u003dimpl)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/op.py\", line 955, in make_thunk\n    no_recycling)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/op.py\", line 858, in make_c_thunk\n    output_storage\u003dnode_output_storage)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1217, in make_thunk\n    keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1157, in __compile__\n    keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1620, in cthunk_factory\n    key\u003dkey, lnk\u003dself, keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cmodule.py\", line 1133, in module_from_key\n    module \u003d self._get_from_key(key)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cmodule.py\", line 1025, in _get_from_key\n    if key in self.entry_from_key:\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/utils.py\", line 193, in __eq__\n    def __eq__(self, other):\n  File \"/usr/lib/spark/python/pyspark/context.py\", line 237, in signal_handler\n    raise KeyboardInterrupt()\nKeyboardInterrupt\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7440562212192925453.py\", line 299, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7440562212192925453.py\", line 292, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 35, in \u003cmodule\u003e\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/models.py\", line 965, in fit\n    validation_steps\u003dvalidation_steps)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 1653, in fit\n    self._make_test_function()\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/engine/training.py\", line 992, in _make_test_function\n    **self._function_kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/theano_backend.py\", line 1236, in function\n    return Function(inputs, outputs, updates\u003dupdates, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/keras/backend/theano_backend.py\", line 1222, in __init__\n    **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function.py\", line 317, in function\n    output_keys\u003doutput_keys)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/pfunc.py\", line 486, in pfunc\n    output_keys\u003doutput_keys)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 1839, in orig_function\n    name\u003dname)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/compile/function_module.py\", line 1519, in __init__\n    optimizer_profile \u003d optimizer(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 99, in __call__\n    return self.optimize(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 88, in optimize\n    ret \u003d self.apply(fgraph, *args, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 242, in apply\n    sub_prof \u003d optimizer.optimize(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 88, in optimize\n    ret \u003d self.apply(fgraph, *args, **kwargs)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2525, in apply\n    sub_prof \u003d gopt.apply(fgraph)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2128, in apply\n    nb +\u003d self.process_node(fgraph, node)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/opt.py\", line 2019, in process_node\n    replacements \u003d lopt.transform(node)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/tensor/opt.py\", line 6507, in constant_folding\n    no_recycling\u003d[], impl\u003dimpl)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/op.py\", line 955, in make_thunk\n    no_recycling)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/op.py\", line 858, in make_c_thunk\n    output_storage\u003dnode_output_storage)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1217, in make_thunk\n    keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1157, in __compile__\n    keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cc.py\", line 1620, in cthunk_factory\n    key\u003dkey, lnk\u003dself, keep_lock\u003dkeep_lock)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cmodule.py\", line 1133, in module_from_key\n    module \u003d self._get_from_key(key)\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/cmodule.py\", line 1025, in _get_from_key\n    if key in self.entry_from_key:\n  File \"/usr/lib/a-4.2.0-py-3.5.3-dl-gpu-full/lib/python3.5/site-packages/theano/gof/utils.py\", line 193, in __eq__\n    def __eq__(self, other):\n  File \"/usr/lib/spark/python/pyspark/context.py\", line 237, in signal_handler\n    raise KeyboardInterrupt()\nKeyboardInterrupt\n\n"
-      },
+      "id": "20180116-101307_1892521233_q_QMSMNEG4PJ1527182129",
       "dateCreated": "Jan 16, 2018 10:13:07 AM",
-      "dateStarted": "Jan 22, 2018 1:34:14 PM",
-      "dateFinished": "Jan 22, 2018 1:34:18 PM",
+      "dateSubmitted": "May 24, 2018 5:16:42 PM",
+      "dateStarted": "May 24, 2018 5:16:42 PM",
+      "dateFinished": "May 24, 2018 5:16:43 PM",
       "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -138,14 +139,14 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516109530275_1844199058",
-      "id": "20180116-133210_693358078_q_184GR4ARKB1516358302",
+      "id": "20180116-133210_693358078_q_QMSMNEG4PJ1527182129",
       "dateCreated": "Jan 16, 2018 1:32:10 PM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 1:34:14 PM",
       "config": {
         "colWidth": 12.0,
@@ -167,28 +168,28 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516627210167_-1836989677",
-      "id": "20180122-132010_486817821_q_184GR4ARKB1516358302",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180122-132010_486817821_q_QMSMNEG4PJ1527182129",
       "dateCreated": "Jan 22, 2018 1:20:10 PM",
-      "dateStarted": "Jan 22, 2018 1:34:15 PM",
-      "dateFinished": "Jan 22, 2018 1:34:18 PM",
+      "dateSubmitted": "May 24, 2018 5:16:43 PM",
+      "dateStarted": "May 24, 2018 5:16:43 PM",
+      "dateFinished": "May 24, 2018 5:16:43 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "mnist_mlp",
-  "id": "184GR4ARKB1516358302",
+  "id": "QMSMNEG4PJ1527182129",
   "angularObjects": {
-    "2D7M1HZP5932661518613479637:shared_process": [],
-    "2D6B43M8G932661515762929145:shared_process": [],
-    "2D35KXZZK932661515762929137:shared_process": []
+    "2DEK3QV851090031527168688484:shared_process": [],
+    "2DDUCEHJK1090031527182144045:shared_process": [],
+    "2DENTX6JV1090031527168688466:shared_process": [],
+    "2DDED8P751090031527168688477:shared_process": [],
+    "2DDBWFX441090031527168688480:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"

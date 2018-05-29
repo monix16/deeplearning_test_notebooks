@@ -3,7 +3,7 @@
     {
       "text": "import tensorflow as tf\na \u003d tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape\u003d[2, 3], name\u003d\u0027a\u0027)\nb \u003d tf.constant([1.0, 2.0, 3.0, 4.0, 5.0, 6.0], shape\u003d[3, 2], name\u003d\u0027b\u0027)\nc \u003d tf.matmul(a, b)\n# Creates a session with log_device_placement set to True.\nsess \u003d tf.Session(config\u003dtf.ConfigProto(log_device_placement\u003dTrue))\n# Runs the op.\nprint(sess.run(c))",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 10:25:32 AM",
+      "dateUpdated": "May 25, 2018 9:28:18 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -30,19 +30,20 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856402732_179810980",
-      "id": "20180312-120642_669605594_q_U2ENPDECPZ1525400116",
+      "id": "20180312-120642_669605594_q_X3K8DYPK411527184401",
       "dateCreated": "Mar 12, 2018 12:06:42 PM",
-      "dateStarted": "Mar 13, 2018 10:25:32 AM",
-      "dateFinished": "Mar 13, 2018 10:25:32 AM",
+      "dateSubmitted": "May 25, 2018 9:28:18 AM",
+      "dateStarted": "May 25, 2018 9:28:18 AM",
+      "dateFinished": "May 25, 2018 9:33:56 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "title": "Checking GPU for Tensorflow",
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTF\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027device:GPU:\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"ToBeCompare_CheckGPUTF\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027device:GPU\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Mar 13, 2018 10:26:01 AM",
+      "dateUpdated": "May 25, 2018 9:38:42 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -64,55 +65,44 @@
       },
       "version": "v0",
       "jobName": "paragraph_1520856509622_953461108",
-      "id": "20180312-120829_405084188_q_U2ENPDECPZ1525400116",
+      "id": "20180312-120829_405084188_q_X3K8DYPK411527184401",
       "dateCreated": "Mar 12, 2018 12:08:29 PM",
-      "dateStarted": "Mar 13, 2018 10:26:01 AM",
-      "dateFinished": "Mar 13, 2018 10:26:01 AM",
+      "dateSubmitted": "May 25, 2018 9:38:42 AM",
+      "dateStarted": "May 25, 2018 9:38:45 AM",
+      "dateFinished": "May 25, 2018 9:38:45 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%spark\nz.run(\"20180312-120829_405084188\")",
-      "user": "prashantp@qubole.com",
-      "dateUpdated": "May 4, 2018 10:27:57 AM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "table",
-          "height": 300.0,
-          "optionOpen": false,
-          "keys": [],
-          "values": [],
-          "groups": [],
-          "scatter": {}
-        },
-        "enabled": true,
-        "editorMode": "ace/mode/scala"
-      },
+      "text": "",
+      "config": {},
       "settings": {
         "params": {},
         "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1520935677056_1264518084",
-      "id": "20180313-100757_733552213_q_U2ENPDECPZ1525400116",
-      "dateCreated": "Mar 13, 2018 10:07:57 AM",
+      "jobName": "paragraph_1527240378915_651552850",
+      "id": "20180525-092618_1571389529_q_X3K8DYPK411527184401",
+      "dateCreated": "May 25, 2018 9:26:18 AM",
       "status": "READY",
       "errorMessage": "",
-      "progressUpdateIntervalMs": 500
+      "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "ToBeCompared_CheckGPUTF",
-  "id": "U2ENPDECPZ1525400116",
+  "id": "X3K8DYPK411527184401",
   "angularObjects": {
-    "2DEYNSJ77292151524791142540:shared_process": [],
-    "2DE61N6A4292151524791147329:shared_process": [],
-    "2DBRA8ZBN292151524791142533:shared_process": [],
-    "2DCDVWE59292151524791142531:shared_process": []
+    "2DEK3QV851090031527168688484:shared_process": [],
+    "2DENTX6JV1090031527168688466:shared_process": [],
+    "2DDBQ6ZR91090031527184416562:shared_process": [],
+    "2DDED8P751090031527168688477:shared_process": [],
+    "2DE8JRQYX1090031527228139990:shared_process": [],
+    "2DDBWFX441090031527168688480:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"

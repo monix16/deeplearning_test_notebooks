@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027",
+      "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027\nos.environ[\u0027MKL_THREADING_LAYER\u0027] \u003d \"GNU\"",
       "user": "prashantp@qubole.com",
-      "dateUpdated": "Jan 22, 2018 6:21:40 AM",
+      "dateUpdated": "May 25, 2018 7:19:44 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,23 +22,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516357627177_536308042",
-      "id": "20180119-102707_1758697403_q_EF469V1QNA1516357616",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180119-102707_1758697403_q_7XXGBY8VCK1527182754",
       "dateCreated": "Jan 19, 2018 10:27:07 AM",
-      "dateStarted": "Jan 22, 2018 6:21:40 AM",
-      "dateFinished": "Jan 22, 2018 6:21:40 AM",
+      "dateSubmitted": "May 24, 2018 5:26:29 PM",
+      "dateStarted": "May 24, 2018 5:26:44 PM",
+      "dateFinished": "May 24, 2018 5:27:10 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "# Confirming backend is changed to Theano\nfrom __future__ import print_function\nimport keras\nfrom keras import backend as K\nprint(K.backend())",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 6:21:40 AM",
       "config": {
         "colWidth": 12.0,
@@ -58,23 +60,25 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1516357634095_1974130006",
-      "id": "20180119-102714_1648087774_q_EF469V1QNA1516357616",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "theano\n"
-      },
+      "id": "20180119-102714_1648087774_q_7XXGBY8VCK1527182754",
       "dateCreated": "Jan 19, 2018 10:27:14 AM",
-      "dateStarted": "Jan 22, 2018 6:21:40 AM",
-      "dateFinished": "Jan 22, 2018 6:21:40 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 24, 2018 5:26:44 PM",
+      "dateStarted": "May 24, 2018 5:27:10 PM",
+      "dateFinished": "May 24, 2018 5:27:11 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "from keras.models import Sequential\nfrom keras.layers.convolutional import Conv3D\nfrom keras.layers.convolutional_recurrent import ConvLSTM2D\nfrom keras.layers.normalization import BatchNormalization\nimport numpy as np\nimport pylab as plt\n\n# We create a layer which take as input movies of shape\n# (n_frames, width, height, channels) and returns a movie\n# of identical shape.\n\nseq \u003d Sequential()\nseq.add(ConvLSTM2D(filters\u003d40, kernel_size\u003d(3, 3),\n                   input_shape\u003d(None, 40, 40, 1),\n                   padding\u003d\u0027same\u0027, return_sequences\u003dTrue))\nseq.add(BatchNormalization())\n\nseq.add(ConvLSTM2D(filters\u003d40, kernel_size\u003d(3, 3),\n                   padding\u003d\u0027same\u0027, return_sequences\u003dTrue))\nseq.add(BatchNormalization())\n\nseq.add(ConvLSTM2D(filters\u003d40, kernel_size\u003d(3, 3),\n                   padding\u003d\u0027same\u0027, return_sequences\u003dTrue))\nseq.add(BatchNormalization())\n\nseq.add(ConvLSTM2D(filters\u003d40, kernel_size\u003d(3, 3),\n                   padding\u003d\u0027same\u0027, return_sequences\u003dTrue))\nseq.add(BatchNormalization())\n\nseq.add(Conv3D(filters\u003d1, kernel_size\u003d(3, 3, 3),\n               activation\u003d\u0027sigmoid\u0027,\n               padding\u003d\u0027same\u0027, data_format\u003d\u0027channels_last\u0027))\nseq.compile(loss\u003d\u0027binary_crossentropy\u0027, optimizer\u003d\u0027adadelta\u0027)\n\n\n# Artificial data generation:\n# Generate movies with 3 to 7 moving squares inside.\n# The squares are of shape 1x1 or 2x2 pixels,\n# which move linearly over time.\n# For convenience we first create movies with bigger width and height (80x80)\n# and at the end we select a 40x40 window.\n\ndef generate_movies(n_samples\u003d1200, n_frames\u003d15):\n    row \u003d 80\n    col \u003d 80\n    noisy_movies \u003d np.zeros((n_samples, n_frames, row, col, 1), dtype\u003dnp.float)\n    shifted_movies \u003d np.zeros((n_samples, n_frames, row, col, 1),\n                              dtype\u003dnp.float)\n\n    for i in range(n_samples):\n        # Add 3 to 7 moving squares\n        n \u003d np.random.randint(3, 8)\n\n        for j in range(n):\n            # Initial position\n            xstart \u003d np.random.randint(20, 60)\n            ystart \u003d np.random.randint(20, 60)\n            # Direction of motion\n            directionx \u003d np.random.randint(0, 3) - 1\n            directiony \u003d np.random.randint(0, 3) - 1\n\n            # Size of the square\n            w \u003d np.random.randint(2, 4)\n\n            for t in range(n_frames):\n                x_shift \u003d xstart + directionx * t\n                y_shift \u003d ystart + directiony * t\n                noisy_movies[i, t, x_shift - w: x_shift + w,\n                             y_shift - w: y_shift + w, 0] +\u003d 1\n\n                # Make it more robust by adding noise.\n                # The idea is that if during inference,\n                # the value of the pixel is not exactly one,\n                # we need to train the network to be robust and still\n                # consider it as a pixel belonging to a square.\n                if np.random.randint(0, 2):\n                    noise_f \u003d (-1)**np.random.randint(0, 2)\n                    noisy_movies[i, t,\n                                 x_shift - w - 1: x_shift + w + 1,\n                                 y_shift - w - 1: y_shift + w + 1,\n                                 0] +\u003d noise_f * 0.1\n\n                # Shift the ground truth by 1\n                x_shift \u003d xstart + directionx * (t + 1)\n                y_shift \u003d ystart + directiony * (t + 1)\n                shifted_movies[i, t, x_shift - w: x_shift + w,\n                               y_shift - w: y_shift + w, 0] +\u003d 1\n\n    # Cut to a 40x40 window\n    noisy_movies \u003d noisy_movies[::, ::, 20:60, 20:60, ::]\n    shifted_movies \u003d shifted_movies[::, ::, 20:60, 20:60, ::]\n    noisy_movies[noisy_movies \u003e\u003d 1] \u003d 1\n    shifted_movies[shifted_movies \u003e\u003d 1] \u003d 1\n    return noisy_movies, shifted_movies\n\n# Train the network\nnoisy_movies, shifted_movies \u003d generate_movies(n_samples\u003d1200)\nseq.fit(noisy_movies[:1000], shifted_movies[:1000], batch_size\u003d10,\n        epochs\u003d1, validation_split\u003d0.05)\n\n# Testing the network on one movie\n# feed it with the first 7 positions and then\n# predict the new positions\nwhich \u003d 1004\ntrack \u003d noisy_movies[which][:7, ::, ::, ::]\n\nfor j in range(16):\n    new_pos \u003d seq.predict(track[np.newaxis, ::, ::, ::, ::])\n    new \u003d new_pos[::, -1, ::, ::, ::]\n    track \u003d np.concatenate((track, new), axis\u003d0)\n\n\n# And then compare the predictions\n# to the ground truth\ntrack2 \u003d noisy_movies[which][::, ::, ::, ::]\nfor i in range(15):\n    fig \u003d plt.figure(figsize\u003d(10, 5))\n\n    ax \u003d fig.add_subplot(121)\n\n    if i \u003e\u003d 7:\n        ax.text(1, 3, \u0027Predictions !\u0027, fontsize\u003d20, color\u003d\u0027w\u0027)\n    else:\n        ax.text(1, 3, \u0027Initial trajectory\u0027, fontsize\u003d20)\n\n    toplot \u003d track[i, ::, ::, 0]\n\n    plt.imshow(toplot)\n    ax \u003d fig.add_subplot(122)\n    plt.text(1, 3, \u0027Ground truth\u0027, fontsize\u003d20)\n\n    toplot \u003d track2[i, ::, ::, 0]\n    if i \u003e\u003d 2:\n        toplot \u003d shifted_movies[which][i - 1, ::, ::, 0]\n\n    plt.imshow(toplot)\n    plt.savefig(\u0027%i_animate.png\u0027 % (i + 1))",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 6:21:40 AM",
       "config": {
         "colWidth": 12.0,
@@ -102,16 +106,13 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516024205811_957622615",
-      "id": "20180115-135005_1535390504_q_EF469V1QNA1516357616",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "Train on 950 samples, validate on 50 samples\nEpoch 1/1\n\n 10/950 [..............................] - ETA: 9:24 - loss: 0.8256\n\n 20/950 [..............................] - ETA: 9:30 - loss: 0.9187\n\n 30/950 [..............................] - ETA: 9:28 - loss: 1.0485\n\n 40/950 [\u003e.............................] - ETA: 9:23 - loss: 0.9834\n\n 50/950 [\u003e.............................] - ETA: 9:18 - loss: 0.9863\n\n 60/950 [\u003e.............................] - ETA: 9:13 - loss: 0.9495\n\n 70/950 [\u003d\u003e............................] - ETA: 9:07 - loss: 0.9171\n\n 80/950 [\u003d\u003e............................] - ETA: 9:01 - loss: 0.8855\n\n 90/950 [\u003d\u003e............................] - ETA: 8:55 - loss: 0.8555\n\n100/950 [\u003d\u003d\u003e...........................] - ETA: 8:50 - loss: 0.8287\n\n110/950 [\u003d\u003d\u003e...........................] - ETA: 8:44 - loss: 0.8029\n\n120/950 [\u003d\u003d\u003e...........................] - ETA: 8:38 - loss: 0.7800\n\n130/950 [\u003d\u003d\u003d\u003e..........................] - ETA: 8:32 - loss: 0.7594\n\n140/950 [\u003d\u003d\u003d\u003e..........................] - ETA: 8:25 - loss: 0.7397\n\n150/950 [\u003d\u003d\u003d\u003e..........................] - ETA: 8:19 - loss: 0.7218\n\n160/950 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 8:13 - loss: 0.7056\n\n170/950 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 8:07 - loss: 0.6916\n\n180/950 [\u003d\u003d\u003d\u003d\u003e.........................] - ETA: 8:01 - loss: 0.6815\n\n190/950 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 7:55 - loss: 0.6701\n\n200/950 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 7:49 - loss: 0.6616\n\n210/950 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 7:42 - loss: 0.6544\n\n220/950 [\u003d\u003d\u003d\u003d\u003d\u003e........................] - ETA: 7:36 - loss: 0.6444\n\n230/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 7:30 - loss: 0.6332\n\n240/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 7:24 - loss: 0.6220\n\n250/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......................] - ETA: 7:18 - loss: 0.6113\n\n260/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 7:11 - loss: 0.6015\n\n270/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 7:05 - loss: 0.5930\n\n280/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......................] - ETA: 6:59 - loss: 0.5850\n\n290/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 6:53 - loss: 0.5765\n\n300/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 6:47 - loss: 0.5685\n\n310/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....................] - ETA: 6:40 - loss: 0.5606\n\n320/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 6:34 - loss: 0.5525\n\n330/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 6:28 - loss: 0.5446\n\n340/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....................] - ETA: 6:22 - loss: 0.5367\n\n350/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 6:15 - loss: 0.5288\n\n360/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 6:09 - loss: 0.5214\n\n370/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...................] - ETA: 6:03 - loss: 0.5148\n\n380/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 5:57 - loss: 0.5079\n\n390/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 5:50 - loss: 0.5014\n\n400/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 5:44 - loss: 0.4950\n\n410/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..................] - ETA: 5:38 - loss: 0.4885\n\n420/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 5:32 - loss: 0.4820\n\n430/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 5:25 - loss: 0.4754\n\n440/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.................] - ETA: 5:19 - loss: 0.4687\n\n450/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 5:13 - loss: 0.4624\n\n460/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 5:07 - loss: 0.4563\n\n470/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e................] - ETA: 5:00 - loss: 0.4507\n\n480/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 4:54 - loss: 0.4446\n\n490/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 4:48 - loss: 0.4386\n\n500/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...............] - ETA: 4:41 - loss: 0.4327\n\n510/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 4:35 - loss: 0.4270\n\n520/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 4:29 - loss: 0.4219\n\n530/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..............] - ETA: 4:23 - loss: 0.4169\n\n540/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 4:16 - loss: 0.4120\n\n550/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 4:10 - loss: 0.4068\n\n560/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.............] - ETA: 4:04 - loss: 0.4016\n\n570/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 3:58 - loss: 0.3965\n\n580/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 3:51 - loss: 0.3916\n\n590/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 3:45 - loss: 0.3867\n\n600/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e............] - ETA: 3:39 - loss: 0.3821\n\n610/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 3:33 - loss: 0.3775\n\n620/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 3:26 - loss: 0.3732\n\n630/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...........] - ETA: 3:20 - loss: 0.3690\n\n640/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 3:14 - loss: 0.3651\n\n650/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 3:08 - loss: 0.3614\n\n660/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..........] - ETA: 3:01 - loss: 0.3576\n\n670/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 2:55 - loss: 0.3537\n\n680/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 2:49 - loss: 0.3498\n\n690/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.........] - ETA: 2:43 - loss: 0.3460\n\n700/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 2:36 - loss: 0.3423\n\n710/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 2:30 - loss: 0.3386\n\n720/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e........] - ETA: 2:24 - loss: 0.3350\n\n730/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 2:17 - loss: 0.3315\n\n740/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 2:11 - loss: 0.3280\n\n750/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.......] - ETA: 2:05 - loss: 0.3246\n\n760/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 1:59 - loss: 0.3213\n\n770/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 1:52 - loss: 0.3181\n\n780/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 1:46 - loss: 0.3150\n\n790/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e......] - ETA: 1:40 - loss: 0.3120\n\n800/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 1:34 - loss: 0.3090\n\n810/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 1:27 - loss: 0.3061\n\n820/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.....] - ETA: 1:21 - loss: 0.3032\n\n830/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 1:15 - loss: 0.3002\n\n840/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 1:08 - loss: 0.2973\n\n850/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e....] - ETA: 1:02 - loss: 0.2944\n\n860/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 56s - loss: 0.2916 \n\n870/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 50s - loss: 0.2888\n\n880/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e...] - ETA: 43s - loss: 0.2861\n\n890/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 37s - loss: 0.2834\n\n900/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 31s - loss: 0.2808\n\n910/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e..] - ETA: 25s - loss: 0.2782\n\n920/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 18s - loss: 0.2757\n\n930/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 12s - loss: 0.2733\n\n940/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003e.] - ETA: 6s - loss: 0.2710 \n\n950/950 [\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d] - 601s 633ms/step - loss: 0.2688 - val_loss: 0.5059\n\n\u003cmatplotlib.text.Text object at 0x7ff3dbdb4f98\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3dbdbf358\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3dbd83cf8\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3dbd0e0b8\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9ebcfd0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d9ec6390\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9e62390\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d9e59278\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9e17b38\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d99b61d0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9991550\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d9991cc0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d98c5208\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d98c5978\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9889780\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d9889ef0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d9432a20\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d93b81d0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d93f6710\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d93f6e80\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d93134a8\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d9313c18\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d92e8f98\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d92ed748\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d92b1898\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d92ae400\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8de21d0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d8de2940\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8d83ac8\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d8d87278\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8d486a0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d8d48e10\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8875d30\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d887c4e0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d88270b8\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d881f0f0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d87eaf98\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d87e0b38\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8735940\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d87390f0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d82744e0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d8274c50\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d8238d30\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d823e4e0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d81d4080\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d81d47f0\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d82b15f8\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d8246710\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d7cc9a90\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d7cd0240\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d7ca8c50\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d7cae400\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d7c23e80\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d7c17550\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d7b9ba58\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d7ba0208\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d774c5c0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d774cd30\u003e\n\u003cmatplotlib.text.Text object at 0x7ff3d7691fd0\u003e\n\u003cmatplotlib.image.AxesImage object at 0x7ff3d7697780\u003e\n"
-      },
+      "id": "20180115-135005_1535390504_q_7XXGBY8VCK1527182754",
       "dateCreated": "Jan 15, 2018 1:50:05 PM",
-      "dateStarted": "Jan 22, 2018 6:21:40 AM",
-      "dateFinished": "Jan 22, 2018 6:36:56 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "May 24, 2018 5:27:10 PM",
+      "dateStarted": "May 24, 2018 5:27:11 PM",
+      "dateFinished": "May 24, 2018 5:27:12 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -138,14 +139,14 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516096457054_-588014023",
-      "id": "20180116-095417_653813138_q_EF469V1QNA1516357616",
+      "id": "20180116-095417_653813138_q_7XXGBY8VCK1527182754",
       "dateCreated": "Jan 16, 2018 9:54:17 AM",
       "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "",
-      "user": "prashantp@qubole.com",
       "dateUpdated": "Jan 22, 2018 6:21:40 AM",
       "config": {
         "colWidth": 12.0,
@@ -167,28 +168,28 @@
       },
       "version": "v0",
       "jobName": "paragraph_1516366882927_-162875264",
-      "id": "20180119-130122_1092789159_q_EF469V1QNA1516357616",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
+      "id": "20180119-130122_1092789159_q_7XXGBY8VCK1527182754",
       "dateCreated": "Jan 19, 2018 1:01:22 PM",
-      "dateStarted": "Jan 22, 2018 6:21:41 AM",
-      "dateFinished": "Jan 22, 2018 6:36:56 AM",
+      "dateSubmitted": "May 24, 2018 5:27:12 PM",
+      "dateStarted": "May 24, 2018 5:27:12 PM",
+      "dateFinished": "May 24, 2018 5:27:12 PM",
       "status": "FINISHED",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 500
     }
   ],
   "name": "conv_lstm",
-  "id": "EF469V1QNA1516357616",
+  "id": "7XXGBY8VCK1527182754",
   "angularObjects": {
-    "2D7M1HZP5932661518613479637:shared_process": [],
-    "2D6B43M8G932661515762929145:shared_process": [],
-    "2D35KXZZK932661515762929137:shared_process": []
+    "2DE6MWTYB1090031527182769810:shared_process": [],
+    "2DEK3QV851090031527168688484:shared_process": [],
+    "2DENTX6JV1090031527168688466:shared_process": [],
+    "2DDED8P751090031527168688477:shared_process": [],
+    "2DDBWFX441090031527168688480:shared_process": []
   },
   "config": {
-    "isDashboard": false
+    "isDashboard": false,
+    "defaultLang": "pyspark"
   },
   "info": {},
   "source": "FCN"
