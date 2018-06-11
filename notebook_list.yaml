@@ -174,12 +174,12 @@ TFOS:
   spark.dynamicAllocation.enabled : true
   spark.executor.instances : 2
   spark.qubole.max.executors : 2
-ToBeCompared_CheckGPUTF:
- nb_name: ToBeCompared_CheckGPUTF
-ToBeCompared_CheckGPUTheano:
- nb_name: ToBeCompared_CheckGPUTheano
-ToBeCompared_MISC:
- nb_name: ToBeCompared_MISC
+#ToBeCompared_CheckGPUTF:
+# nb_name: ToBeCompared_CheckGPUTF
+#ToBeCompared_CheckGPUTheano:
+# nb_name: ToBeCompared_CheckGPUTheano
+#ToBeCompared_MISC:
+# nb_name: ToBeCompared_MISC
 variational_autoencoder:
  nb_name: variational_autoencoder
 variational_autoencoder_deconv:
