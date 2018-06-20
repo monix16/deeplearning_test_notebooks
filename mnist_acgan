@@ -1,4 +1,4 @@
-{
+{ 
   "paragraphs": [
     {
       "text": "os.environ[\"KERAS_BACKEND\"] \u003d \"theano\"\nos.environ[\u0027THEANO_FLAGS\u0027] \u003d \u0027floatX\u003dfloat32,device\u003dcuda,dnn.library_path\u003d/usr/local/cuda/lib64,dnn.include_path\u003d/usr/local/cuda/include/\u0027\nos.environ[\u0027MKL_THREADING_LAYER\u0027] \u003d \u0027GNU\u0027",
