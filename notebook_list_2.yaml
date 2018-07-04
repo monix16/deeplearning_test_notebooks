@@ -1,3 +1,7 @@
+VERIFY_SHADED_JARS: 
+ nb_name: VERIFY_SHADED_JARS
+ cluster_label: spark_cluster_2
+ interpreter_settings:
 ToBeCompared_test_hive_metastore_stopped: 
  nb_name: ToBeCompared_test_hive_metastore_stopped
  cluster_label: spark_cluster_2
