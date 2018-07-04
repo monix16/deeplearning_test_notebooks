@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "val inputClassName \u003d \"zep/org/apache/http/conn/ssl/SSLConnectionSocketFactory.class\"\n\nimport java.net.URLClassLoader\nimport java.net.URL\nimport java.io.File\n\ndef list_urls(cl: ClassLoader): Array[java.net.URL] \u003d cl match {\n case null \u003d\u003e Array()\n case u: java.net.URLClassLoader \u003d\u003e u.getURLs() ++ list_urls(cl.getParent)\n case _ \u003d\u003e list_urls(cl.getParent)\n}\n\ndef findJarsHavingClass(name: String, jarList: Array[URL]): Array[URL] \u003d {\n var resultJarsArray \u003d Array[URL]()\n for( x \u003c- jarList ){\n    val ucl \u003d new URLClassLoader(Array(x), ClassLoader.getSystemClassLoader.getParent.getParent);\n    val classPath \u003d ucl.findResource(name)\n    if (classPath !\u003d null) {\n       resultJarsArray \u003d resultJarsArray :+ classPath\n    }\n }\n return resultJarsArray\n}\n\nval allJars \u003d list_urls(getClass.getClassLoader).distinct\nval requiredJars \u003d findJarsHavingClass(inputClassName, allJars)\n\nrequiredJars.foreach(println)",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "text": "val inputClassName \u003d \"zep/org/apache/http/conn/ssl/SSLConnectionSocketFactory.class\"\n\nimport java.net.URLClassLoader\nimport java.net.URL\nimport java.io.File\n\ndef list_urls(cl: ClassLoader): Array[java.net.URL] \u003d cl match {\n case null\u003d\u003eArray()\n case u: java.net.URLClassLoader \u003d\u003e u.getURLs() ++ list_urls(cl.getParent)\n case _ \u003d\u003e list_urls(cl.getParent)\n}\n\ndef findJarsHavingClass(name: String, jarList: Array[URL]): Array[URL] \u003d {\n var resultJarsArray \u003d Array[URL]()\n for( x \u003c- jarList ){\n    val ucl \u003d new URLClassLoader(Array(x), ClassLoader.getSystemClassLoader.getParent.getParent);\n    val classPath \u003d ucl.findResource(name)\n    if (classPath !\u003d null) {\n       resultJarsArray \u003d resultJarsArray :+ classPath\n    }\n }\n return resultJarsArray\n}\n\nval allJars \u003d list_urls(getClass.getClassLoader).distinct\nval requiredJars \u003d findJarsHavingClass(inputClassName, allJars)\n\nrequiredJars.foreach(println)",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:06 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,21 +22,27 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1530262738178_-1544334626",
-      "id": "20180629-085858_1544476519_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-085858_1544476519_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 8:58:58 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:45 AM",
-      "dateStarted": "Jul 4, 2018 9:12:45 AM",
-      "dateFinished": "Jul 4, 2018 9:12:51 AM",
+      "dateSubmitted": "Jul 4, 2018 11:03:06 AM",
+      "dateStarted": "Jul 4, 2018 11:03:12 AM",
+      "dateFinished": "Jul 4, 2018 11:05:13 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"VERIFY_SHADED_JARS\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027/usr/lib/zeppelin/interpreter/spark/\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:14:19 AM",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"VERIFY_SHADED_JARS\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027/usr/lib/zeppelin/interpreter/spark/\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:07:43 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -57,19 +63,19 @@
       },
       "version": "v0",
       "jobName": "paragraph_1530694698358_-901498021",
-      "id": "20180704-085818_547700634_q_5Z7NHK2U5D1530695093",
+      "id": "20180704-085818_547700634_q_MDERX77P3R1530701493",
       "dateCreated": "Jul 4, 2018 8:58:18 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:45 AM",
-      "dateStarted": "Jul 4, 2018 9:12:45 AM",
-      "dateFinished": "Jul 4, 2018 9:12:51 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "Jul 4, 2018 11:07:43 AM",
+      "dateStarted": "Jul 4, 2018 11:07:43 AM",
+      "dateFinished": "Jul 4, 2018 11:08:19 AM",
+      "status": "ERROR",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "import java.io._\nimport org.apache.commons._\nimport org.apache.http._\nimport org.apache.http.client._\nimport org.apache.http.client.methods.HttpPost\nimport org.apache.http.impl.client.DefaultHttpClient\nimport java.util.ArrayList\nimport org.apache.http.message.BasicNameValuePair\nimport org.apache.http.client.entity.UrlEncodedFormEntity\n\nobject HttpPostTester {\n\n  def main(args: Array[String]) {\n\n    val url \u003d \"http://localhost:8080/posttest\";\n\n    val post \u003d new HttpPost(url)\n    post.addHeader(\"appid\",\"YahooDemo\")\n    post.addHeader(\"query\",\"umbrella\")\n    post.addHeader(\"results\",\"10\")\n\n    val client \u003d new DefaultHttpClient\n    val params \u003d client.getParams\n    params.setParameter(\"foo\", \"bar\")\n    \n    val nameValuePairs \u003d new ArrayList[NameValuePair](1)\n    nameValuePairs.add(new BasicNameValuePair(\"registrationid\", \"123456789\"));\n    nameValuePairs.add(new BasicNameValuePair(\"accountType\", \"GOOGLE\"));\n    post.setEntity(new UrlEncodedFormEntity(nameValuePairs));\n    \n    // send the post request\n    val response \u003d client.execute(post)\n    println(\"--- HEADERS ---\")\n    response.getAllHeaders.foreach(arg \u003d\u003e println(arg))\n\t\n  }\n\n}",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:06 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -90,19 +96,19 @@
       },
       "version": "v0",
       "jobName": "paragraph_1530261949702_-979629389",
-      "id": "20180629-084549_1576436088_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-084549_1576436088_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 8:45:49 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:45 AM",
-      "dateStarted": "Jul 4, 2018 9:12:51 AM",
-      "dateFinished": "Jul 4, 2018 9:12:56 AM",
+      "dateSubmitted": "Jul 4, 2018 11:03:13 AM",
+      "dateStarted": "Jul 4, 2018 11:05:18 AM",
+      "dateFinished": "Jul 4, 2018 11:05:18 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "import org.apache.http ",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:12 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -121,21 +127,27 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1530261359516_112281411",
-      "id": "20180629-083559_1221553793_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-083559_1221553793_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 8:35:59 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:51 AM",
-      "dateStarted": "Jul 4, 2018 9:12:56 AM",
-      "dateFinished": "Jul 4, 2018 9:12:57 AM",
+      "dateSubmitted": "Jul 4, 2018 11:05:18 AM",
+      "dateStarted": "Jul 4, 2018 11:05:22 AM",
+      "dateFinished": "Jul 4, 2018 11:05:23 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "import org.apache.http.client._\nimport org.apache.http.client.methods._\nimport org.apache.http.impl.client._\nval httpclient \u003d new DefaultHttpClient\nval httpget \u003d new HttpGet(\"https://www.google.com\")\nval brh \u003d new BasicResponseHandler\nhttpclient.execute(httpget, brh)",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:12 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -154,21 +166,27 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1530262423085_761481977",
-      "id": "20180629-085343_521989713_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-085343_521989713_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 8:53:43 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:57 AM",
-      "dateStarted": "Jul 4, 2018 9:12:57 AM",
-      "dateFinished": "Jul 4, 2018 9:13:02 AM",
+      "dateSubmitted": "Jul 4, 2018 11:05:23 AM",
+      "dateStarted": "Jul 4, 2018 11:05:23 AM",
+      "dateFinished": "Jul 4, 2018 11:05:27 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "import java.net.Socket;\n\nimport org.apache.http.ConnectionReuseStrategy;\nimport org.apache.http.HttpHost;\nimport org.apache.http.HttpResponse;\nimport org.apache.http.impl.DefaultBHttpClientConnection;\nimport org.apache.http.impl.DefaultConnectionReuseStrategy;\nimport org.apache.http.message.BasicHttpRequest;\nimport org.apache.http.protocol.HttpCoreContext;\nimport org.apache.http.protocol.HttpProcessor;\nimport org.apache.http.protocol.HttpProcessorBuilder;\nimport org.apache.http.protocol.HttpRequestExecutor;\nimport org.apache.http.protocol.RequestConnControl;\nimport org.apache.http.protocol.RequestContent;\nimport org.apache.http.protocol.RequestExpectContinue;\nimport org.apache.http.protocol.RequestTargetHost;\nimport org.apache.http.protocol.RequestUserAgent;\nimport org.apache.http.util.EntityUtils;",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:12 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -187,21 +205,27 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1530265853514_-102976591",
-      "id": "20180629-095053_652374125_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-095053_652374125_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 9:50:53 AM",
-      "dateSubmitted": "Jul 4, 2018 9:12:58 AM",
-      "dateStarted": "Jul 4, 2018 9:13:02 AM",
-      "dateFinished": "Jul 4, 2018 9:13:11 AM",
+      "dateSubmitted": "Jul 4, 2018 11:05:23 AM",
+      "dateStarted": "Jul 4, 2018 11:05:27 AM",
+      "dateFinished": "Jul 4, 2018 11:05:32 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "import zep.org.apache.http.client._",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:12 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -220,21 +244,27 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
       "version": "v0",
       "jobName": "paragraph_1530265916409_-767194399",
-      "id": "20180629-095156_1945892576_q_5Z7NHK2U5D1530695093",
+      "id": "20180629-095156_1945892576_q_MDERX77P3R1530701493",
       "dateCreated": "Jun 29, 2018 9:51:56 AM",
-      "dateSubmitted": "Jul 4, 2018 9:13:02 AM",
-      "dateStarted": "Jul 4, 2018 9:13:11 AM",
-      "dateFinished": "Jul 4, 2018 9:13:12 AM",
+      "dateSubmitted": "Jul 4, 2018 11:05:27 AM",
+      "dateStarted": "Jul 4, 2018 11:05:32 AM",
+      "dateFinished": "Jul 4, 2018 11:05:33 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 4, 2018 9:12:45 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 11:03:13 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -246,7 +276,8 @@
           "groups": [],
           "scatter": {}
         },
-        "enabled": true
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -254,23 +285,24 @@
       },
       "version": "v0",
       "jobName": "paragraph_1530695133790_1558983230",
-      "id": "20180704-090533_71288334_q_5Z7NHK2U5D1530695093",
+      "id": "20180704-090533_71288334_q_MDERX77P3R1530701493",
       "dateCreated": "Jul 4, 2018 9:05:33 AM",
-      "dateSubmitted": "Jul 4, 2018 9:13:11 AM",
-      "dateStarted": "Jul 4, 2018 9:13:12 AM",
-      "dateFinished": "Jul 4, 2018 9:13:12 AM",
+      "dateSubmitted": "Jul 4, 2018 11:05:32 AM",
+      "dateStarted": "Jul 4, 2018 11:05:33 AM",
+      "dateFinished": "Jul 4, 2018 11:05:33 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "VERIFY_SHADED_JARS",
-  "id": "5Z7NHK2U5D1530695093",
+  "id": "MDERX77P3R1530701493",
   "angularObjects": {
-    "2DJUX3C4H330421530608887685:shared_process": [],
-    "2DJ11H75R330421530608653559:shared_process": [],
-    "2DJHTPANW330421530608653501:shared_process": [],
-    "2DKTCE9GJ330421530608653537:shared_process": []
+    "2DHU5C6RR334521530701363279:shared_process": [],
+    "2DK5T4TER334521530701363261:shared_process": [],
+    "2DH744E5E334521530701363287:shared_process": [],
+    "2DJ7F38R1334521530701509205:shared_process": [],
+    "2DGZ43PWR334521530701363283:shared_process": []
   },
   "config": {
     "isDashboard": false,
