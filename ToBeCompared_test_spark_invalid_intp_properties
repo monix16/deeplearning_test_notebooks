@@ -2,8 +2,8 @@
   "paragraphs": [
     {
       "text": "%pyspark\nprint(\"hello world\")",
-      "user": "prashantp@qubole.com",
-      "dateUpdated": "Apr 9, 2018 6:36:36 AM",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 1:03:37 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -24,23 +24,19 @@
       },
       "version": "v0",
       "jobName": "paragraph_1523255424702_1688693195",
-      "id": "20180409-063024_1075050056_q_REDZ9T743M1523255423",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "hello world\n"
-      },
+      "id": "20180409-063024_1075050056_q_CQTA12XEJE1530701100",
       "dateCreated": "Apr 9, 2018 6:30:24 AM",
-      "dateSubmitted": "Apr 9, 2018 6:36:36 AM",
-      "dateStarted": "Apr 9, 2018 6:36:36 AM",
-      "dateFinished": "Apr 9, 2018 6:36:36 AM",
-      "status": "FINISHED",
+      "dateSubmitted": "Jul 4, 2018 1:03:37 PM",
+      "dateStarted": "Jul 4, 2018 1:03:40 PM",
+      "dateFinished": "Jul 4, 2018 1:03:41 PM",
+      "status": "ERROR",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     },
     {
-      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_NPE_spark_mem\"\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\n\na \u003d open(b, \u0027r\u0027)\nb \u003d json.load(a)\nc \u003d b[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nprint(c)\nif \u0027Exception\u0027 in c and \u0027Invalid\u0027 in c:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
-      "user": "prashantp@qubole.com",
-      "dateUpdated": "Apr 9, 2018 6:36:41 AM",
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_spark_invalid_intp_properties\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027Exception\u0027 in e and \u0027Invalid\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "monikak+qa3@qubole.com",
+      "dateUpdated": "Jul 4, 2018 1:03:30 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -61,42 +57,24 @@
       },
       "version": "v0",
       "jobName": "paragraph_1523255439705_308229466",
-      "id": "20180409-063039_727284858_q_REDZ9T743M1523255423",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "hello world\n\nFalse\n"
-      },
+      "id": "20180409-063039_727284858_q_CQTA12XEJE1530701100",
       "dateCreated": "Apr 9, 2018 6:30:39 AM",
-      "dateSubmitted": "Apr 9, 2018 6:36:41 AM",
-      "dateStarted": "Apr 9, 2018 6:36:41 AM",
-      "dateFinished": "Apr 9, 2018 6:36:41 AM",
+      "dateSubmitted": "Jul 4, 2018 1:03:30 PM",
+      "dateStarted": "Jul 4, 2018 1:03:30 PM",
+      "dateFinished": "Jul 4, 2018 1:03:45 PM",
       "status": "FINISHED",
-      "progressUpdateIntervalMs": 1000
-    },
-    {
-      "text": "",
-      "config": {},
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "version": "v0",
-      "jobName": "paragraph_1523255645841_-681654478",
-      "id": "20180409-063405_1848040736_q_REDZ9T743M1523255423",
-      "dateCreated": "Apr 9, 2018 6:34:05 AM",
-      "status": "READY",
+      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "test_spark_invalid_intp_properties",
-  "id": "REDZ9T743M1523255423",
+  "id": "CQTA12XEJE1530701100",
   "angularObjects": {
-    "2D9GGS5SE964881519065589584:shared_process": [],
-    "2D5VHDPUZ964881519065589577:shared_process": [],
-    "2D5S3WHJ2964881519065589571:shared_process": [],
-    "2D9A7UHW5964881519065972084:shared_process": [],
-    "2D9M97V1V964881519065589510:shared_process": []
+    "2DHU5C6RR334521530701363279:shared_process": [],
+    "2DK5T4TER334521530701363261:shared_process": [],
+    "2DH744E5E334521530701363287:shared_process": [],
+    "2DGZ43PWR334521530701363283:shared_process": [],
+    "2DM6QUVWA334521530701422415:shared_process": []
   },
   "config": {
     "isDashboard": false,
