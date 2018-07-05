@@ -1,0 +1,105 @@
+{
+  "paragraphs": [
+    {
+      "text": "import java.util.List\nimport java.lang.management.{LockInfo, ManagementFactory, MonitorInfo, ThreadInfo}\nimport scala.collection.JavaConversions._\nval gcMxBeans \u003d ManagementFactory.getGarbageCollectorMXBeans();\ngcMxBeans.foreach(gcMxBean \u003d\u003e println(gcMxBean.getName()))",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 5, 2018 11:55:20 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1530791341305_-51480791",
+      "id": "20180705-114901_567870758_q_UQRCATVY9C1530791117",
+      "dateCreated": "Jul 5, 2018 11:49:01 AM",
+      "dateSubmitted": "Jul 5, 2018 11:55:20 AM",
+      "dateStarted": "Jul 5, 2018 11:55:23 AM",
+      "dateFinished": "Jul 5, 2018 11:55:58 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_driver_extra_java_option\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027G1\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 5, 2018 11:55:20 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1530791513979_256531223",
+      "id": "20180705-115153_711537241_q_UQRCATVY9C1530791117",
+      "dateCreated": "Jul 5, 2018 11:51:53 AM",
+      "dateSubmitted": "Jul 5, 2018 11:55:20 AM",
+      "dateStarted": "Jul 5, 2018 11:55:20 AM",
+      "dateFinished": "Jul 5, 2018 11:56:00 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1530791720724_560991841",
+      "id": "20180705-115520_652107564_q_UQRCATVY9C1530791117",
+      "dateCreated": "Jul 5, 2018 11:55:20 AM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "test_driver_extra_java_option",
+  "id": "UQRCATVY9C1530791117",
+  "angularObjects": {
+    "2DHNMHSZ21207441530791338028:shared_process": [],
+    "2DGT8X64G1207441530791337999:shared_process": [],
+    "2DHTJBV751207441530791338020:shared_process": [],
+    "2DGQUCPDH1207441530791341650:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "spark"
+  },
+  "info": {},
+  "source": "FCN"
+}
