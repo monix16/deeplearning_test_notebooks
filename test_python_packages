@@ -1,0 +1,189 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nimport pandas as pd\nimport numpy as np\n\nraw_data \u003d {\u0027first_name\u0027: [\u0027Jason\u0027, \u0027Molly\u0027, \u0027Tina\u0027, \u0027Jake\u0027, \u0027Amy\u0027], \n        \u0027last_name\u0027: [\u0027Miller\u0027, \u0027Jacobson\u0027, \".\", \u0027Milner\u0027, \u0027Cooze\u0027], \n        \u0027age\u0027: [42, 52, 36, 24, 73], \n        \u0027preTestScore\u0027: [4, 24, 31, \".\", \".\"],\n        \u0027postTestScore\u0027: [\"25,000\", \"94,000\", 57, 62, 70]}\ndf \u003d pd.DataFrame(raw_data, columns \u003d [\u0027first_name\u0027, \u0027last_name\u0027, \u0027age\u0027, \u0027preTestScore\u0027, \u0027postTestScore\u0027])\ndf",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 19, 2018 7:10:57 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1531984106156_-1709564568",
+      "id": "20180719-070826_759186890_q_985HUBZ97H1531984103",
+      "dateCreated": "Jul 19, 2018 7:08:26 AM",
+      "dateSubmitted": "Jul 19, 2018 7:10:57 AM",
+      "dateStarted": "Jul 19, 2018 7:10:57 AM",
+      "dateFinished": "Jul 19, 2018 7:10:57 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%pyspark\nimport numpy as np\nlist \u003d [1,2,3,4]\narr \u003d np.array(list)\nprint arr\nprint np.zeros((2, 3))\nprint np.arange(7)\nprint np.linspace(1., 4., 6)\nmat \u003d np.matrix(\u00271 2; 3 4\u0027)\nprint mat.H",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 19, 2018 7:14:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1531984114807_-827704765",
+      "id": "20180719-070834_1798972644_q_985HUBZ97H1531984103",
+      "dateCreated": "Jul 19, 2018 7:08:34 AM",
+      "dateSubmitted": "Jul 19, 2018 7:14:58 AM",
+      "dateStarted": "Jul 19, 2018 7:14:58 AM",
+      "dateFinished": "Jul 19, 2018 7:14:58 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%pyspark\nimport boto3\nimport botocore",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 19, 2018 7:16:00 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1531984350426_2106915182",
+      "id": "20180719-071230_525127511_q_985HUBZ97H1531984103",
+      "dateCreated": "Jul 19, 2018 7:12:30 AM",
+      "dateSubmitted": "Jul 19, 2018 7:16:00 AM",
+      "dateStarted": "Jul 19, 2018 7:16:00 AM",
+      "dateFinished": "Jul 19, 2018 7:16:05 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%pyspark\nimport psutil\n\ndef main2():\n    pid \u003d os.getpid()\n    print pid\n    p \u003d psutil.Process(pid)\n    print p.name\n    print p.exe\n    print p.status\n    print p.username\n    print p.create_time\n    print p.terminal\n    print p.uids\n    print p.gids\nmain2()",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 19, 2018 7:19:39 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1531984763853_-1080210078",
+      "id": "20180719-071923_1952013049_q_985HUBZ97H1531984103",
+      "dateCreated": "Jul 19, 2018 7:19:23 AM",
+      "dateSubmitted": "Jul 19, 2018 7:19:39 AM",
+      "dateStarted": "Jul 19, 2018 7:19:39 AM",
+      "dateFinished": "Jul 19, 2018 7:19:39 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%pyspark\nimport _mysql\nimport sys\nimport MySQLdb\ntry :\n    conn \u003d MySQLdb.connect (host \u003d \"localhost\",\n                        user \u003d \"testuser\",\n                        passwd \u003d \"testpass\",\n                        db \u003d \"test\")\n    cursor \u003d conn.cursor ()\n    cursor.execute (\"SELECT VERSION()\")\n    row \u003d cursor.fetchone ()\n    print \"server version:\", row[0]\nexcept:\n   print \"not connected\"",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 19, 2018 7:23:04 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1531984405582_673802150",
+      "id": "20180719-071325_1496729720_q_985HUBZ97H1531984103",
+      "dateCreated": "Jul 19, 2018 7:13:25 AM",
+      "dateSubmitted": "Jul 19, 2018 7:23:04 AM",
+      "dateStarted": "Jul 19, 2018 7:23:04 AM",
+      "dateFinished": "Jul 19, 2018 7:23:04 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "test_python_packages",
+  "id": "985HUBZ97H1531984103",
+  "angularObjects": {
+    "2DJZ1WW1R358321531940996370:shared_process": [],
+    "2DM1XHWGX358321531940954915:shared_process": [],
+    "2DJ8UMHTF358321531940954926:shared_process": [],
+    "2DM48YFN3358321531940954920:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": ""
+  },
+  "info": {},
+  "source": "FCN"
+}
