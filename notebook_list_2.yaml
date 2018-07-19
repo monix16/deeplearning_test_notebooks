@@ -10,6 +10,10 @@ CHECK_SPARK_VERSION:
  nb_name: CHECK_SPARK_VERSION
  cluster_label: spark_cluster_2
  interpreter_settings:
+test_python_packages:
+ nb_name: test_python_packages
+ cluster_label: spark_cluster_2
+ interpreter_settings:
 ToBeCompared_test_spark_invalid_intp_properties:
  nb_name: ToBeCompared_test_spark_invalid_intp_properties
  cluster_label: spark_cluster_2
