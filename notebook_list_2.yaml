@@ -24,6 +24,7 @@ test_driver_extra_java_option:
  cluster_label: spark_cluster_2
  interpreter_settings:
   spark.driver.extraJavaOptions: -XX:+UseG1GC
+  spark.executor.extraJavaOptions: -XX:+UseG1GC
 ToBeCompared_test_NPE_spark_mem_100g:
  nb_name: ToBeCompared_test_NPE_spark_mem_100g
  cluster_label: spark_cluster_2
