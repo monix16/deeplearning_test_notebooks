@@ -30,7 +30,7 @@
       },
       "version": "v0",
       "jobName": "paragraph_1530791341305_-51480791",
-      "id": "20180705-114901_567870758_q_UQRCATVY9C1530791117",
+      "id": "20180705-114901_567870758_q_9M7EZGAKYV1533021416",
       "dateCreated": "Jul 5, 2018 11:49:01 AM",
       "dateSubmitted": "Jul 5, 2018 11:55:20 AM",
       "dateStarted": "Jul 5, 2018 11:55:23 AM",
@@ -41,8 +41,41 @@
     },
     {
       "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_driver_extra_java_option\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027G1\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
-      "user": "quboleregression+notebooks@qu-test.com",
-      "dateUpdated": "Jul 5, 2018 11:55:20 AM",
+      "user": "namanm@qubole.com",
+      "dateUpdated": "Jul 31, 2018 7:19:24 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1530791513979_256531223",
+      "id": "20180705-115153_711537241_q_9M7EZGAKYV1533021416",
+      "dateCreated": "Jul 5, 2018 11:51:53 AM",
+      "dateSubmitted": "Jul 31, 2018 7:19:24 AM",
+      "dateStarted": "Jul 31, 2018 7:19:24 AM",
+      "dateFinished": "Jul 31, 2018 7:19:24 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "import java.util.List\nimport java.lang.management.{LockInfo, ManagementFactory, MonitorInfo, ThreadInfo}\nimport scala.collection.JavaConversions._\n\nsc.parallelize(Seq(\"\")).map(x \u003d\u003e {\nimport java.util.List\nval gcMxBeans \u003d ManagementFactory.getGarbageCollectorMXBeans();\ngcMxBeans.map(gcMxBean \u003d\u003e gcMxBean.getName())\n         .mkString(\",\")\n}).collect().foreach(println)",
+      "user": "namanm@qubole.com",
+      "dateUpdated": "Jul 31, 2018 7:19:48 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -61,13 +94,38 @@
         "params": {},
         "forms": {}
       },
+      "paragraphProgress": {
+        "jobs": [
+          {
+            "id": 0,
+            "jobUrl": "https://qa3.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.179.198.182%3A8088%2Fproxy%2Fapplication_1533017713300_0003/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "numTasks": 4,
+            "numCompletedTasks": 4,
+            "stages": [
+              {
+                "id": 0,
+                "completed": true,
+                "stageUrl": "https://qa3.qubole.net/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2F10.179.198.182%3A8088%2Fproxy%2Fapplication_1533017713300_0003/stages/stage/?id\u003d0\u0026attempt\u003d0",
+                "numCompleteTasks": 4,
+                "numActiveTasks": 0,
+                "numFailedTasks": 0,
+                "numTotalTasks": 4
+              }
+            ],
+            "status": "Success"
+          }
+        ],
+        "numCompletedTasks": 4,
+        "numTasks": 4,
+        "truncated": false
+      },
       "version": "v0",
-      "jobName": "paragraph_1530791513979_256531223",
-      "id": "20180705-115153_711537241_q_UQRCATVY9C1530791117",
-      "dateCreated": "Jul 5, 2018 11:51:53 AM",
-      "dateSubmitted": "Jul 5, 2018 11:55:20 AM",
-      "dateStarted": "Jul 5, 2018 11:55:20 AM",
-      "dateFinished": "Jul 5, 2018 11:56:00 AM",
+      "jobName": "paragraph_1530791720724_560991841",
+      "id": "20180705-115520_652107564_q_9M7EZGAKYV1533021416",
+      "dateCreated": "Jul 5, 2018 11:55:20 AM",
+      "dateSubmitted": "Jul 31, 2018 7:19:48 AM",
+      "dateStarted": "Jul 31, 2018 7:19:50 AM",
+      "dateFinished": "Jul 31, 2018 7:20:31 AM",
       "status": "FINISHED",
       "errorMessage": "",
       "progressUpdateIntervalMs": 1000
@@ -80,21 +138,20 @@
         "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1530791720724_560991841",
-      "id": "20180705-115520_652107564_q_UQRCATVY9C1530791117",
-      "dateCreated": "Jul 5, 2018 11:55:20 AM",
+      "jobName": "paragraph_1533022117173_-681122983",
+      "id": "20180731-072837_1152499593_q_9M7EZGAKYV1533021416",
+      "dateCreated": "Jul 31, 2018 7:28:37 AM",
       "status": "READY",
-      "errorMessage": "",
       "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "test_driver_extra_java_option",
-  "id": "UQRCATVY9C1530791117",
+  "id": "9M7EZGAKYV1533021416",
   "angularObjects": {
-    "2DHNMHSZ21207441530791338028:shared_process": [],
-    "2DGT8X64G1207441530791337999:shared_process": [],
-    "2DHTJBV751207441530791338020:shared_process": [],
-    "2DGQUCPDH1207441530791341650:shared_process": []
+    "2DG1NJ31K137071529045820111:shared_process": [],
+    "2DFNH4JRF137071529045820104:shared_process": [],
+    "2DJ5JNGSP137071529045820118:shared_process": [],
+    "2DHTTUGCZ137071529045820082:shared_process": []
   },
   "config": {
     "isDashboard": false,
