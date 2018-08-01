@@ -1,0 +1,255 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\nwhereis cuda\ncat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2\ncat /usr/local/cuda/version.txt",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 5:59:34 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532688946489_1108661730",
+      "id": "20180727-105546_1235270761_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 10:55:46 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:34 PM",
+      "dateStarted": "Jul 29, 2018 5:59:36 PM",
+      "dateFinished": "Jul 29, 2018 5:59:36 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027basic_dl_sanity\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u00279.0\u0027 in e and \u0027CUDNN_MAJOR 7\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 0",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 5:59:34 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532689341925_-1268533157",
+      "id": "20180727-110221_1145337225_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 11:02:21 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:36 PM",
+      "dateStarted": "Jul 29, 2018 5:59:36 PM",
+      "dateFinished": "Jul 29, 2018 5:59:36 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\nnvidia-smi",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 5:59:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532689025212_-1899381792",
+      "id": "20180727-105705_1205845985_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 10:57:05 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:36 PM",
+      "dateStarted": "Jul 29, 2018 5:59:36 PM",
+      "dateFinished": "Jul 29, 2018 5:59:36 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027basic_dl_sanity\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u0027NVIDIA-SMI 384.125\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 2",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 5:59:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532690632360_823412843",
+      "id": "20180727-112352_1588833237_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 11:23:52 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:37 PM",
+      "dateStarted": "Jul 29, 2018 5:59:37 PM",
+      "dateFinished": "Jul 29, 2018 5:59:37 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "import tensorflow as tf\ntf.__version__",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 5:59:35 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532689052441_-2111347787",
+      "id": "20180727-105732_1671108128_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 10:57:32 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:36 PM",
+      "dateStarted": "Jul 29, 2018 5:59:55 PM",
+      "dateFinished": "Jul 29, 2018 6:01:05 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getResultsForPara() {\n    para_id\u003d$1\n    note_name\u003d\u0027basic_dl_sanity\u0027\n    python \u003c\u003c END\nimport subprocess\nimport json\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \ne \u003d c[\u0027paragraphs\u0027][$para_id][\u0027result\u0027][\u0027msg\u0027]\nif \u00271.8.0\u0027 in e:\n    print(True)\nelse:\n    print(False)\nEND\n}\ngetResultsForPara 4",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 6:02:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532690674805_-1132604593",
+      "id": "20180727-112434_1657923663_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 11:24:34 AM",
+      "dateSubmitted": "Jul 29, 2018 5:59:37 PM",
+      "dateStarted": "Jul 29, 2018 5:59:37 PM",
+      "dateFinished": "Jul 29, 2018 6:02:06 PM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "import numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Jul 29, 2018 6:02:46 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1532689284005_651086374",
+      "id": "20180727-110124_184411291_q_UXJ4R4141W1533109427",
+      "dateCreated": "Jul 27, 2018 11:01:24 AM",
+      "dateSubmitted": "Jul 29, 2018 6:02:46 PM",
+      "dateStarted": "Jul 29, 2018 6:02:46 PM",
+      "dateFinished": "Jul 29, 2018 6:02:46 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "basic_dl_sanity",
+  "id": "UXJ4R4141W1533109427",
+  "angularObjects": {
+    "2DNUPP8KC414581532902153190:shared_process": [],
+    "2DK1RW1Y2414581532902153185:shared_process": [],
+    "2DJWPG172414581532902153187:shared_process": [],
+    "2DNSDHQAC414581532902156943:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "pyspark"
+  },
+  "info": {},
+  "source": "FCN"
+}
