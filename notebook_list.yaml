@@ -188,3 +188,5 @@ variational_autoencoder_deconv_KERAS_TENSORFLOW:
  nb_name: variational_autoencoder_deconv_KERAS_TENSORFLOW
 variational_autoencoder_KERAS_TENSORFLOW:
  nb_name: variational_autoencoder_KERAS_TENSORFLOW
+basic_dl_sanity:
+ nb_name: basic_dl_sanity
