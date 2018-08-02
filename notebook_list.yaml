@@ -180,6 +180,8 @@ TFOS:
 # nb_name: ToBeCompared_CheckGPUTheano
 #ToBeCompared_MISC:
 # nb_name: ToBeCompared_MISC
+VERIFY_JAVA_CUDA_CUDNN_VERSION:
+ nb_name: VERIFY_JAVA_CUDA_CUDNN_VERSION
 variational_autoencoder:
  nb_name: variational_autoencoder
 variational_autoencoder_deconv:
