@@ -1,9 +1,9 @@
 {
   "paragraphs": [
     {
-      "text": "#ToBeCompared\nimport subprocess\noutput \u003d subprocess.check_output([\"java\", \"-version\"], stderr\u003dsubprocess.STDOUT)\n\nif \u0027java version \"1.8.0\u0027 in str(a):\n    print(\"True\")\nelse:\n    print(\"False\")",
+      "text": "#ToBeCompared\nimport subprocess\noutput \u003d subprocess.check_output([\"java\", \"-version\"], stderr\u003dsubprocess.STDOUT)\n\nif \u0027java version \"1.8.0\u0027 in str(output):\n    print(\"True\")\nelse:\n    print(\"False\")",
       "user": "somyak@qubole.com",
-      "dateUpdated": "Jul 30, 2018 10:48:49 AM",
+      "dateUpdated": "Aug 5, 2018 4:05:57 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -22,24 +22,29 @@
         "params": {},
         "forms": {}
       },
-      "version": "v0",
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
       "jobName": "paragraph_1532943564475_-1290773357",
-      "id": "20180730-093924_1946744802_q_QT5JR851NK1532940453",
+      "id": "20180730-093924_1946744802_q_Z5KJQF3ERM1533359886",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
         "msg": "True\n"
       },
       "dateCreated": "Jul 30, 2018 9:39:24 AM",
-      "dateSubmitted": "Jul 30, 2018 10:48:49 AM",
-      "dateStarted": "Jul 30, 2018 10:48:49 AM",
-      "dateFinished": "Jul 30, 2018 10:48:49 AM",
+      "dateSubmitted": "Aug 5, 2018 4:05:57 PM",
+      "dateStarted": "Aug 5, 2018 4:06:10 PM",
+      "dateFinished": "Aug 5, 2018 4:06:52 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "#ToBeCompared\nprocess \u003d subprocess.Popen(\"export PATH\u003d$PATH:/usr/local/cuda/bin; nvcc --version\", stdout\u003dsubprocess.PIPE, shell\u003dTrue)\noutput \u003d process.communicate()[0].strip()\n\nif \"V9.0\" in str(output):\n    print(True)\nelse:\n    print(False)",
-      "user": "somyak@qubole.com",
       "dateUpdated": "Jul 30, 2018 10:48:49 AM",
       "config": {
         "colWidth": 12.0,
@@ -59,24 +64,23 @@
         "params": {},
         "forms": {}
       },
-      "version": "v0",
+      "version": "v1",
       "jobName": "paragraph_1532945719690_1358333902",
-      "id": "20180730-101519_262700797_q_QT5JR851NK1532940453",
+      "id": "20180730-101519_262700797_q_Z5KJQF3ERM1533359886",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
         "msg": "True\n"
       },
       "dateCreated": "Jul 30, 2018 10:15:19 AM",
-      "dateSubmitted": "Jul 30, 2018 10:48:49 AM",
-      "dateStarted": "Jul 30, 2018 10:48:49 AM",
-      "dateFinished": "Jul 30, 2018 10:48:49 AM",
+      "dateSubmitted": "Aug 4, 2018 5:26:50 AM",
+      "dateStarted": "Aug 4, 2018 5:28:53 AM",
+      "dateFinished": "Aug 4, 2018 5:28:53 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "#ToBeCompared\nimport subprocess\noutput \u003d subprocess.Popen(\"cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR\", stdout\u003dsubprocess.PIPE, shell\u003dTrue).stdout.read()\n\nif \u0027CUDNN_MAJOR 7\u0027 in str(output):\n    print(\"True\")\nelse:\n    print(\"False\")",
-      "user": "somyak@qubole.com",
       "dateUpdated": "Jul 30, 2018 10:48:49 AM",
       "config": {
         "colWidth": 12.0,
@@ -96,24 +100,29 @@
         "params": {},
         "forms": {}
       },
-      "version": "v0",
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
       "jobName": "paragraph_1532946033730_528823496",
-      "id": "20180730-102033_1925521132_q_QT5JR851NK1532940453",
+      "id": "20180730-102033_1925521132_q_Z5KJQF3ERM1533359886",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
         "msg": "True\n"
       },
       "dateCreated": "Jul 30, 2018 10:20:33 AM",
-      "dateSubmitted": "Jul 30, 2018 10:48:49 AM",
-      "dateStarted": "Jul 30, 2018 10:48:49 AM",
-      "dateFinished": "Jul 30, 2018 10:48:49 AM",
+      "dateSubmitted": "Aug 4, 2018 5:28:53 AM",
+      "dateStarted": "Aug 4, 2018 5:28:53 AM",
+      "dateFinished": "Aug 4, 2018 5:28:53 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 1000
     },
     {
       "text": "",
-      "user": "somyak@qubole.com",
       "dateUpdated": "Jul 30, 2018 10:48:49 AM",
       "config": {
         "colWidth": 12.0,
@@ -133,29 +142,31 @@
         "params": {},
         "forms": {}
       },
-      "version": "v0",
+      "version": "v1",
       "jobName": "paragraph_1532947714988_-751242149",
-      "id": "20180730-104834_197167984_q_QT5JR851NK1532940453",
+      "id": "20180730-104834_197167984_q_Z5KJQF3ERM1533359886",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
         "msg": ""
       },
       "dateCreated": "Jul 30, 2018 10:48:34 AM",
-      "dateSubmitted": "Jul 30, 2018 10:48:49 AM",
-      "dateStarted": "Jul 30, 2018 10:48:49 AM",
-      "dateFinished": "Jul 30, 2018 10:48:49 AM",
+      "dateSubmitted": "Aug 4, 2018 5:28:53 AM",
+      "dateStarted": "Aug 4, 2018 5:28:53 AM",
+      "dateFinished": "Aug 4, 2018 5:28:53 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "VERIFY_JAVA_CUDA_CUDNN_VERSION",
-  "id": "QT5JR851NK1532940453",
+  "id": "Z5KJQF3ERM1533359886",
   "angularObjects": {
-    "2DBXBAKKM281741522669611226:shared_process": [],
-    "2DADSC8GB281741522669611222:shared_process": [],
-    "2D9XBY4M1281741522670060069:shared_process": [],
-    "2DAHNKX7F281741522669611219:shared_process": []
+    "2DKWPPCZ8448791533360180249:shared_process": [],
+    "2DKRYEW7Q448791533360180376:shared_process": [],
+    "2DPFR1UGE448791533482491484:shared_process": [],
+    "2DQ1XU3BS448791533360180373:shared_process": [],
+    "2DQ29HVFB448791533360180378:shared_process": [],
+    "2DNAJXRUY448791533360344130:shared_process": []
   },
   "config": {
     "isDashboard": false,
