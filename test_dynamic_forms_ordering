@@ -1,0 +1,634 @@
+{
+  "paragraphs": [
+    {
+      "text": "%sh\necho ${c} ${b} ${d} ${f} ${e} ${a}",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:42:45 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {
+          "c": "",
+          "b": "",
+          "d": "",
+          "f": "",
+          "z": "",
+          "a": "",
+          "e": ""
+        },
+        "forms": {
+          "c": {
+            "name": "c",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "b": {
+            "name": "b",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "d": {
+            "name": "d",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "f": {
+            "name": "f",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "e": {
+            "name": "e",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "a": {
+            "name": "a",
+            "defaultValue": "",
+            "hidden": false
+          }
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533278789230_220344778",
+      "id": "20180803-064629_341167646_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 6:46:29 AM",
+      "dateSubmitted": "Aug 6, 2018 6:42:45 AM",
+      "dateStarted": "Aug 6, 2018 6:42:47 AM",
+      "dateFinished": "Aug 6, 2018 6:42:47 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getFormsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_dynamic_forms_ordering\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\nfrom collections import OrderedDict\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a, object_pairs_hook\u003dOrderedDict)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \nforms \u003d c[\u0027paragraphs\u0027][$para_id][\u0027settings\u0027][\u0027forms\u0027].keys()\nprint forms\nexpected \u003d [\u0027c\u0027,\u0027b\u0027,\u0027d\u0027,\u0027f\u0027,\u0027e\u0027,\u0027a\u0027]\nsettings_in_order \u003d True\nif len(forms) !\u003d len(expected):\n    settings_in_order \u003d False\nelse:\n    for i in range(0, len(forms)):\n        if forms[i] !\u003d expected[i]:\n            settings_in_order \u003d False\n            break\nprint settings_in_order\nEND\n}\ngetFormsForPara 0",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:42:51 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533278817274_-1638515076",
+      "id": "20180803-064657_1786103251_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 6:46:57 AM",
+      "dateSubmitted": "Aug 6, 2018 6:42:52 AM",
+      "dateStarted": "Aug 6, 2018 6:42:52 AM",
+      "dateFinished": "Aug 6, 2018 6:42:52 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%md\n${checkbox:fruits\u003dapple,banana|apple|orange}\n${name}\n${age}\n${checkbox: fields\u003dname,name|age|gender}",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:45:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "fruits": [
+            "apple"
+          ],
+          "name": "",
+          "age": "",
+          "fields": "name.name|age|gender"
+        },
+        "forms": {
+          "fruits": {
+            "name": "fruits",
+            "type": "checkbox",
+            "defaultValue": [
+              "apple"
+            ],
+            "options": [
+              {
+                "value": "banana"
+              },
+              {
+                "value": "apple"
+              },
+              {
+                "value": "orange"
+              }
+            ],
+            "hidden": false
+          },
+          "name": {
+            "name": "name",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "age": {
+            "name": "age",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "fields": {
+            "name": "fields",
+            "type": "checkbox",
+            "defaultValue": [
+              "name"
+            ],
+            "options": [
+              {
+                "value": "name"
+              },
+              {
+                "value": "age"
+              },
+              {
+                "value": "gender"
+              }
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533535745846_1931402935",
+      "id": "20180806-060905_1696167182_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 6, 2018 6:09:05 AM",
+      "dateSubmitted": "Aug 6, 2018 6:45:56 AM",
+      "dateStarted": "Aug 6, 2018 6:45:56 AM",
+      "dateFinished": "Aug 6, 2018 6:45:56 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getFormsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_dynamic_forms_ordering\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\nfrom collections import OrderedDict\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a, object_pairs_hook\u003dOrderedDict)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \nforms \u003d c[\u0027paragraphs\u0027][$para_id][\u0027settings\u0027][\u0027forms\u0027].keys()\nexpected \u003d [\u0027fruits\u0027, \u0027name\u0027, \u0027age\u0027, \u0027fields\u0027]\nsettings_in_order \u003d True\nif len(forms) !\u003d len(expected):\n    settings_in_order \u003d False\nelse:\n    for i in range(0, len(forms)):\n        if forms[i] !\u003d expected[i]:\n            settings_in_order \u003d False\n            break\nprint settings_in_order\nEND\n}\ngetFormsForPara 2",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:46:54 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533535860567_-1333070533",
+      "id": "20180806-061100_2074445077_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 6, 2018 6:11:00 AM",
+      "dateSubmitted": "Aug 6, 2018 6:46:54 AM",
+      "dateStarted": "Aug 6, 2018 6:46:54 AM",
+      "dateFinished": "Aug 6, 2018 6:46:54 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sql\nselect * from \u0027${table}\u0027 where age\u003d\u0027${age}\u0027 and name\u003d\u0027${name}\u0027",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:50:24 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sql",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {
+          "table": "default_qubole_memetracker",
+          "age": "",
+          "name": ""
+        },
+        "forms": {
+          "table": {
+            "name": "table",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "age": {
+            "name": "age",
+            "defaultValue": "",
+            "hidden": false
+          },
+          "name": {
+            "name": "name",
+            "defaultValue": "",
+            "hidden": false
+          }
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533295894651_942092823",
+      "id": "20180803-113134_588935222_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 11:31:34 AM",
+      "dateSubmitted": "Aug 6, 2018 6:50:24 AM",
+      "dateStarted": "Aug 6, 2018 6:50:24 AM",
+      "dateFinished": "Aug 6, 2018 6:50:24 AM",
+      "status": "ERROR",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getFormsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_dynamic_forms_ordering\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\nfrom collections import OrderedDict\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a, object_pairs_hook\u003dOrderedDict)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \nforms \u003d c[\u0027paragraphs\u0027][$para_id][\u0027settings\u0027][\u0027forms\u0027].keys()\nexpected \u003d [\u0027table\u0027, \u0027age\u0027, \u0027name\u0027]\nsettings_in_order \u003d True\nif len(forms) !\u003d len(expected):\n    settings_in_order \u003d False\nelse:\n    for i in range(0, len(forms)):\n        if forms[i] !\u003d expected[i]:\n            settings_in_order \u003d False\n            break\nprint settings_in_order\nEND\n}\ngetFormsForPara 4",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:50:30 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533295996719_-565435446",
+      "id": "20180803-113316_1446912281_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 11:33:16 AM",
+      "dateSubmitted": "Aug 6, 2018 6:50:30 AM",
+      "dateStarted": "Aug 6, 2018 6:50:30 AM",
+      "dateFinished": "Aug 6, 2018 6:50:30 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%md\n${checkbox:fruits\u003dapple,banana|apple|orange|grapes}",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:50:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/markdown",
+        "lineNumbers": true,
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {
+          "fruit,g|d|h": "",
+          "fields": "g|d|h",
+          "fruits": [
+            "apple"
+          ]
+        },
+        "forms": {
+          "fruits": {
+            "name": "fruits",
+            "type": "checkbox",
+            "defaultValue": [
+              "apple"
+            ],
+            "options": [
+              {
+                "value": "banana"
+              },
+              {
+                "value": "apple"
+              },
+              {
+                "value": "orange"
+              },
+              {
+                "value": "grapes"
+              }
+            ],
+            "hidden": false
+          }
+        }
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533281736501_1372509559",
+      "id": "20180803-073536_1122919108_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 7:35:36 AM",
+      "dateSubmitted": "Aug 6, 2018 6:50:35 AM",
+      "dateStarted": "Aug 6, 2018 6:50:35 AM",
+      "dateFinished": "Aug 6, 2018 6:50:35 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getFormsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_dynamic_forms_ordering\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\nfrom collections import OrderedDict\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a, object_pairs_hook\u003dOrderedDict)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \noptions \u003d c[\u0027paragraphs\u0027][$para_id][\u0027settings\u0027][\u0027forms\u0027][\u0027fruits\u0027][\u0027options\u0027]\noptions_list \u003d []\nmap(lambda option : options_list.append(option[\u0027value\u0027]), options)\n\nexpected \u003d [\u0027banana\u0027, \u0027apple\u0027, \u0027orange\u0027, \u0027grapes\u0027]\nsettings_in_order \u003d True\nif len(options_list) !\u003d len(expected):\n    settings_in_order \u003d False\nelse:\n    for i in range(0, len(options_list)):\n        if options_list[i] !\u003d expected[i]:\n            settings_in_order \u003d False\n            break\nprint settings_in_order\nEND\n}\ngetFormsForPara 6",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:50:52 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533293851617_-953105806",
+      "id": "20180803-105731_1495526466_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 3, 2018 10:57:31 AM",
+      "dateSubmitted": "Aug 6, 2018 6:50:52 AM",
+      "dateStarted": "Aug 6, 2018 6:50:53 AM",
+      "dateFinished": "Aug 6, 2018 6:50:53 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%spark \nz.checkbox(\"my_checkbox\", Seq(\"check_1\"),Seq((\"1\", \"check_1\"), (\"2\", \"check_2\"))); \nz.input(\"my_input\", \"default_name\") \nz.checkbox(\"my_wox\", Seq(\"check_1\"),Seq((\"1\", \"check_1\"), (\"2\", \"check_2\"))); \nz.checkbox(\"my_ox\", Seq(\"check_1\"),Seq((\"1\", \"check_1\"), (\"2\", \"check_2\"))); \nz.input(\"my_int\", \"default_name\") \nz.input(\"my_it\", \"default_name\") ",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:50:59 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala",
+        "lineNumbers": true
+      },
+      "settings": {
+        "params": {
+          "my_checkbox": [
+            "check_1"
+          ],
+          "my_input": "default_name",
+          "my_wox": [
+            "check_1"
+          ],
+          "my_ox": [
+            "check_1"
+          ],
+          "my_int": "default_name",
+          "my_it": "default_name"
+        },
+        "forms": {
+          "my_checkbox": {
+            "name": "my_checkbox",
+            "displayName": "my_checkbox",
+            "type": "checkbox",
+            "defaultValue": [
+              "check_1"
+            ],
+            "options": [
+              {
+                "value": "1",
+                "displayName": "check_1"
+              },
+              {
+                "value": "2",
+                "displayName": "check_2"
+              }
+            ],
+            "hidden": false
+          },
+          "my_input": {
+            "name": "my_input",
+            "displayName": "my_input",
+            "type": "input",
+            "defaultValue": "default_name",
+            "hidden": false
+          },
+          "my_wox": {
+            "name": "my_wox",
+            "displayName": "my_wox",
+            "type": "checkbox",
+            "defaultValue": [
+              "check_1"
+            ],
+            "options": [
+              {
+                "value": "1",
+                "displayName": "check_1"
+              },
+              {
+                "value": "2",
+                "displayName": "check_2"
+              }
+            ],
+            "hidden": false
+          },
+          "my_ox": {
+            "name": "my_ox",
+            "displayName": "my_ox",
+            "type": "checkbox",
+            "defaultValue": [
+              "check_1"
+            ],
+            "options": [
+              {
+                "value": "1",
+                "displayName": "check_1"
+              },
+              {
+                "value": "2",
+                "displayName": "check_2"
+              }
+            ],
+            "hidden": false
+          },
+          "my_int": {
+            "name": "my_int",
+            "displayName": "my_int",
+            "type": "input",
+            "defaultValue": "default_name",
+            "hidden": false
+          },
+          "my_it": {
+            "name": "my_it",
+            "displayName": "my_it",
+            "type": "input",
+            "defaultValue": "default_name",
+            "hidden": false
+          }
+        }
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533533524879_-241662665",
+      "id": "20180806-053204_2080994042_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 6, 2018 5:32:04 AM",
+      "dateSubmitted": "Aug 6, 2018 6:50:59 AM",
+      "dateStarted": "Aug 6, 2018 6:50:59 AM",
+      "dateFinished": "Aug 6, 2018 6:51:03 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "%sh\n#ToBeCompared\nfunction getFormsForPara() {\n    para_id\u003d$1\n    note_name\u003d\"test_dynamic_forms_ordering\"\n    python \u003c\u003c END\nimport subprocess\nimport json\nfrom time import sleep\nfrom collections import OrderedDict\na \u003d subprocess.check_output(\"grep -r $note_name /usr/lib/zeppelin/notebook/\", shell\u003d True, stderr\u003dsubprocess.STDOUT)\nb \u003d a.split(\":\")[0]\na \u003d open(b, \u0027r\u0027)\nc \u003d json.load(a, object_pairs_hook\u003dOrderedDict)\nd \u003d c[\u0027paragraphs\u0027][$para_id]\nwhile(\u0027result\u0027 not in d):\n    sleep(5)\n    a \u003d open(b, \u0027r\u0027)\n    c \u003d json.load(a)\n    d \u003d c[\u0027paragraphs\u0027][$para_id]\n    \nforms \u003d c[\u0027paragraphs\u0027][$para_id][\u0027settings\u0027][\u0027forms\u0027].keys()\nexpected \u003d [\u0027my_checkbox\u0027, \u0027my_input\u0027, \u0027my_wox\u0027, \u0027my_ox\u0027, \u0027my_int\u0027, \u0027my_it\u0027]\nsettings_in_order \u003d True\nif len(forms) !\u003d len(expected):\n    settings_in_order \u003d False\nelse:\n    for i in range(0, len(forms)):\n        if forms[i] !\u003d expected[i]:\n            settings_in_order \u003d False\n            break\nprint settings_in_order\nEND\n}\ngetFormsForPara 8",
+      "user": "quboleregression+notebooks@qu-test.com",
+      "dateUpdated": "Aug 6, 2018 6:51:23 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v1",
+      "jobName": "paragraph_1533535337428_-246490378",
+      "id": "20180806-060217_384403810_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 6, 2018 6:02:17 AM",
+      "dateSubmitted": "Aug 6, 2018 6:51:23 AM",
+      "dateStarted": "Aug 6, 2018 6:51:23 AM",
+      "dateFinished": "Aug 6, 2018 6:51:23 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "user": "namanm@qubole.com",
+      "dateUpdated": "Aug 6, 2018 6:14:37 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1533535609396_1759988816",
+      "id": "20180806-060649_806974276_q_F1CJ6KE4681533537301",
+      "dateCreated": "Aug 6, 2018 6:06:49 AM",
+      "dateSubmitted": "Aug 6, 2018 6:14:37 AM",
+      "dateStarted": "Aug 6, 2018 6:14:39 AM",
+      "dateFinished": "Aug 6, 2018 6:14:39 AM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "test_dynamic_forms_ordering",
+  "id": "F1CJ6KE4681533537301",
+  "angularObjects": {
+    "2DK8Y71JX448531533329167226:shared_process": [],
+    "2DKQ1HHFG448531533329239053:shared_process": [],
+    "2DK593N2M448531533329167240:shared_process": [],
+    "2DNRG6Q2D448531533329167233:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "spark"
+  },
+  "info": {},
+  "source": "FCN"
+}
