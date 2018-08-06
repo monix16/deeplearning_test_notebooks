@@ -6,6 +6,10 @@ ToBeCompared_test_hive_metastore_stopped:
  nb_name: ToBeCompared_test_hive_metastore_stopped
  cluster_label: spark_cluster_1
  interpreter_settings:
+test_dynamic_forms_ordering:
+ nb_name: test_dynamic_forms_ordering
+ cluster_label: spark_cluster_1
+ interpreter_settings:
 CHECK_SPARK_VERSION:
  nb_name: CHECK_SPARK_VERSION
  cluster_label: spark_cluster_2
