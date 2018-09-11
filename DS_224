@@ -1,0 +1,132 @@
+{
+  "paragraphs": [
+    {
+      "text": "sc.version",
+      "user": "maheshas@qubole.com",
+      "dateUpdated": "Sep 11, 2018 7:38:42 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1536645229348_-1470587504",
+      "id": "20180911-055349_1666270373_q_KPH7VZPQEZ1536645167",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "\u00272.2.1\u0027\n"
+      },
+      "dateCreated": "Sep 11, 2018 5:53:49 AM",
+      "dateSubmitted": "Sep 11, 2018 7:38:42 AM",
+      "dateStarted": "Sep 11, 2018 7:39:24 AM",
+      "dateFinished": "Sep 11, 2018 7:40:27 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "import timeit\nassert (timeit.timeit(stmt\u003d\u0027import tensorflow\u0027, number\u003d1) \u003c 10.0), \"tensorflow importing is slow\"",
+      "user": "maheshas@qubole.com",
+      "dateUpdated": "Sep 11, 2018 7:40:46 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "paragraphProgress": {
+        "jobs": [],
+        "numCompletedTasks": 0,
+        "numTasks": 0,
+        "truncated": false
+      },
+      "version": "v0",
+      "jobName": "paragraph_1536645301659_-1800778681",
+      "id": "20180911-055501_1311736113_q_KPH7VZPQEZ1536645167",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Sep 11, 2018 5:55:01 AM",
+      "dateSubmitted": "Sep 11, 2018 7:40:46 AM",
+      "dateStarted": "Sep 11, 2018 7:40:46 AM",
+      "dateFinished": "Sep 11, 2018 7:40:48 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1536650966017_2031180728",
+      "id": "20180911-072926_122697454_q_KPH7VZPQEZ1536645167",
+      "dateCreated": "Sep 11, 2018 7:29:26 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    },
+    {
+      "text": "",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "version": "v0",
+      "jobName": "paragraph_1536645484985_644344907",
+      "id": "20180911-055804_198915808_q_KPH7VZPQEZ1536645167",
+      "dateCreated": "Sep 11, 2018 5:58:04 AM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
+    }
+  ],
+  "name": "dl_25_2",
+  "id": "KPH7VZPQEZ1536645167",
+  "angularObjects": {
+    "2DHN9BGTW251529477311995:shared_process": [],
+    "2DJ1N8GHA251529477311981:shared_process": [],
+    "2DQY9X7XK251536590847753:shared_process": [],
+    "2DGVY4QXR251529477311987:shared_process": []
+  },
+  "config": {
+    "isDashboard": false,
+    "defaultLang": "pyspark"
+  },
+  "info": {},
+  "source": "FCN"
+}
