@@ -1,179 +1,28 @@
 {
   "paragraphs": [
     {
-      "title": "1. QA Stack Bar Test",
-      "text": "%sql\nSELECT\n  bc.name `Customer Name`, bc.tag `Customer Tag`, ci.amount `Billed Amount`,\n  cu.compute_hours `Compute Hours`, cu.cost `Aproximate Usage Cost`,\n  0.2 * cu.cost `Approximate Support Cost`, 1.2 * cu.cost `Approximate Cost`, cu.Commands, ci.Month\nFROM\n  (SELECT customer_tag, month, sum(amount) amount\n   FROM bdm.customer_invoices\n   GROUP BY customer_tag, month) ci\n  JOIN bdm.billing_customers bc\n    ON bc.tag \u003d ci.customer_tag\n  FULL OUTER JOIN\n    (SELECT\n       customer_tag, usage_month month,\n       sum(compute_hours) compute_hours, sum(cost) cost, sum(commands) commands\n     FROM bdm.customer_usage_monthly\n     WHERE usage_month \u003e\u003d \u00272017-11\u0027\n     GROUP BY customer_tag, usage_month\n     UNION ALL\n     SELECT\n       customer_tag, usage_month month,\n       sum(compute_hours) compute_hours, sum(cost) cost, sum(commands) commands\n     FROM bdm.customer_usage_monthly_historical\n     WHERE usage_month \u003c \u00272017-11\u0027\n     GROUP BY customer_tag, usage_month) cu\n    ON cu.customer_tag \u003d ci.customer_tag\n   AND cu.month \u003d ci.month\nWHERE (lower(bc.name) LIKE lower(\u0027%${Customer Name}%\u0027)\n   OR lower(bc.name) LIKE lower(\u0027${or Customer Name}\u0027))\n  AND ci.month \u003e\u003d \u00272017-01\u0027\nORDER BY Month, lower(`Customer Name`)",
-      "user": "qa@qubole.com",
-      "dateUpdated": "Sep 19, 2018 8:46:03 AM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "multiBarChart",
-          "height": 300.0,
-          "optionOpen": true,
-          "keys": [
-            {
-              "name": "Month",
-              "index": 8.0,
-              "aggr": "sum"
-            }
-          ],
-          "values": [
-            {
-              "name": "Approximate Cost",
-              "index": 6.0,
-              "aggr": "sum"
-            },
-            {
-              "name": "Billed Amount",
-              "index": 2.0,
-              "aggr": "sum"
-            }
-          ],
-          "groups": [
-            {
-              "name": "Customer Name",
-              "index": 0.0,
-              "aggr": "sum"
-            }
-          ],
-          "scatter": {
-            "xAxis": {
-              "name": "Customer Name",
-              "index": 0.0,
-              "aggr": "sum"
-            },
-            "yAxis": {
-              "name": "Customer Tag",
-              "index": 1.0,
-              "aggr": "sum"
-            }
-          }
-        },
-        "enabled": true,
-        "editorMode": "ace/mode/sql",
-        "title": true,
-        "editorHide": true,
-        "tableHide": false
-      },
+      "text": "",
+      "config": {},
       "settings": {
-        "params": {
-          "Item Type": [
-            "\u0027Usage\u0027"
-          ],
-          "Customer Name": "",
-          "or Customer Name": ""
-        },
-        "forms": {
-          "Customer Name": {
-            "name": "Customer Name",
-            "defaultValue": "",
-            "hidden": false
-          },
-          "or Customer Name": {
-            "name": "or Customer Name",
-            "defaultValue": "",
-            "hidden": false
-          }
-        }
-      },
-      "paragraphProgress": {
-        "jobs": [
-          {
-            "id": 0,
-            "jobUrl": "",
-            "numTasks": 1,
-            "numCompletedTasks": 1,
-            "stages": [
-              {
-                "id": 0,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 1,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 1
-              }
-            ],
-            "status": "Success"
-          },
-          {
-            "id": 1,
-            "jobUrl": "",
-            "numTasks": 728,
-            "numCompletedTasks": 728,
-            "stages": [
-              {
-                "id": 1,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 77,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 77
-              },
-              {
-                "id": 5,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 200,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 200
-              },
-              {
-                "id": 2,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 40,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 40
-              },
-              {
-                "id": 3,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 400,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 400
-              },
-              {
-                "id": 4,
-                "completed": true,
-                "stageUrl": "",
-                "numCompleteTasks": 11,
-                "numActiveTasks": 0,
-                "numFailedTasks": 0,
-                "numTotalTasks": 11
-              }
-            ],
-            "status": "Success"
-          }
-        ],
-        "numCompletedTasks": 729,
-        "numTasks": 729,
-        "truncated": false
+        "params": {},
+        "forms": {}
       },
       "version": "v0",
-      "jobName": "paragraph_1524787700617_1889278570",
-      "id": "20180427-000820_1093276532_q_HGEAC15GU11537422210",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TABLE",
-        "msg": "Customer Name\tCustomer Tag\tBilled Amount\tCompute Hours\tAproximate Usage Cost\tApproximate Support Cost\tApproximate Cost\tCommands\tMonth\nquboleqa - quboleqa2\t10194\t2129.32\t23659.00\t0.00\t0.000\t0.000\t0\t2017-01\nquboleqa Risk \u0026 Security\t10195\t8950.68\t99452.00\t0.00\t0.000\t0.000\t0\t2017-01\nquboleqa, Inc. EDW\t10202\t307.44\t3416.00\t0.00\t0.000\t0.000\t0\t2017-01\nquboleqa, Inc. Main\t45\t78246.91\t869418.00\t0.00\t0.000\t0.000\t0\t2017-01\nquboleqa - quboleqa2\t10194\t3727.26\t41414.00\t0.00\t0.000\t0.000\t0\t2017-02\nquboleqa Risk \u0026 Security\t10195\t10638.72\t118208.00\t0.00\t0.000\t0.000\t0\t2017-02\nquboleqa, Inc. EDW\t10202\t269.64\t2996.00\t0.00\t0.000\t0.000\t0\t2017-02\nquboleqa, Inc. Main\t45\t85099.50\t945641.00\t0.00\t0.000\t0.000\t0\t2017-02\nquboleqa - quboleqa2\t10194\t8372.70\t93130.00\t0.00\t0.000\t0.000\t0\t2017-03\nquboleqa Risk \u0026 Security\t10195\t16487.64\t183196.00\t0.00\t0.000\t0.000\t0\t2017-03\nquboleqa, Inc. EDW\t10202\t131.58\t1462.00\t0.00\t0.000\t0.000\t0\t2017-03\nquboleqa, Inc. Main\t45\t166940.82\t1854898.00\t0.00\t0.000\t0.000\t0\t2017-03\nquboleqa - quboleqa2\t10194\t9801.88\t126065.00\t0.00\t0.000\t0.000\t0\t2017-04\nquboleqa Risk \u0026 Security\t10195\t19747.66\t253175.00\t0.00\t0.000\t0.000\t0\t2017-04\nquboleqa, Inc. EDW\t10202\t276.12\t3540.00\t0.00\t0.000\t0.000\t0\t2017-04\nquboleqa, Inc. Main\t45\t142339.08\t1824860.00\t0.00\t0.000\t0.000\t0\t2017-04\nquboleqa - quboleqa2\t10194\t13180.06\t169075.00\t0.00\t0.000\t0.000\t0\t2017-05\nquboleqa Risk \u0026 Security\t10195\t25702.56\t329520.00\t0.00\t0.000\t0.000\t0\t2017-05\nquboleqa, Inc. EDW\t10202\t314.50\t4032.00\t0.00\t0.000\t0.000\t0\t2017-05\nquboleqa, Inc. Main\t45\t220310.38\t2824492.00\t0.00\t0.000\t0.000\t0\t2017-05\nquboleqa - quboleqa2\t10194\t24254.57\t311156.00\t0.00\t0.000\t0.000\t0\t2017-06\nquboleqa Risk \u0026 Security\t10195\t21056.03\t269856.00\t0.00\t0.000\t0.000\t0\t2017-06\nquboleqa, Inc. EDW\t10202\t282.29\t3619.00\t0.00\t0.000\t0.000\t0\t2017-06\nquboleqa, Inc. Main\t45\t230793.19\t3036703.00\t0.00\t0.000\t0.000\t0\t2017-06\nquboleqa - quboleqa2\t10194\t32150.59\t437857.00\t0.00\t0.000\t0.000\t0\t2017-07\nquboleqa Risk \u0026 Security\t10195\t20427.66\t255197.00\t0.00\t0.000\t0.000\t0\t2017-07\nquboleqa, Inc. EDW\t10202\t143.05\t1834.00\t0.00\t0.000\t0.000\t0\t2017-07\nquboleqa, Inc. Main\t45\t270366.80\t3676705.00\t0.00\t0.000\t0.000\t0\t2017-07\nquboleqa - quboleqa2\t10194\t47741.30\t612068.00\t0.00\t0.000\t0.000\t0\t2017-08\nquboleqa Risk \u0026 Security\t10195\t20927.71\t266157.00\t0.00\t0.000\t0.000\t0\t2017-08\nquboleqa, Inc. EDW\t10202\t171.13\t2194.00\t0.00\t0.000\t0.000\t0\t2017-08\nquboleqa, Inc. Main\t45\t310872.05\t3985539.00\t0.00\t0.000\t0.000\t0\t2017-08\nquboleqa - quboleqa2\t10194\t78028.24\t1000362.00\t0.00\t0.000\t0.000\t0\t2017-09\nquboleqa GCO\t10267\t970.72\tnull\tnull\tnull\tnull\tnull\t2017-09\nquboleqa Risk \u0026 Security\t10195\t25648.98\t300134.00\t0.00\t0.000\t0.000\t0\t2017-09\nquboleqa, Inc. EDW\t10202\t176.28\t2260.00\t0.00\t0.000\t0.000\t0\t2017-09\nquboleqa, Inc. Main\t45\t318422.52\t4094785.00\t0.00\t0.000\t0.000\t0\t2017-09\nquboleqa - quboleqa2\t10194\t58230.28\t746542.00\t0.00\t0.000\t0.000\t0\t2017-10\nquboleqa GCO\t10267\t1300.10\tnull\tnull\tnull\tnull\tnull\t2017-10\nquboleqa Risk \u0026 Security\t10195\t28221.26\t332836.00\t0.00\t0.000\t0.000\t0\t2017-10\nquboleqa, Inc. EDW\t10202\t207.25\t2657.00\t0.00\t0.000\t0.000\t0\t2017-10\nquboleqa, Inc. Main\t45\t280187.78\t3608819.00\t0.00\t0.000\t0.000\t0\t2017-10\nquboleqa - quboleqa2\t10194\t64824.79\t831087.12\t52483.15\t10496.630\t62979.780\t60506\t2017-11\nquboleqa Affiliate Network, Inc\t10269\t7.38\tnull\tnull\tnull\tnull\tnull\t2017-11\nquboleqa GCO\t10267\t479.08\t1350.21\t85.27\t17.054\t102.324\t235\t2017-11\nquboleqa Risk \u0026 Security\t10195\t32696.82\t381167.56\t24070.74\t4814.148\t28884.888\t8574\t2017-11\nquboleqa, Inc. EDW\t10202\t196.96\t2525.24\t159.47\t31.894\t191.364\t537\t2017-11\nquboleqa, Inc. Main\t45\t244757.76\t3142711.54\t198462.25\t39692.450\t238154.700\t466155\t2017-11\nquboleqa - quboleqa2\t10194\t55476.17\t711010.96\t44900.34\t8980.068\t53880.408\t44325\t2017-12\nquboleqa Affiliate Network, Inc\t10269\t1.45\t18.54\t1.17\t0.234\t1.404\t13\t2017-12\nquboleqa GCO\t10267\t270.08\t3649.68\t230.48\t46.096\t276.576\t825\t2017-12\nquboleqa Risk \u0026 Security\t10195\t32491.85\t380395.81\t24021.99\t4804.398\t28826.388\t8836\t2017-12\nquboleqa, Inc. EDW\t10202\t173.95\t2435.82\t153.83\t30.766\t184.596\t395\t2017-12\nquboleqa, Inc. Main\t45\t307942.94\t3454334.85\t218141.24\t43628.248\t261769.488\t657499\t2017-12\nquboleqa - quboleqa2\t10194\t61168.74\t784214.95\t49523.17\t9904.634\t59427.804\t51472\t2018-01\nquboleqa Affiliate Network, Inc\t10269\t2.35\t30.12\t1.90\t0.380\t2.280\t29\t2018-01\nquboleqa GCO\t10267\t827.10\t10603.83\t669.63\t133.926\t803.556\t3301\t2018-01\nquboleqa Risk \u0026 Security\t10195\t38597.09\t461306.71\t29131.51\t5826.302\t34957.812\t7996\t2018-01\nquboleqa, Inc. EDW\t10202\t192.64\t2469.75\t155.96\t31.192\t187.152\t429\t2018-01\nquboleqa, Inc. Main\t45\t359220.98\t4105553.19\t259265.70\t51853.140\t311118.840\t842333\t2018-01\nquboleqa - quboleqa2\t10194\t58783.14\t753630.16\t47591.74\t9518.348\t57110.088\t45110\t2018-02\nquboleqa Affiliate Network, Inc\t10269\t0.49\t6.28\t0.40\t0.080\t0.480\t6\t2018-02\nquboleqa GCO\t10267\t2457.84\t31510.76\t1989.90\t397.980\t2387.880\t8959\t2018-02\nquboleqa Risk \u0026 Security\t10195\t41343.42\t530043.97\t33472.28\t6694.456\t40166.736\t9541\t2018-02\nquboleqa, Inc. EDW\t10202\t155.17\t1989.42\t125.63\t25.126\t150.756\t313\t2018-02\nquboleqa, Inc. Main\t45\t349720.43\t3938058.08\t248688.37\t49737.674\t298426.044\t829273\t2018-02\nquboleqa - quboleqa2\t10194\t59398.90\t761524.40\t48090.27\t9618.054\t57708.324\t36521\t2018-03\nquboleqa GCO\t10267\t3215.33\t41222.12\t2603.18\t520.636\t3123.816\t9204\t2018-03\nquboleqa Risk \u0026 Security\t10195\t44354.89\t568678.01\t35912.00\t7182.400\t43094.400\t9299\t2018-03\nquboleqa, Inc. EDW\t10202\t145.86\t1869.98\t118.09\t23.618\t141.708\t244\t2018-03\nquboleqa, Inc. Main\t45\t410545.72\t4652099.82\t293780.11\t58756.022\t352536.132\t1138299\t2018-03\n"
-      },
-      "dateCreated": "Apr 27, 2018 12:08:20 AM",
-      "dateStarted": "Jun 15, 2018 5:12:37 PM",
-      "dateFinished": "Jun 15, 2018 5:14:01 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
+      "jobName": "paragraph_1537791980916_-1245367218",
+      "id": "20180924-122620_183980838_q_HGEAC15GU11537422210",
+      "dateCreated": "Sep 24, 2018 12:26:20 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 1000
     }
   ],
   "name": "27662-qa-stack-bar-test - Clone",
   "id": "HGEAC15GU11537422210",
-  "angularObjects": {},
+  "angularObjects": {
+    "2DPQVMB9B1941537271841981:shared_process": [],
+    "2DS8JZWS61941537271842007:shared_process": [],
+    "2DS2KKN831941537271842038:shared_process": [],
+    "2DT53F47Y1941537271859747:shared_process": []
+  },
   "config": {
     "isDashboard": false,
     "defaultLang": "spark"
